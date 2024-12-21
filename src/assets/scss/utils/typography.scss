@@ -1,0 +1,117 @@
+//headers
+
+@mixin h1-dark {
+  font-family: 'Roboto Condensed', serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 4rem;
+  line-height: 4.5rem;
+}
+@mixin h2-dark {
+  font-family: 'Roboto Condensed', serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 3rem;
+  line-height: 3.5rem;
+}
+@mixin h3-dark {
+  font-family: 'Roboto Condensed', serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3rem;
+  line-height: 3.5rem;
+}
+@mixin subheader-1-dark {
+  font-family: 'Roboto Condensed', serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  text-transform: uppercase;
+}
+@mixin subheader-2-dark {
+  font-family: 'Roboto Condensed', serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  text-transform: uppercase;
+}
+
+
+//text
+
+@mixin normal-dark {
+  font-family: 'Roboto', serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+@mixin small-dark {
+  font-family: 'Roboto', serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+
+//button
+
+@mixin button {
+  font-family: 'Roboto', serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+}
+
+
+//links
+
+@mixin link {
+  font-family: 'Roboto', serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+}
+@mixin link-text {
+  font-family: 'Roboto', serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+}
+
+
+//extra
+
+@mixin menu {
+  font-family: 'Roboto Condensed', serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  text-transform: uppercase;
+}
+@mixin submenu {
+  font-family: 'Roboto Condensed', serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+}
+@mixin breadcrumbs-dark {
+  font-family: 'Roboto Condensed', serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+}
