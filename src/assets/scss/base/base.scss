@@ -9,3 +9,8 @@ html {
 body {
     font-size: 16px;
 }
+
+.container {
+  width: var(--grid-width);
+  margin: 0 auto;
+}

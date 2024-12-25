@@ -1,16 +1,15 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n';
+import { useI18n } from 'vue-i18n'
+import PageHeader from './components/layout/PageHeader.vue'
+import PageFooter from './components/layout/PageFooter.vue'
+
 const { t } = useI18n()
 </script>
 
 <template>
- <div>{{ t('common.contact') }}</div>
+  <PageHeader />
+  <RouterView />
+  <PageFooter />
 </template>
 
-<style scoped lang="scss">
-div {
-    @include subheader-1-dark()
-}
-</style>
-
-
+<style scoped lang="scss"></style>

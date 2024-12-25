@@ -1,11 +1,11 @@
 //primary colors
-$bg-globe: #1B232C;
-$bg-island: #2C3744;
-$bg-island-inner: #2C3744;
-$bg-white: #E3F0FF;
-$bg-black: #151B22;
+$bg-globe: #1b232c;
+$bg-island: #2c3744;
+$bg-island-inner: #2c3744;
+$bg-white: #e3f0ff;
+$bg-black: #151b22;
 
-$accent: #006CE0;
+$accent: #006ce0;
 
 //text colors
 $primary: rgba(227, 240, 255, 1);
@@ -17,3 +17,39 @@ $primary-inv: rgba(27, 35, 44, 1);
 $secondary-inv: rgba(27, 35, 44, 0.75);
 $tertiary-inv: rgba(27, 35, 44, 0.5);
 $placeholder-inv: rgba(27, 35, 44, 0.25);
+
+//icons
+$icon-default: #b1bdca;
+$icon-hover: #e3f0ff;
+$icon-click: #006ce0;
+
+//grid
+
+:root {
+  --grid-content: 90%;
+  --grid-width: min(var(--grid-content), 105rem);
+  --grid-gutter-width: 0.5rem;
+  --grid-column-width: min((var(--grid-content) - 11*var(--grid-gutter-width))/12, 6.45833rem);
+}
+
+@media (min-width: 90rem) {
+  :root {
+    --grid-gutter-width: 2.5rem;
+  }
+}
+@media (min-width: 80rem) {
+  :root {
+    --grid-gutter-width: 1.5rem;
+  }
+}
+@media (min-width: 64rem) {
+  :root {
+
+  }
+}
+@media (min-width: 48rem) {
+  :root {
+    --grid-content: 86%;
+    --grid-gutter-width: 1rem;
+  }
+}
