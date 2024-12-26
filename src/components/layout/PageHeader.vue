@@ -14,7 +14,7 @@ function changeLang(lang: string) {
   <header class="header">
     <div class="header__container container">
       <RouterLink class="header__logo" :to="{ name: 'home' }">
-        <BaseIcon name="logo_header" path="logo" />
+        <BaseIcon name="logo_header_mobile" path="logo" />
       </RouterLink>
       <nav class="header__nav">
         <ul class="header__menu">
@@ -36,19 +36,19 @@ function changeLang(lang: string) {
               <li class="header__dropdown-item">
                 <RouterLink class="header__dropdown-link" :to="{ name: 'repair' }">
                     <span>
-                        {{t('common.submenu-service.repair')}}
+                        {{t('common.submenu-services.repair')}}
                     </span>
                 </RouterLink>
               </li>
               <li class="header__dropdown-item">
                 <RouterLink class="header__dropdown-link" :to="{ name: 'tuning' }">{{
-                  t('common.submenu-service.tuning')
+                  t('common.submenu-services.tuning')
                 }}
                 </RouterLink>
               </li>
               <li class="header__dropdown-item">
                 <RouterLink class="header__dropdown-link" :to="{ name: 'expertise' }">{{
-                  t('common.submenu-service.expertise')
+                  t('common.submenu-services.expertise')
                 }}</RouterLink>
               </li>
             </ul>
@@ -204,6 +204,8 @@ function changeLang(lang: string) {
       border-bottom: 1px solid $accent;
     }
   }
+
+
   &__functionality {
     display: flex;
     align-items: center;
@@ -245,6 +247,11 @@ function changeLang(lang: string) {
   }
 }
 
+.language {
+    display: none;
+    
+  }
+
 @media (min-width: 90rem) {
     .hamburger {
         display: none;
@@ -253,6 +260,10 @@ function changeLang(lang: string) {
     display: flex;
     align-items: center;
     column-gap: var(--spacing-xxs);
+  }
+  .language {
+    display: flex;
+    padding-bottom: 30px;
   }
 
 }
