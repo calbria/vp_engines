@@ -35,14 +35,14 @@ const icon = computed(() => {
   ></component>
 </template>
 <style scoped lang="scss">
-.base-icon {
-  color: $icon-default;
-  &:hover {
-    color: $icon-hover;
-  }
-  &:active {
-    color: $icon-click;
-  }
-}
+// .base-icon {
+//   color: $icon-default;
+//   &:hover {
+//     color: $icon-hover;
+//   }
+//   &:active {
+//     color: $icon-click;
+//   }
+// }
 
 </style>

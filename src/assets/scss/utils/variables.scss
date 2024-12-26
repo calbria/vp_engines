@@ -1,7 +1,7 @@
 //primary colors
 $bg-globe: #1b232c;
 $bg-island: #2c3744;
-$bg-island-inner: #2c3744;
+$bg-island-inner: #5C7188;
 $bg-white: #e3f0ff;
 $bg-black: #151b22;
 
@@ -26,20 +26,31 @@ $icon-click: #006ce0;
 //grid
 
 :root {
-  --grid-content: 90%;
+  --grid-content: 90vw;
   --grid-width: min(var(--grid-content), 105rem);
   --grid-gutter-width: 0.5rem;
   --grid-column-width: min((var(--grid-content) - 11*var(--grid-gutter-width))/12, 6.45833rem);
+  --spacing-xxs: 0.5rem;
+  --spacing-xs: 1rem;
+  --spacing-s: 1.5rem;
+  --spacing-m: 2rem;
+  --spacing-l: 3rem;
+  --spacing-xl: 4rem;
 }
 
-@media (min-width: 90rem) {
+
+
+
+@media (min-width: 48rem) {
   :root {
-    --grid-gutter-width: 2.5rem;
-  }
-}
-@media (min-width: 80rem) {
-  :root {
-    --grid-gutter-width: 1.5rem;
+    --grid-content: 86vw;
+    --grid-gutter-width: 1rem;
+    --spacing-xxs: 1rem; 
+    --spacing-xs: 1.5rem; 
+    --spacing-s: 2rem; 
+    --spacing-m: 3rem; 
+    --spacing-l: 4rem; 
+    --spacing-xl: 5rem; 
   }
 }
 @media (min-width: 64rem) {
@@ -47,9 +58,13 @@ $icon-click: #006ce0;
 
   }
 }
-@media (min-width: 48rem) {
+@media (min-width: 80rem) {
   :root {
-    --grid-content: 86%;
-    --grid-gutter-width: 1rem;
+    --grid-gutter-width: 1.5rem;
+  }
+}
+@media (min-width: 90rem) {
+  :root {
+    --grid-gutter-width: 2.5rem;
   }
 }

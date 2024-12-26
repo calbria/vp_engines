@@ -95,17 +95,17 @@
 
 @mixin menu {
   font-family: 'Roboto Condensed', serif;
-  font-weight: 400;
+  font-weight: 300;
   font-style: normal;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   line-height: 1.5rem;
   text-transform: uppercase;
 }
 @mixin submenu {
   font-family: 'Roboto Condensed', serif;
-  font-weight: 400;
+  font-weight: 300;
   font-style: normal;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   line-height: 1.5rem;
 }
 @mixin breadcrumbs-dark {

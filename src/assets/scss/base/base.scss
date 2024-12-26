@@ -11,6 +11,7 @@ body {
 }
 
 .container {
+  max-width: 1680px;
   width: var(--grid-width);
   margin: 0 auto;
 }

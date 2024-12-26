@@ -1,3 +1,19 @@
 {
-    "contact": "Свяжитесь с нами"
+    "menu": {
+        "home": "Главная",
+        "services": "Услуги",
+        "projects": "Проекты",
+        "company": "Компания",
+        "contacts": "Контакты"
+    },
+    "submenu-service": {
+        "repair": "Капитальный ремонт ДВС",
+        "tuning": "Тюнинг механики ДВС",
+        "expertise": "Экспертиза причин разрушения ДВС"
+    },
+    "submenu-company": {
+        "about": "О компании",
+        "working-process": "Как мы работаем",
+        "blog": "Блог"
+    }
 }

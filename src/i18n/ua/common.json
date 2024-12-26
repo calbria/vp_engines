@@ -1,1 +1,19 @@
-{}
+{
+    "menu": {
+        "home": "Головна",
+        "services": "Послуги",
+        "projects": "Проекти",
+        "company": "Компанія",
+        "contacts": "Контакти"
+    },
+    "submenu-service": {
+        "repair": "Капітальный ремонт ДВЗ",
+        "tuning": "Тюнінг механіки ДВЗ",
+        "expertise": "Експертиза причин руйнування ДВЗ"
+    },
+    "submenu-company": {
+        "about": "Про компанію",
+        "working-process": "Як ми працюємо",
+        "blog": "Блог"
+    }
+}
