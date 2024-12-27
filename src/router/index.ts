@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { useUserStore } from '@/stores/user'
 
 
+
+
 const routes = [
   {
     path: '/',
@@ -9,35 +11,49 @@ const routes = [
     component: () => import('../views/HomeView.vue'),
   },
   {
-    path: '/about',
-    name: 'about',
-    component: () => import('../views/AboutView.vue'),
+    path: '/services',
+    name: 'services',
+    children: [
+      {
+        path: 'repair',
+        name: 'repair',
+        component: () => import('../views/RepairView.vue'),
+      },
+      {
+        path: 'tuning',
+        name: 'tuning',
+        component: () => import('../views/TuningView.vue'),
+      },
+      {
+        path: '/expertise',
+        name: 'expertise',
+        component: () => import('../views/ExpertiseView.vue'),
+      }
+    ]
   },
   {
-    path: '/repair',
-    name: 'repair',
-    component: () => import('../views/RepairView.vue'),
+    path: '/company',
+    name: 'company',
+    children: [
+      {
+        path: 'about',
+        name: 'about',
+        component: () => import('../views/AboutView.vue'),
+      },
+      {
+        path: 'blog',
+        name: 'blog',
+        component: () => import('../views/BlogView.vue'),
+      },
+      {
+        path: 'working-process',
+        name: 'working-process',
+        component: () => import('../views/ProcessView.vue'),
+      }
+    ]
   },
-  {
-    path: '/tuning',
-    name: 'tuning',
-    component: () => import('../views/TuningView.vue'),
-  },
-  {
-    path: '/expertise',
-    name: 'expertise',
-    component: () => import('../views/ExpertiseView.vue'),
-  },
-  {
-    path: '/blog',
-    name: 'blog',
-    component: () => import('../views/BlogView.vue'),
-  },
-  {
-    path: '/process',
-    name: 'process',
-    component: () => import('../views/ProcessView.vue'),
-  },
+ 
+  
   {
     path: '/projects',
     name: 'projects',
@@ -45,7 +61,7 @@ const routes = [
   },
   {
     path: '/contact',
-    name: 'contact',
+    name: 'contacts',
     component: () => import('../views/ContactView.vue'),
   },
   {

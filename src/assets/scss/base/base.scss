@@ -15,3 +15,11 @@ body {
   width: var(--grid-width);
   margin: 0 auto;
 }
+.main-content {
+  margin-top: 72px;
+}
+@media (min-width: 80rem) {
+  .main-content {
+    margin-top: 96px;
+  }
+}
