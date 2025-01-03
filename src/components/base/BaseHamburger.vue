@@ -17,9 +17,7 @@ const props = defineProps<{
     width: 18px;
     height: 12px;
     cursor: pointer;
-    &:hover .hamburger__line {
-            background-color: $icon-hover;
-        }
+
     &:active .hamburger__line {
             background-color: $icon-click;
         }

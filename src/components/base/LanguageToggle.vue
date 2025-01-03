@@ -24,6 +24,7 @@ function changeLang(lang: string) {
 </template>
 <style scoped lang="scss">
 .lang {
+  
   &__btn {
     @include menu();
     height: 2.25rem;

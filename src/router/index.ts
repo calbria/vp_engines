@@ -13,6 +13,7 @@ const routes = [
   {
     path: '/services',
     name: 'services',
+    redirect: 'services/repair',
     children: [
       {
         path: 'repair',
@@ -25,33 +26,37 @@ const routes = [
         component: () => import('../views/TuningView.vue'),
       },
       {
-        path: '/expertise',
+        path: 'expertise',
         name: 'expertise',
         component: () => import('../views/ExpertiseView.vue'),
-      }
+      },
     ]
   },
-  {
-    path: '/company',
-    name: 'company',
-    children: [
+
       {
-        path: 'about',
-        name: 'about',
-        component: () => import('../views/AboutView.vue'),
+        path: '/company',
+        name: 'company',
+        redirect: 'company/about',
+        children: [
+          {
+            path: 'about',
+            name: 'about',
+            component: () => import('../views/AboutView.vue'),
+          },
+          {
+            path: 'blog',
+            name: 'blog',
+            component: () => import('../views/BlogView.vue'),
+          },
+          {
+            path: 'working-process',
+            name: 'working-process',
+            component: () => import('../views/ProcessView.vue'),
+          }
+        ]
       },
-      {
-        path: 'blog',
-        name: 'blog',
-        component: () => import('../views/BlogView.vue'),
-      },
-      {
-        path: 'working-process',
-        name: 'working-process',
-        component: () => import('../views/ProcessView.vue'),
-      }
-    ]
-  },
+
+
  
   
   {
