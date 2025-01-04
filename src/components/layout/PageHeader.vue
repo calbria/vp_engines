@@ -4,10 +4,11 @@ import BaseIcon from '@/components/base/BaseIcon.vue'
 import BaseHamburger from '@/components/base/BaseHamburger.vue'
 import LanguageToggle from '@/components/base/LanguageToggle.vue'
 import MenuItem from '@/components/menues/MenuItem.vue'
-import { RouterLink } from 'vue-router'
+import { RouterLink, useRoute } from 'vue-router'
 
+const route = useRoute()
 const isOpen = ref(false)
-const currentSubmenu = ref('')
+const currentSubmenu = ref<string | undefined>(undefined)
 
 const screenWidth = ref(window.innerWidth)
 const isMobile = computed(() => screenWidth.value < 1280)
@@ -43,6 +44,10 @@ function updateScreenWidth() {
 
 function burgerToggle() {
   isOpen.value = !isOpen.value
+
+  if (typeof route.name === 'string') {
+    currentSubmenu.value = route.name
+  }
 }
 function closeMenu() {
   isOpen.value = false
@@ -144,6 +149,9 @@ onMounted(() => {
     justify-content: center;
     width: 36px;
     height: 36px;
+    &:active {
+      color: $icon-click;
+    }
   }
   &__btn-desktop {
     padding: 1rem 0;
