@@ -44,7 +44,7 @@ function chooseSubItem(name:string) {
   <li v-if="hasDropdown" class="menu-item" :class="{active: isActive}">
     <a :href="`/${name}`" class="menu-item__link" @click.prevent="chooseItem(name)">
       <span>
-        {{ t(`common.menu.${name}`) }}
+        {{ t(`common.${name}`) }}
       </span>
     </a>
     <ul class="dropdown" :class="{ visible: isOpen }">
@@ -56,7 +56,7 @@ function chooseSubItem(name:string) {
           @click="chooseSubItem(item)"
         >
           <span>
-            {{ t(`common.submenu-${name}.${item}`) }}
+            {{ t(`common.${item}`) }}
           </span>
         </RouterLink>
       </li>
@@ -65,7 +65,7 @@ function chooseSubItem(name:string) {
   <li v-else class="menu-item">
     <RouterLink :to="{ name: name }" class="menu-item__link" @click="chooseItem">
       <span>
-        {{ t(`common.menu.${name}`) }}
+        {{ t(`common.${name}`) }}
       </span>
     </RouterLink>
   </li>
@@ -96,7 +96,21 @@ function chooseSubItem(name:string) {
   row-gap:  var(--spacing-xxs);
 }
 .menu-item {
+  
   width: 100%;
+  &__link {
+    display: block;
+    width: 100%;
+  }
+}
+
+.active {
+  color: $primary;
+  border-bottom: 1px solid $primary;
+}
+.router-link-active {
+  color: $primary;
+  border-bottom: 1px solid $primary;
 }
 @media (min-width: 80rem) {
   .dropdown {
@@ -129,21 +143,29 @@ function chooseSubItem(name:string) {
       row-gap: var(--spacing-xs);
     }
     &:hover .menu-item__link {
-      border-bottom: 1px solid $primary;
+      background-size: 100% 100%, 100% 100%;
     }
     &:active .menu-item__link {
       color: $accent;
-      border-bottom: 1px solid $accent;
+      background-image: linear-gradient(to top, $accent 1px, transparent 1px);
     }
     &__link {
       padding: 2px 4px;
+      background-image: linear-gradient(to top, $primary 1px, transparent 1px);
+    background-repeat: no-repeat;
+    background-position-x: left;
+    background-size: 0 100%, 100% 100%;
+    transition: background-size 0.5s cubic-bezier(.165,.84,.44,1)
     }
   }
-}
-.active {
+  .active {
   color: $primary;
+  border: none;
 }
 .router-link-active {
   color: $primary;
+  border: none;
 }
+}
+
 </style>

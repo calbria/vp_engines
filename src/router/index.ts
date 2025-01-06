@@ -70,6 +70,13 @@ const routes = [
     component: () => import('../views/ContactView.vue'),
   },
   {
+
+    path: '/privacy',
+    name: 'priivacy',
+    component: () => import('../views/PrivacyView.vue'),
+  },
+
+  {
     path: '/login',
     name: 'login',
     component: () => import('../views/LoginView.vue'),

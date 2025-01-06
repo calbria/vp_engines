@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref } from 'vue'
 import BaseIcon from '@/components/base/BaseIcon.vue'
 import BaseHamburger from '@/components/base/BaseHamburger.vue'
 import LanguageToggle from '@/components/base/LanguageToggle.vue'
@@ -9,10 +9,6 @@ import { RouterLink, useRoute } from 'vue-router'
 const route = useRoute()
 const isOpen = ref(false)
 const currentSubmenu = ref<string | undefined>(undefined)
-
-const screenWidth = ref(window.innerWidth)
-const isMobile = computed(() => screenWidth.value < 1280)
-const logoName = computed(() => (isMobile.value ? 'logo_header_mobile' : 'logo_header'))
 
 interface MenuItem {
   name: string
@@ -38,10 +34,6 @@ const menu: MenuItem[] = [
   },
 ]
 
-function updateScreenWidth() {
-  screenWidth.value = window.innerWidth
-}
-
 function burgerToggle() {
   isOpen.value = !isOpen.value
 
@@ -56,10 +48,6 @@ function closeMenu() {
 function toggleSubmenu(menuName: string) {
   currentSubmenu.value = currentSubmenu.value === menuName ? '' : menuName
 }
-onMounted(() => {
-  updateScreenWidth()
-  window.addEventListener('resize', updateScreenWidth)
-})
 </script>
 <template>
   <header class="header" :class="{ 'header--collapsed': !isOpen, 'header--open': isOpen }">
@@ -67,7 +55,7 @@ onMounted(() => {
       <nav class="header__nav">
         <div class="header__nav-wrapper">
           <RouterLink :to="{ name: 'home' }" class="header__logo" @click="closeMenu">
-            <BaseIcon :name="logoName" path="logo" />
+            <BaseIcon name="logo_header" path="logo" />
           </RouterLink>
           <div class="header__buttons-mobile">
             <button class="header__btn-mobile" @click="burgerToggle">
@@ -93,8 +81,8 @@ onMounted(() => {
           <div class="header__buttons-desktop">
             <a
               class="header__btn-desktop header__btn-desktop--call"
-              href="tel:+30730660276"
-              alt="+30730660276"
+              href="tel:+380963167243"
+              alt="+380963167243"
             >
               <BaseIcon name="call" path="icons" />
             </a>
@@ -137,6 +125,7 @@ onMounted(() => {
     padding: 1rem 0;
     display: flex;
     align-items: center;
+    width: 154px;
   }
   &__buttons-mobile {
     display: flex;
@@ -192,6 +181,7 @@ onMounted(() => {
     }
     &__logo {
       padding: 1.5rem 0;
+      width: 194px;
     }
     &--collapsed {
       max-height: 96px;
