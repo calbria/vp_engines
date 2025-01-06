@@ -81,6 +81,7 @@ function chooseSubItem(name:string) {
   &__link {
     display: flex;
     flex-wrap: nowrap;
+    border-radius: $radius;
 
     padding: 0.5rem 0;
     transition: all 0.3s ease-in;
@@ -118,6 +119,8 @@ function chooseSubItem(name:string) {
     top: 96px;
     width: 24rem;
     padding: var(--spacing-m) var(--spacing-xs);
+    border-bottom-right-radius: $radius;
+    border-bottom-left-radius: $radius;
     &__link {
       &:hover {
         padding-inline: 12px;

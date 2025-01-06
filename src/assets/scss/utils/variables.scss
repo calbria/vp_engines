@@ -26,8 +26,24 @@ $icon-click: #006ce0;
 //extra
 $divider: #5C7188;
 
-//grid
+//buttons
+$btn-primary-default: #006CE0;
+$btn-primary-hover: #1685FD;
+$btn-primary-active: #0558B2;
 
+$btn-secondary-default: #5C7188;
+$btn-secondary-hover: #5C7188;
+$btn-secondary-active: #2C3744;
+
+$btn-shadow-default: rgba(179, 195, 212, 0);
+$btn-shadow-hover:  rgba(179, 195, 212, 0.5);
+$btn-shadow-active: rgba(179, 195, 212, 1.0);
+
+//border radius
+$radius: 2px;
+
+
+//grid
 :root {
   --grid-content: 90vw;
   --grid-width: min(var(--grid-content), 105rem);

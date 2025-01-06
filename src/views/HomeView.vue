@@ -1,5 +1,7 @@
 <script setup lang='ts'>
 import { useI18n } from 'vue-i18n'
+import BaseBtn from '@/components/base/BaseBtn.vue';
+
 
 
 const { t } = useI18n()
@@ -8,6 +10,8 @@ const { t } = useI18n()
 <template>
 <main class="main-content">
   <h1>{{t('home.welcome')}}</h1>
+
+<BaseBtn mode="primary" size="large" destination="projects" text="details"/>
 
 </main>
 </template>
