@@ -19,10 +19,10 @@
 @mixin h3-dark {
   font-family: 'Roboto Condensed', serif;
   font-optical-sizing: auto;
-  font-weight: 400;
+  font-weight:400;
   font-style: normal;
-  font-size: 3rem;
-  line-height: 3.5rem;
+  font-size: 2rem;
+  line-height:2.5rem;
 }
 @mixin subheader-1-dark {
   font-family: 'Roboto Condensed', serif;
@@ -38,7 +38,7 @@
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
-  font-size: 1.25rem;
+  font-size: 1.225rem;
   line-height: 1.5rem;
   text-transform: uppercase;
 }

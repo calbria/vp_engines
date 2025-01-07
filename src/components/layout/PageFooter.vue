@@ -58,9 +58,9 @@ const menu_2 = ['about', 'blog', 'projects', 'contacts']
               <div class="footer__contact">
                 <BaseLink
                   type="outer"
-                  destination="mailto:vovkpavel1995@gmail.com"
+                  destination="mailto:vovk.pavel1995@gmail.com"
                   icon-name="mail"
-                  text="vovkpavel1995@gmail.com"
+                  text="vovk.pavel1995@gmail.com"
                 />
                 <BaseLink
                   type="outer"
