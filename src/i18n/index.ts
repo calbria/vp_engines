@@ -22,9 +22,10 @@ const messages = {
     cards: uaCards
   },
 }
+const savedLanguage = localStorage.getItem('language') || 'ru'
 export default createI18n({
   legacy: false,
-  locale: 'ru',
+  locale: savedLanguage,
   fallbackLocale: 'ru',
   messages,
 })

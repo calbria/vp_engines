@@ -5,6 +5,7 @@ const { locale } = useI18n()
 const lang: string[] = ['ua', 'ru']
 function changeLang(lang: string) {
   locale.value = lang
+  localStorage.setItem('language', lang)
 }
 </script>
 <template>

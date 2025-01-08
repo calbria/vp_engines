@@ -79,8 +79,8 @@ const props = defineProps<{
   }
   &__content {
     position: absolute;
-    bottom: -32px;
-    padding: var(--spacing-l) var(--spacing-s);
+    bottom: 0;
+    padding: var(--spacing-l) var(--spacing-s) var(--spacing-s);
     display: flex;
     flex-direction: column;
     row-gap: var(--spacing-s);
@@ -101,5 +101,35 @@ const props = defineProps<{
     @include h3-dark();
     
   }
+}
+@media (min-width: 80rem) {
+  .card {
+
+  &__image-holder {
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    overflow: hidden;
+    position: relative;
+  }
+  &__img {
+    height: 100%;
+    overflow: hidden;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    transition: transform 0.6s cubic-bezier(0.35, 0, 0, 1);
+  }
+ 
+
+  &__title {
+    @include subheader-2-dark();
+    
+  }
+  &__subtitle {
+    @include h3-dark();
+    
+  }
+}
+  
 }
 </style>
