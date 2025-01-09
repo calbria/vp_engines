@@ -8,6 +8,8 @@ const services = [
     image1440: '/images/img_539x958.png',
     image1280: '/images/img_397x705.png',
     image1024: '/images/img_356x633.png',
+    image768: '/images/img_977x726.png',
+    image480: '/images/img_721x1281.png',
     image: '/images/img_539x958.png',
     destination: 'repair',
   },
@@ -18,6 +20,8 @@ const services = [
     image1440: '/images/img_539x958.png',
     image1280: '/images/img_397x705.png',
     image1024: '/images/img_356x633.png',
+		image768: '/images/img_977x726.png',
+		image480: '/images/img_721x1281.png',
     image: '/images/img_539x958.png',
     destination: 'tuning',
   },
@@ -28,6 +32,8 @@ const services = [
     image1440: '/images/img_539x958.png',
     image1280: '/images/img_397x705.png',
     image1024: '/images/img_356x633.png',
+		image768: '/images/img_977x726.png',
+		image480: '/images/img_721x1281.png',
     image: '/images/img_539x958.png',
     destination: 'expertise',
   },
@@ -44,6 +50,8 @@ const services = [
           :image1440="item.image1440"
           :image1280="item.image1280"
           :image1024="item.image1024"
+          :image768="item.image768"
+          :image480="item.image480"
           :image="item.image"
           :destination="item.destination"
         />
@@ -54,9 +62,17 @@ const services = [
 <style scoped lang="scss">
 .service {
   &__container {
+
+		display: flex;
+		flex-direction: column;
+		row-gap: var(--spacing-s);
+  }
+	@media (min-width: 64rem) {
+		&__container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     column-gap: var(--grid-gutter-width);
   }
+	}
 }
 </style>

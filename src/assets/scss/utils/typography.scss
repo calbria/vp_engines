@@ -17,8 +17,12 @@
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
-  font-size: 3rem;
-  line-height: 3.5rem;
+  font-size: 2rem;
+  line-height: 2.5rem;
+	@media (min-width: 80rem) {
+    font-size: 3rem;
+    line-height: 3.5rem;
+  }
 }
 @mixin h3-dark {
   font-family: 'Roboto Condensed', serif;
@@ -37,18 +41,26 @@
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
-  font-size: 1.5rem;
-  line-height: 2rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
   text-transform: uppercase;
+	@media (min-width: 80rem) {
+		font-size: 1.5rem;
+		line-height: 2rem;
+	}
 }
 @mixin subheader-2-dark {
   font-family: 'Roboto Condensed', serif;
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
-  font-size: 1.225rem;
+  font-size: 1rem;
   line-height: 1.5rem;
   text-transform: uppercase;
+	@media (min-width: 80rem) {
+		font-size: 1.225rem;
+		line-height: 1.5rem;
+	}
 }
 
 
@@ -58,15 +70,23 @@
   font-family: 'Roboto', serif;
   font-weight: 300;
   font-style: normal;
-  font-size: 1.125rem;
-  line-height: 1.75rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+	@media (min-width: 80rem) {
+		font-size: 1.125rem;
+		line-height: 1.75rem;
+	}
 }
 @mixin small-dark {
   font-family: 'Roboto', serif;
   font-weight: 300;
   font-style: normal;
-  font-size: 1rem;
-  line-height: 1.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+	@media (min-width: 80rem) {
+		font-size: 1rem;
+		line-height: 1.5rem;
+	}
 }
 
 
@@ -74,10 +94,14 @@
 
 @mixin button {
   font-family: 'Roboto', serif;
-  font-weight:300;
+  font-weight:400;
   font-style: normal;
-  font-size: 1.125rem;
+  font-size: 1rem;
   line-height: 1.5rem;
+	@media (min-width: 80rem) {
+		font-size: 1.125rem;
+		line-height: 1.5rem;
+	}
 }
 
 
@@ -87,8 +111,12 @@
   font-family: 'Roboto', serif;
   font-weight: 300;
   font-style: normal;
-  font-size: 1.125rem;
+  font-size: 1rem;
   line-height: 1.5rem;
+	@media (min-width: 80rem) {
+		font-size: 1.125rem;
+		line-height: 1.5rem;
+	}
 }
 @mixin link-text {
   font-family: 'Roboto', serif;
@@ -103,18 +131,26 @@
 
 @mixin menu {
   font-family: 'Roboto Condensed', serif;
-  font-weight: 300;
+  font-weight: 400;
   font-style: normal;
-  font-size: 1.125rem;
+  font-size: 1rem;
   line-height: 1.5rem;
   text-transform: uppercase;
+	@media (min-width: 80rem) {
+		font-size: 1.125rem;
+		line-height: 1.5rem;
+	}
 }
 @mixin submenu {
   font-family: 'Roboto Condensed', serif;
   font-weight: 300;
   font-style: normal;
-  font-size: 1.125rem;
+  font-size: 1rem;
   line-height: 1.5rem;
+	@media (min-width: 80rem) {
+		font-size: 1.125rem;
+		line-height: 1.5rem;
+	}
 }
 @mixin breadcrumbs-dark {
   font-family: 'Roboto Condensed', serif;

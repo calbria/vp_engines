@@ -113,7 +113,6 @@ function toggleSubmenu(menuName: string) {
   }
 
   &__nav {
-    @include menu();
     color: $tertiary;
   }
   &__nav-wrapper {

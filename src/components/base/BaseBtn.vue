@@ -30,7 +30,7 @@ const arrow = computed(() => (props.canExpand && props.expanded ? 'arrow_up' : '
 </template>
 <style scoped lang="scss">
 .button {
-  @include button();
+	
   display: flex;
   align-items: center;
   justify-content: center;
@@ -41,6 +41,9 @@ const arrow = computed(() => (props.canExpand && props.expanded ? 'arrow_up' : '
     width: 24px;
     height: 24px;
   }
+	&__text {
+		@include button();
+	}
 }
 .small {
   width: 142px;

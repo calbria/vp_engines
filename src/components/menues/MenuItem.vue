@@ -43,11 +43,11 @@ function chooseSubItem(name:string) {
 <template>
   <li v-if="hasDropdown" class="menu-item" :class="{active: isActive}">
     <a :href="`/${name}`" class="menu-item__link" @click.prevent="chooseItem(name)">
-      <span>
+      <span class="menu-item__link-text">
         {{ t(`common.${name}`) }}
       </span>
     </a>
-    <ul class="dropdown" :class="{ visible: isOpen }">
+    <ul class="menu-item__dropdown dropdown" :class="{ visible: isOpen }">
       <li v-for="item in dropdown" :key="item">
         <RouterLink
           :to="{ name: `${item}` }"
@@ -55,7 +55,7 @@ function chooseSubItem(name:string) {
           :aria-label="`Go to ${item} page`"
           @click="chooseSubItem(item)"
         >
-          <span>
+          <span class="dropdown__link-text">
             {{ t(`common.${item}`) }}
           </span>
         </RouterLink>
@@ -64,7 +64,7 @@ function chooseSubItem(name:string) {
   </li>
   <li v-else class="menu-item">
     <RouterLink :to="{ name: name }" class="menu-item__link" @click="chooseItem">
-      <span>
+      <span class="menu-item__link-text">
         {{ t(`common.${name}`) }}
       </span>
     </RouterLink>
@@ -72,7 +72,6 @@ function chooseSubItem(name:string) {
 </template>
 <style scoped lang="scss">
 .dropdown {
-  @include submenu();
   display: none;
   color: $primary;
   text-transform: none;
@@ -90,6 +89,9 @@ function chooseSubItem(name:string) {
       background-color: $bg-island-inner;
     }
   }
+	&__link-text {
+		@include submenu();
+	}
 }
 .dropdown.visible {
   display: flex;
@@ -103,6 +105,9 @@ function chooseSubItem(name:string) {
     display: block;
     width: 100%;
   }
+	&__link-text {
+		@include menu();
+	}
 }
 
 .active {
