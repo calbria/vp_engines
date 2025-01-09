@@ -9,13 +9,20 @@ const props = defineProps<{
   size: 'small' | 'large'
   text?: string
   destination?: string
+  params?: string
   canExpand?: boolean
   expanded?: boolean
 }>()
 const arrow = computed(() => (props.canExpand && props.expanded ? 'arrow_up' : 'arrow_down'))
+const toObject = computed(() => {
+  if(props.params) {
+    return { name: props.destination, params: {id: props.params}}
+  } else return { name: props.destination }
+})
+
 </script>
 <template>
-  <RouterLink class="button" :class="[mode, size]" v-if="destination" :to="destination">
+  <RouterLink class="button" :class="[mode, size]" v-if="destination" :to="toObject">
     <span class="button__text">
       {{ t(`btn.${text}`) }}
     </span>
@@ -25,7 +32,7 @@ const arrow = computed(() => (props.canExpand && props.expanded ? 'arrow_up' : '
       {{ t(`btn.${text}`) }}
     </span>
 
-    <BaseIcon class="button__icon" :name="arrow" path="icons" />
+    <BaseIcon class="button__icon" v-if="canExpand" :name="arrow" path="icons" />
   </button>
 </template>
 <style scoped lang="scss">

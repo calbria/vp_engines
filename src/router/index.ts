@@ -63,6 +63,13 @@ const routes = [
     path: '/projects',
     name: 'projects',
     component: () => import('../views/ProjectsView.vue'),
+   
+  },
+  {
+    path: '/projects/:id',
+    name: 'project',
+    component: () => import('../views/ProjectView.vue'),
+    props: true
   },
   {
     path: '/contact',
@@ -72,7 +79,7 @@ const routes = [
   {
 
     path: '/privacy',
-    name: 'priivacy',
+    name: 'privacy',
     component: () => import('../views/PrivacyView.vue'),
   },
 

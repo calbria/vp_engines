@@ -2,6 +2,7 @@
 import { useI18n } from 'vue-i18n'
 import BaseBtn from '@/components/base/BaseBtn.vue';
 import ServiceSection from '@/components/layout/home/ServiceSection.vue';
+import ProjectSection from '@/components/layout/home/ProjectSection.vue';
 
 
 
@@ -14,6 +15,8 @@ const { t } = useI18n()
 
 <BaseBtn mode="primary" size="large" destination="projects" text="details"/>
 <ServiceSection/>
+<ProjectSection/>
+
 
 </main>
 </template>

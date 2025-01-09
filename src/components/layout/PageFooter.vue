@@ -94,7 +94,7 @@ const menu_2 = ['about', 'blog', 'projects', 'contacts']
 			<div class="footer__bottom">
 				<div class="footer__menu-text">© Copyright 2024 VP Engines</div>
 				<div class="footer__menu-text">
-					<BaseLink class="footer__menu-text" type="inner" destination="priivacy" :text="t(`common.privacy`)" />
+					<BaseLink  type="inner" destination="privacy" :text="t(`common.privacy`)" />
 				</div>
 			</div>
 		</div>
