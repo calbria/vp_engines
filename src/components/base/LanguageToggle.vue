@@ -16,7 +16,7 @@ function changeLang(lang: string) {
 				{{ item.toLocaleUpperCase() }}
 			</span>
 		</button>
-		<span class="land__divider" v-if="index < lang.length - 1">|</span>
+		<span class="lang__divider lang__btn-text" v-if="index < lang.length - 1">|</span>
 	</div>
 </template>
 <style scoped lang="scss">

@@ -58,7 +58,7 @@
   line-height: 1.5rem;
   text-transform: uppercase;
 	@media (min-width: 80rem) {
-		font-size: 1.225rem;
+		font-size: 1.125rem;
 		line-height: 1.5rem;
 	}
 }
@@ -131,7 +131,7 @@
 
 @mixin menu {
   font-family: 'Roboto Condensed', serif;
-  font-weight: 400;
+  font-weight: 300;
   font-style: normal;
   font-size: 1rem;
   line-height: 1.5rem;

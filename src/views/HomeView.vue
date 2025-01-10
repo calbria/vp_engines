@@ -11,9 +11,7 @@ const { t } = useI18n()
 </script>
 <template>
 <main class="main-content">
-  <h1>{{t('home.welcome')}}</h1>
 
-<BaseBtn mode="primary" size="large" destination="projects" text="details"/>
 <ServiceSection/>
 <ProjectSection/>
 

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+
+
 const props = defineProps<{
   title: string
   subtitle: string
@@ -18,11 +20,17 @@ const props = defineProps<{
 .header {
   display: flex;
   flex-direction: column;
+  &__title {
+    color: $secondary;
+  }
   &__title-text {
-    
+    @include subheader-2-dark();
+  }
+  &__subtitle {
+    color: $primary;
   }
   &__subtitle-text {
-
+    @include h2-dark();
   }
 }
 </style>
