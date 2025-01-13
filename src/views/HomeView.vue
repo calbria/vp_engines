@@ -1,17 +1,17 @@
 <script setup lang='ts'>
-import { useI18n } from 'vue-i18n'
-import BaseBtn from '@/components/base/BaseBtn.vue';
+
+//import HeroSection from '@/components/layout/home/HeroSection.vue';
 import ServiceSection from '@/components/layout/home/ServiceSection.vue';
 import ProjectSection from '@/components/layout/home/ProjectSection.vue';
 
 
 
-const { t } = useI18n()
+
 
 </script>
 <template>
 <main class="main-content">
-
+<HeroSection/>
 <ServiceSection/>
 <ProjectSection/>
 

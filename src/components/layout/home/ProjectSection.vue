@@ -80,7 +80,7 @@ function goToPage(page:number) {
 
 </script>
 <template>
-  <div class="projects">
+  <section class="projects">
     <div class="projects__container container">
       <SectionHeader class="projects__header" :title="t('home.projects.title')" :subtitle="t('home.projects.subtitle')" />
       <div class="projects__content section-content">
@@ -123,7 +123,7 @@ function goToPage(page:number) {
         </Transition>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 <style scoped lang="scss">
 .pagination {

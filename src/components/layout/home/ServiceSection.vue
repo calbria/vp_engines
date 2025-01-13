@@ -44,7 +44,7 @@ const services = [
 ]
 </script>
 <template>
-  <div class="service">
+  <section class="service">
     <div class="service__container container">
       <SectionHeader class="service__header" :title="t('home.services.title')" :subtitle="t('home.services.subtitle')" />
       <div class="service__card-holder">
@@ -64,7 +64,7 @@ const services = [
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 <style scoped lang="scss">
 .service {
