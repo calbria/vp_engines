@@ -1,6 +1,6 @@
 <script setup lang='ts'>
 
-//import HeroSection from '@/components/layout/home/HeroSection.vue';
+import HeroSection from '@/components/layout/home/HeroSection.vue';
 import ServiceSection from '@/components/layout/home/ServiceSection.vue';
 import ProjectSection from '@/components/layout/home/ProjectSection.vue';
 
