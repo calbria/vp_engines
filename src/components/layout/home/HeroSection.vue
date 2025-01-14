@@ -1,5 +1,8 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n';
 import BaseBtn from '@/components/base/BaseBtn.vue'
+
+const { t } = useI18n()
 </script>
 <template>
   <section class="hero">
@@ -10,14 +13,17 @@ import BaseBtn from '@/components/base/BaseBtn.vue'
           <img class="hero__img" src="/images/main_hero_mobile.png" alt="hero image" />
         </picture>
       </div>
-      <div class="hero__content container">
-         
-        <h1 class="hero__title">Some text</h1>
-        <p class="hero__text">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis tenetur veniam rerum
-          odio, ab eligendi?
-        </p>
-        <BaseBtn class="hero__btn" mode="primary" size="large" text="projects" />
+      <div class="hero__container container">
+
+        <div class="hero__content ">
+          <div class="hero__content-inner">
+            <h1 class="hero__title">{{t('home.hero.title')}}</h1>
+            <p class="hero__text">
+              {{t('home.hero.text')}}
+            </p>
+          </div>
+          <BaseBtn class="hero__btn" mode="primary" size="large" text="working-process" destination="working-process" />
+        </div>
       </div>
     </div>
   </section>
@@ -63,6 +69,11 @@ import BaseBtn from '@/components/base/BaseBtn.vue'
     padding: var(--spacing-m) var(--grid-gutter-width);
     text-align: center;
   }
+  &__content-inner {
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--spacing-xs);
+  }
   &__title {
     @include h1-dark();
   }
@@ -87,12 +98,20 @@ import BaseBtn from '@/components/base/BaseBtn.vue'
           linear-gradient(to top, $bg-black 0, rgba(21, 27, 34, 0) 25%);
       }
     }
+    &__container {
+      position: absolute;
+      bottom: 0;
+      left: calc((100% - var(--grid-width)) / 2);
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
     &__content {
     text-align: left;
     align-items: flex-start;
     row-gap: var(--spacing-s);
     padding: var(--spacing-m) 0;
-    width: 41.66%;
+    width: calc(var(--grid-column-width) * 5 + var(--grid-gutter-width) * 4);
   }
   }
 }
