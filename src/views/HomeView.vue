@@ -1,6 +1,7 @@
 <script setup lang='ts'>
 
 import HeroSection from '@/components/layout/home/HeroSection.vue';
+import AboutSection from '@/components/layout/home/AboutSection.vue';
 import ServiceSection from '@/components/layout/home/ServiceSection.vue';
 import ProjectSection from '@/components/layout/home/ProjectSection.vue';
 
@@ -12,6 +13,7 @@ import ProjectSection from '@/components/layout/home/ProjectSection.vue';
 <template>
 <main class="main-content">
 <HeroSection/>
+<AboutSection/>
 <ServiceSection/>
 <ProjectSection/>
 
