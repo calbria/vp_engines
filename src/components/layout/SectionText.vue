@@ -13,7 +13,7 @@ const props = defineProps<{
     display: flex;
     flex-direction: column;
     row-gap: 0.5rem;
-    color: $primary;
+    color: $secondary;
     &__paragraph {
         @include normal-dark();
     }

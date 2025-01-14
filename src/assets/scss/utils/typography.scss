@@ -36,6 +36,18 @@
     line-height: 2.5rem;
   }
 }
+@mixin h4-dark {
+  font-family: 'Roboto Condensed', serif;
+  font-optical-sizing: auto;
+  font-weight:400;
+  font-style: normal;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  @media (min-width: 80rem) {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
 @mixin subheader-1-dark {
   font-family: 'Roboto Condensed', serif;
   font-optical-sizing: auto;

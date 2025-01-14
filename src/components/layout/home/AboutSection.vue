@@ -11,8 +11,8 @@ const { t } = useI18n()
     <div class="about__container container">
       <div class="about__content">
         <div class="about__content-text">
-          <SectionHeader :title="t('home.about.title')" :subtitle="t('home.about.subtitle')" />
-          <SectionText :text="[t('home.about.text1')]" />
+          <SectionHeader class="about__title" :title="t('home.about.title')" :subtitle="t('home.about.subtitle')" />
+          <SectionText class="about__text" :text="[t('home.about.text1')]" />
         </div>
         <BaseBtn class="about__btn" mode="primary" size="small" text="details" />
       </div>

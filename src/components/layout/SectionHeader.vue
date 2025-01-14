@@ -21,7 +21,7 @@ const props = defineProps<{
   display: flex;
   flex-direction: column;
   &__title {
-    color: $secondary;
+    color: $tertiary;
   }
   &__title-text {
     @include subheader-2-dark();

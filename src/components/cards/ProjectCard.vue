@@ -31,9 +31,9 @@ function tapHandler() {
       <div class="card__content">
         <div class="card__text">
           <div class="card__header">
-            <h3 class="card__title">{{ t(title) }}</h3>
-            <p class="card__subtitle">{{ car }}</p>
-            <p class="card__subtitle">{{ engine }}</p>
+            <p class="card__title">{{ t(title) }}</p>
+            <h3 class="card__subtitle">{{ car }}</h3>
+            <h3 class="card__subtitle">{{ engine }}</h3>
           </div>
           <p class="card__paragraph">
             <span class="card__paragraph-text">

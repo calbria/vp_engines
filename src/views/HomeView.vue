@@ -2,6 +2,7 @@
 
 import HeroSection from '@/components/layout/home/HeroSection.vue';
 import AboutSection from '@/components/layout/home/AboutSection.vue';
+import AdvantageSection from '@/components/layout/home/AdvantageSection.vue';
 import ServiceSection from '@/components/layout/home/ServiceSection.vue';
 import ProjectSection from '@/components/layout/home/ProjectSection.vue';
 
@@ -15,6 +16,7 @@ import ProjectSection from '@/components/layout/home/ProjectSection.vue';
 <HeroSection/>
 <AboutSection/>
 <ServiceSection/>
+<AdvantageSection/>
 <ProjectSection/>
 
 
