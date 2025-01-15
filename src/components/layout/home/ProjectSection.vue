@@ -83,9 +83,9 @@ function goToPage(page:number) {
   <section class="projects">
     <div class="projects__container container">
       <SectionHeader class="projects__header" :title="t('home.projects.title')" :subtitle="t('home.projects.subtitle')" />
-      <div class="projects__content section-content">
+      <div class="projects__content">
         <SectionText class="projects__text" :text="[t('home.projects.text1')]" />
-        <BaseBtn mode="primary" size="large" text="projects" destination="projects" />
+        <BaseBtn class="projects__btn" mode="primary" size="large" text="projects" destination="projects" />
       </div>
       <div class="projects__cards">
         <div class="projects__pagination" v-if="totalPages > 1">
@@ -200,15 +200,20 @@ column-gap: 2px;
   transform: scale(0.95);
 }
 }
+@media (max-width: 48rem) {
+  .projects {
+    &__btn {
+      display: flex;
+      width: 100%;
+    }
+  }
+}
 @media (min-width: 48rem)  {
   .projects {
     &__cards-container {
       grid-template-columns: repeat(2, 1fr);
     }
 
-    &__text {
-    width: calc(var(--grid-column-width) * 8 + var( --grid-gutter-width) * 7);
-  }
   }
 }
 @media (min-width: 64rem) {
@@ -222,6 +227,9 @@ column-gap: 2px;
       align-items: center;
       justify-content: space-between;
     }
+    &__text {
+    width: calc(var(--grid-column-width) * 8 + var( --grid-gutter-width) * 7);
+  }
   }
 }
 </style>

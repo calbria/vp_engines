@@ -14,7 +14,7 @@ const { t } = useI18n()
           <SectionHeader class="about__title" :title="t('home.about.title')" :subtitle="t('home.about.subtitle')" />
           <SectionText class="about__text" :text="[t('home.about.text1')]" />
         </div>
-        <BaseBtn class="about__btn" mode="primary" size="small" text="details" />
+        <BaseBtn class="about__btn" mode="secondary" size="large" text="details" />
       </div>
       <div class="about__media">
         <img class="about__img" src="/images/img_3x4.png" alt="about image" />

@@ -1,31 +1,25 @@
-<script setup lang='ts'>
-
-import HeroSection from '@/components/layout/home/HeroSection.vue';
-import AboutSection from '@/components/layout/home/AboutSection.vue';
-import AdvantageSection from '@/components/layout/home/AdvantageSection.vue';
-import ServiceSection from '@/components/layout/home/ServiceSection.vue';
-import ProjectSection from '@/components/layout/home/ProjectSection.vue';
-
-
-
-
-
+<script setup lang="ts">
+import HeroSection from '@/components/layout/home/HeroSection.vue'
+import AboutSection from '@/components/layout/home/AboutSection.vue'
+import AdvantageSection from '@/components/layout/home/AdvantageSection.vue'
+import ServiceSection from '@/components/layout/home/ServiceSection.vue'
+import ProjectSection from '@/components/layout/home/ProjectSection.vue'
+import BrandsSection from '@/components/layout/home/BrandsSection.vue'
 </script>
 <template>
-<main class="main-content">
-<HeroSection/>
-<AboutSection/>
-<ServiceSection/>
-<AdvantageSection/>
-<ProjectSection/>
-
-
-</main>
+  <main class="main-content">
+    <HeroSection />
+    <AboutSection />
+    <ServiceSection />
+    <AdvantageSection />
+    <ProjectSection />
+    <BrandsSection/>
+  
+  </main>
 </template>
-<style scoped lang='scss'>
+<style scoped lang="scss">
 main {
   background-color: $bg-globe;
   min-height: 100vh;
 }
-
 </style>

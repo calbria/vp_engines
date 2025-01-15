@@ -55,14 +55,23 @@ const { t } = useI18n()
       grid-template-columns: repeat(2, 1fr);
       column-gap: var(--grid-gutter-width);
       row-gap: var(--grid-gutter-width);
+
     }
+
   }
 }
-@media (min-width: 90rem) {
+@media (min-width: 64rem) {
   .advantages {
     &__content {
       width: calc(var(--grid-column-width) * 8 + var(--grid-gutter-width) * 7);
     }
+  }
+  
+}
+
+@media (min-width: 90rem) {
+  .advantages {
+
     &__card-holder {
       grid-template-columns: repeat(4, 1fr);
     }
