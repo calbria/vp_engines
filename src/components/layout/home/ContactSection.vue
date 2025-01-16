@@ -23,23 +23,49 @@ function showMap() {
           />
         </div>
         <div class="contact__info">
-          <div class="contact__menu">
-            <h5 class="contact__menu-title">{{ t('common.address') }}:</h5>
-            <div class="contact__address contact__menu-text">
-              <BaseLink
-                type="outer"
-                destination="https://maps.app.goo.gl/HG8oG2uVhTJVXAAv9"
-                icon-name="pin"
-                :text="t('common.street')"
-              />
-              <span>{{ t('common.sity') }}</span>
+          <div class="contact__menu-block">
+            <div class="contact__menu">
+              <h5 class="contact__menu-title">{{ t('common.address') }}:</h5>
+              <div class="contact__address contact__menu-text">
+                <BaseLink
+                  type="outer"
+                  destination="https://maps.app.goo.gl/HG8oG2uVhTJVXAAv9"
+                  icon-name="pin"
+                  :text="t('common.street')"
+                />
+                <span>{{ t('common.sity') }}</span>
+              </div>
+            </div>
+            <div class="contact__menu">
+              <h5 class="contact__menu-title">{{ t('common.working-hours') }}:</h5>
+              <div class="contact__time">
+                <span class="contact__menu-text">{{ t('common.days') }}</span>
+                <span class="contact__menu-text">9.00-18.00</span>
+              </div>
             </div>
           </div>
-          <div class="contact__menu">
-            <h5 class="contact__menu-title">{{ t('common.working-hours') }}:</h5>
-            <div class="contact__time">
-              <span class="contact__menu-text">{{ t('common.days') }}</span>
-              <span class="contact__menu-text">9.00-18.00</span>
+          <div class="contact__menu-block">
+            <div class="contact__menu">
+              <h5 class="contact__menu-title">{{ t('common.contacts') }}:</h5>
+              <div class="contact__address contact__menu-text">
+                <BaseLink
+                  type="outer"
+                  destination="mailto:vovk.pavel1995@gmail.com"
+                  icon-name="mail"
+                text="vovk.pavel1995@gmail.com"
+                />
+                <BaseLink type="outer" destination="tel:+380963167243" icon-name="call" text="+38(096) 316 72 43" />
+              </div>
+            </div>
+            <div class="contact__menu">
+              <h5 class="contact__menu-title">{{ t('common.social') }}:</h5>
+              <div class="contact__social">
+								<BaseLink type="outer"
+									destination="https://studio.youtube.com/channel/UCP5bm6hD8vBEaTHnCUQ5kHg/videos/upload?filter=%5B%5D&sort=%7B%22columnType%22%3A%22date%22%2C%22sortOrder%22%3A%22DESCENDING%22%7D"
+									icon-name="youtube" />
+								<BaseLink type="outer" destination="https://t.me/Pavel190695" icon-name="telegram" />
+								<BaseLink type="outer" destination="https://www.instagram.com/vaghub.od/" icon-name="instagram" />
+							</div>
             </div>
           </div>
         </div>
@@ -115,14 +141,20 @@ function showMap() {
   }
   &__info {
     display: flex;
-      flex-direction: column;
-      row-gap: var(--spacing-s);
+    flex-direction: column;
+    row-gap: var(--spacing-s);
   }
   &__menu {
     color: $primary;
     display: flex;
     flex-direction: column;
     row-gap: var(--spacing-xs);
+  }
+  &__menu-block {
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--spacing-xs);
+
   }
   &__menu-title {
     @include h4-dark();
@@ -131,7 +163,7 @@ function showMap() {
     @include normal-dark();
   }
   &__address,
-  &__time {
+  &__time, &__social {
     color: $secondary;
   }
 
@@ -143,6 +175,11 @@ function showMap() {
     display: flex;
     flex-direction: column;
     row-gap: 0.5rem;
+  }
+  &__social {
+
+    display: flex;
+    column-gap: var(--spacing-xs);
   }
 }
 
@@ -171,26 +208,41 @@ function showMap() {
   .contact {
     &__container {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       column-gap: var(--grid-gutter-width);
       align-items: center;
     }
     &__media {
       order: initial;
-      grid-column: 7 / -1;
+
       height: 100%;
     }
 
     &__content {
-      grid-column: 1 / 6;
       justify-content: center;
     }
 
     &__info {
+      display: flex;
+      flex-direction: row;
+      column-gap: var(--grid-gutter-width);
+      justify-content: space-between;
+    }
+    &__menu-block {
+
+      display: flex;
+      flex-direction: column;
+      row-gap: var(--spacing-xs);
+    }
+  }
+}
+@media (min-width: 80rem) {
+  .contact {
+    &__menu-block {
       width: calc(var(--grid-column-width) * 3 + var(--grid-gutter-width) * 2);
       display: flex;
       flex-direction: column;
-      row-gap: var(--spacing-s);
+      row-gap: var(--spacing-xs);
     }
   }
 }
