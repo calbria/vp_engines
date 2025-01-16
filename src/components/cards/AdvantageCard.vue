@@ -23,6 +23,7 @@ const { t } = useI18n()
         padding: var(--spacing-m) var(--spacing-s);
         background: linear-gradient(to top, $bg-black, $bg-island);
         border: 1px solid $divider;
+        border-radius: $radius;
         color: $secondary;
         display: flex;
         flex-direction: column;

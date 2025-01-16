@@ -5,6 +5,9 @@ import AdvantageSection from '@/components/layout/home/AdvantageSection.vue'
 import ServiceSection from '@/components/layout/home/ServiceSection.vue'
 import ProjectSection from '@/components/layout/home/ProjectSection.vue'
 import BrandsSection from '@/components/layout/home/BrandsSection.vue'
+import ProcessSection from '@/components/layout/home/ProcessSection.vue'
+
+
 </script>
 <template>
   <main class="main-content">
@@ -12,8 +15,10 @@ import BrandsSection from '@/components/layout/home/BrandsSection.vue'
     <AboutSection />
     <ServiceSection />
     <AdvantageSection />
+    <ProcessSection/>
     <ProjectSection />
     <BrandsSection/>
+
   
   </main>
 </template>
@@ -23,3 +28,4 @@ main {
   min-height: 100vh;
 }
 </style>
+ 
