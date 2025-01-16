@@ -65,6 +65,7 @@ const { t } = useI18n()
       display: grid;
       grid-template-columns: repeat(12, 1fr);
       column-gap: var(--grid-gutter-width);
+      align-items: center;
     }
     &__media {
       order: initial;

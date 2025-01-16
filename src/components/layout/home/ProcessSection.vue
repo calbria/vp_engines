@@ -86,6 +86,7 @@ const processSteps = [
       display: grid;
       grid-template-columns: repeat(12, 1fr);
       column-gap: var(--grid-gutter-width);
+      align-items: center;
     }
     &__list {
       grid-column: 7 / -1;
