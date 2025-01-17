@@ -40,12 +40,12 @@ function toForm() {
   }
   &__content {
     display: flex;
-      flex-direction: column;
-      row-gap: var(--spacing-s);
+    flex-direction: column;
+    row-gap: var(--spacing-s);
   }
 }
 @media (max-width: 48rem) {
-  .initial  {
+  .initial {
     &__btn {
       width: 100%;
     }

@@ -40,7 +40,7 @@ function closeHandler() {
   justify-content: center;
   &__content {
     width: 100%;
-    padding: 0 calc(var(--grid-column-width) + var(--grid-gutter-width));
+    padding: 0 1.5rem;
   }
   &__left {
     display: flex;
@@ -75,6 +75,7 @@ function closeHandler() {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       column-gap: var(--grid-gutter-width);
+      padding: 0 calc(var(--grid-column-width) + var(--grid-gutter-width));
     }
   }
 }
