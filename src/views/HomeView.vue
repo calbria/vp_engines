@@ -7,6 +7,7 @@ import ProjectSection from '@/components/layout/home/ProjectSection.vue'
 import BrandsSection from '@/components/layout/home/BrandsSection.vue'
 import ProcessSection from '@/components/layout/home/ProcessSection.vue'
 import ContactSection from '@/components/layout/home/ContactSection.vue'
+import CTASection from '@/components/layout/CTASection.vue'
 
 
 </script>
@@ -19,6 +20,7 @@ import ContactSection from '@/components/layout/home/ContactSection.vue'
     <ProcessSection/>
     <ProjectSection />
     <BrandsSection/>
+    <CTASection/>
     <ContactSection/>
     
 
