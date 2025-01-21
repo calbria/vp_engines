@@ -23,77 +23,69 @@ const isDetailsFocused = ref(false)
 
 const isSubmitDisabled = computed(() => !isNameValid.value || !isPhoneValid.value)
 
-const formattedPhone = computed({
-  get() {
-    if(!isPhoneFocused.value && phone.value === "") return ""
-    const digits = phone.value.replace(/\D/g, '')
-    const match = digits.match(/^(\d{0,3})(\d{0,3})(\d{0,4})$/)
-    if(!match) return phone.value
-    let formatted = '+38'
-    if (match[1]) formatted += `(${match[1]}`;
-    if (match[2]) formatted += `) ${match[2]}`;
-    if (match[3]) formatted += `-${match[3]}`;
-    return formatted;
-  },
-  set(value) {
-    const digits = value.replace(/\D/g, ''); // Allow only digits
-    if (digits.length > 10) {
-      phoneErrorMsg.value = 'Phone number must be 10 digits.';
-      return;
-    }
-   phone.value = digits; // Update rawPhone with clean digits
-    phoneErrorMsg.value = ''; // Clear error
-  }
-})
-
 function nameValidator() {
+
   isNameValid.value = true
-  nameErrorMsg.value = ''
-  if(!name.value) {
-    isNameFocused.value = false
+  isNameIcon.value = false
+if(!name.value) {
+  isNameValid.value = false
+  nameErrorMsg.value = 'This field is required'
+} else if(name.value.length < 2 || name.value.length > 50 ) {
     isNameValid.value = false
-    nameErrorMsg.value = 'This field is required'
-  } else if(name.value.trim().length < 2 || name.value.trim().length > 40  ) {
-    isNameFocused.value = true
-    isNameValid.value = false
-    nameErrorMsg.value = 'Enter from 2 to 50 simbols'
-  } else {
-    isNameFocused.value = true
-    isNameValid.value = true
-    nameErrorMsg.value = ''
-  }
- 
-  isNameIcon.value = true
+  nameErrorMsg.value = 'Please enter more than 2 and less than 50 symbols'
+} else isNameValid.value = true
+  
+isNameIcon.value = true
+
+}
+
+
+function nameBlur() {
+ nameValidator()
+if(name.value) isNameFocused.value = true
+else isNameFocused.value = false
+}
+
+
+function phoneValidator() {
+console.log('Validate phone');
+isPhoneValid.value = true
+isPhoneIcon.value = false
+if(!phone.value) {
+  isPhoneValid.value = false
+  phoneErrorMsg.value = 'This field is required'
+} else if(phone.value.slice(0, 3) !== '+38' || phone.value.length !== 13) {
+    isPhoneValid.value = false
+  phoneErrorMsg.value = 'Please enter the valid phone number starting with +38'
+} else isPhoneValid.value = true
+
+isPhoneIcon.value = true
+
 }
 
 function phoneBlur() {
-isPhoneValid.value = true
-//phoneErrorMsg.value = ''
-if(!phone.value) {
-  isPhoneFocused.value = false
-  isPhoneValid.value = false
-  //phoneErrorMsg.value = 'This field is required'
-} else if(phone.value.length > 0 && phone.value.length !==10 ) {
-  isPhoneFocused.value = true
-  isPhoneValid.value = false
-   //phoneErrorMsg.value = 'Please enter the 10 digits phone number'
-} else {
-  isPhoneFocused.value = true
-  isPhoneValid.value = true
-  //phoneErrorMsg.value = ''
+phoneValidator()
+if(phone.value) isPhoneFocused.value = true
+else isPhoneFocused.value = false
 }
-isPhoneIcon.value = true
+
+function detailsBlur() {
+if(details.value) isDetailsFocused.value = true
+else isDetailsFocused.value = false
 }
 
 function preventNonNumeric (event: KeyboardEvent) {
       const key = event.key;
-      if (!/[\d]/.test(key) && key !== 'Backspace' && key !== 'ArrowLeft' && key !== 'ArrowRight') {
+      if (!/[0-9+]/.test(key) && key !== 'Backspace' && key !== 'ArrowLeft' && key !== 'ArrowRight') {
         event.preventDefault();
       }
     };
 
 const emit = defineEmits(['formSubmit', 'close'])
 function submitHandler() {
+  nameValidator()
+  phoneValidator()
+  if(!isNameValid.value || !isPhoneValid.value) return
   console.log({ name: name.value, phone: phone.value, details: details.value })
   emit('formSubmit')
 }
@@ -111,10 +103,11 @@ function closeHandler() {
           class="form__input" 
           type="text" id="name"  
           name="name"
-          v-model="name" 
+          autocomplete="name"
+          v-model.trim="name" 
           @focus="isNameFocused = true"
-          @blur="nameValidator"
-          @change="nameValidator"/>
+          @blur="nameBlur"
+          @input="nameValidator"/>
          
          <span v-show="!isNameValid" class="form__error-msg">{{nameErrorMsg}}</span>
          <BaseIcon v-show="isNameIcon && isNameValid" class="form__input-icon" name="success" path="icons"/>
@@ -125,11 +118,12 @@ function closeHandler() {
           <input 
           class="form__input" 
           type="tel" id="phone"
-          name="phone"  
-          v-model="formattedPhone" 
+          name="phone" 
+          autocomplete="phone" 
+          v-model="phone" 
           @focus="isPhoneFocused = true"
           @blur="phoneBlur"
-       
+       @input="phoneValidator"
           @keypress="preventNonNumeric"/>
          <span v-show="!isPhoneValid" class="form__error-msg">{{phoneErrorMsg}}</span>
          <BaseIcon v-show="isPhoneIcon && isPhoneValid" class="form__input-icon" name="success" path="icons"/>
@@ -143,8 +137,9 @@ function closeHandler() {
             class="form__input"
             name="details"
             id="details"
-            v-model="details"
+            v-model.trim="details"
             @focus="isDetailsFocused = true"
+            @blur="detailsBlur"
           ></textarea>
           <label class="form__label" :class="{'focused': isDetailsFocused}"  for="details">Additional info</label>
         </div>
@@ -236,11 +231,25 @@ function closeHandler() {
     opacity: 0.4;
   }
 }
+::v-deep(input:-webkit-autofill) {
+
+	background-color: $bg-globe !important; /* Match regular input background */
+	border: 1px solid $input-default !important; /* Match regular input border */
+	color: $primary !important; /* Match regular input text color */
+	-webkit-text-fill-color: $primary !important; /* Force text color */
+	box-shadow: 0 0 0px 1000px $bg-globe inset !important; /* Override yellow autofill */
+	transition: background-color 0s ease-in-out 0s;
+  }
+  ::v-deep(input:-webkit-autofill:focus) {
+    border: 1px solid $accent !important;
+    caret-color: $primary;
+  }
 .focused {
   top: 12px;
       font-size: 12px;
       line-height: 12px;
 }
+
 @media (max-width: 48rem) {
   .form {
     &__btn {
