@@ -35,14 +35,14 @@ function closeHandler() {
  &__wrapper {
 height: 100%;
     width: 100%;
-    padding: 0 1.5rem;
+    padding: 0 2.5rem;
     display: flex;
     flex-direction: column;
     row-gap: var(--spacing-s);
     align-items: center;
     justify-content: center;
     position: relative;
-    
+    text-align: center;
  }
  &__text {
     color: $secondary;

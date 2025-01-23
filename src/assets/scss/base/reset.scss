@@ -56,6 +56,8 @@ address {
 input, textarea, button, select {
 	font-family: inherit;
     font-size: inherit;
+	font-weight: inherit;
+	line-height: inherit;
     color: inherit;
     background-color: transparent;
 }
@@ -71,7 +73,7 @@ button, input[type="submit"] {
     background: none;
     cursor: pointer;
 }
-
+textarea:focus, textarea:active,
 input:focus, input:active,
 button:focus, button:active {
     outline: none;

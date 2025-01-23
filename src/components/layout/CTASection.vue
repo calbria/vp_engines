@@ -4,8 +4,14 @@ import CtaInitial from '@/components/cta/CtaInitial.vue'
 import CtaForm from '@/components/cta/CtaForm.vue'
 import CtaSuccess from '@/components/cta/CtaSuccess.vue'
 import CtaError from '@/components/cta/CtaError.vue'
+import CtaLoading from '@/components/cta/CtaLoading.vue'
 
-type CTAState = 'initial' | 'form' | 'success' | 'error'
+type CTAState = 'initial' | 'form' | 'success' | 'error' | 'loading'
+interface FormData {
+  name: string
+  phone: string
+  details: string | null // Adjust as needed for optional fields
+}
 const ctaState = ref<CTAState>('initial')
 
 const currentComponent = computed(() => {
@@ -16,20 +22,39 @@ const currentComponent = computed(() => {
       return CtaSuccess
     case 'error':
       return CtaError
+    case 'loading':
+      return CtaLoading
     default:
       return CtaInitial
   }
 })
 function handleToForm() {
-  console.log('Go to form')
   ctaState.value = 'form'
 }
-function handleSubmit() {
-  console.log('Submit form')
+async function handleSubmit(formData: FormData) {
+  ctaState.value = 'loading'
+try {
+  await new Promise<void>((resolve, reject) => {
+    setTimeout(() => {
+      const isSuccess = Math.random() > 0.5
+      if(isSuccess) {
+        resolve()
+      } else {
+        reject('Error: something went wrong')
+      }
+    }, 2000)
+  })
+
   ctaState.value = 'success'
+
+} catch(error) {
+console.log(error);
+ctaState.value = 'error'
+}
+  console.log(formData)
+
 }
 function handleClose() {
-  console.log('Close')
   ctaState.value = 'initial'
 }
 </script>
@@ -55,7 +80,7 @@ function handleClose() {
     border: 1px solid $divider;
     background: linear-gradient(to right, $bg-black 0, $bg-island 50%, $bg-black 100%);
 
-    height: 456px;
+    height: 520px;
   }
 }
 .fade-enter-active,
@@ -66,7 +91,7 @@ function handleClose() {
 .fade-leave-to {
   opacity: 0;
 }
-@media (min-width: 48rem) {
+@media (min-width: 64rem) {
   .cta {
     &__wrapper {
       height: 384px;

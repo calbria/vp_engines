@@ -26,7 +26,7 @@ const props = defineProps<{
     <span class="link__text" v-if="text">{{ text }}</span>
   </RouterLink>
   <a
-    class="link"
+    class='link'
     :href="destination"
     v-if="type === 'outer'"
     target="_blank"

@@ -183,3 +183,10 @@
   font-size: 1.125rem;
   line-height: 1.5rem;
 }
+@mixin overline-dark {
+  font-family: 'Roboto', serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
