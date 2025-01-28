@@ -78,6 +78,7 @@ const stages = [
 </template>
 <style  lang='scss'>
 .carousel {
+padding-bottom: 2rem;
     &__item {
     height: 100%;
 
@@ -87,7 +88,7 @@ const stages = [
     display: none;
 }
 .carousel__pagination {
-    bottom: -2rem;
+    
 }
 .carousel__pagination-button {
     width: 8px;
@@ -99,7 +100,9 @@ const stages = [
     background-color: $primary;
 }
 @media (min-width: 64rem) {
-
+.carousel {
+    padding-bottom: 3rem;
+}
     .carousel__next, .carousel__prev {
         display: flex;
       align-items: center;
@@ -129,7 +132,7 @@ const stages = [
         left: -56px;
     }
     .carousel__pagination {
-    bottom: -3rem;
+   
 }
 }
 
