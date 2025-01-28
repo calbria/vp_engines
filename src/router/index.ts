@@ -48,6 +48,7 @@ const routes = [
             name: 'blog',
             component: () => import('../views/BlogView.vue'),
           },
+     
           {
             path: 'working-process',
             name: 'working-process',
@@ -56,7 +57,12 @@ const routes = [
         ]
       },
 
-
+     {
+            path: '/blog/:id',
+            name: 'article',
+            component: () => import('../views/BlogArticleView.vue'),
+            props: true
+          },
  
   
   {

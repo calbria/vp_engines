@@ -1,12 +1,14 @@
 <script setup lang='ts'>
 import StagesSection from '@/components/layout/repair/StagesSection.vue';
+import FaqSection from '@/components/layout/repair/FaqSection.vue';
 
 </script>
 <template>
 <main class="main-content">
-  <div class="container">
+  <div >
 
 <StagesSection/>
+<FaqSection/>
 
   </div>
 </main>

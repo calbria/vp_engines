@@ -7,9 +7,12 @@ const { t } = useI18n()
 </script>
 <template>
   <section class="stages">
-    <div class="stages__wrapper">
-      <SectionHeader class="stages__header" :title="t('repair.stages.title')" :subtitle="t('repair.stages.subtitle')" />
-      <StagesSlider class="stages__slider"/>
+    <div class="stages__container container">
+
+      <div class="stages__wrapper">
+        <SectionHeader class="stages__header" :title="t('repair.stages.title')" :subtitle="t('repair.stages.subtitle')" />
+        <StagesSlider class="stages__slider"/>
+      </div>
     </div>
   </section>
 </template>
