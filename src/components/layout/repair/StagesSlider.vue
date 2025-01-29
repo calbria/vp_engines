@@ -96,6 +96,12 @@ padding-bottom: 2rem;
     border-radius: 50%;
     background-color: $bg-island;
 }
+.carousel__pagination-button:hover {
+  background-color: $bg-island-inner;
+}
+.carousel__pagination-button:active {
+  background-color: $accent;
+}
 .carousel__pagination-button--active {
     background-color: $primary;
 }
@@ -119,11 +125,11 @@ padding-bottom: 2rem;
     }
     .carousel__next:hover, .carousel__prev:hover {
         background-color: $bg-island-inner;
-        
+        color: $primary;
     }
     .carousel__next:active, .carousel__prev:active {
         background-color: $bg-island;
-        
+        color: $primary;
     }
     .carousel__next {
         right: -56px;

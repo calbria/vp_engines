@@ -1,4 +1,5 @@
 <script setup lang='ts'>
+import Breadcrumbs from '@/components/layout/BreadCrumbs.vue';
 import StagesSection from '@/components/layout/repair/StagesSection.vue';
 import FaqSection from '@/components/layout/repair/FaqSection.vue';
 
@@ -6,7 +7,7 @@ import FaqSection from '@/components/layout/repair/FaqSection.vue';
 <template>
 <main class="main-content">
   <div >
-
+<Breadcrumbs/>
 <StagesSection/>
 <FaqSection/>
 
