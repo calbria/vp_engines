@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import SectionHeader from '@/components/layout/SectionHeader.vue'
-import SectionText from '@/components/layout/SectionText.vue'
+import SectionHeader from '@/components/sections/SectionHeader.vue'
+import SectionText from '@/components/sections/SectionText.vue'
 import BaseBtn from '@/components/base/BaseBtn.vue'
 import AccordionCard from '@/components/cards/AccordionCard.vue'
 const { t } = useI18n()

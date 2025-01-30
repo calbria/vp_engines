@@ -3,7 +3,7 @@ import HeroSection from '@/components/layout/home/HeroSection.vue'
 import AboutSection from '@/components/layout/home/AboutSection.vue'
 import AdvantageSection from '@/components/layout/home/AdvantageSection.vue'
 import ServiceSection from '@/components/layout/home/ServiceSection.vue'
-import ProjectSection from '@/components/layout/home/ProjectSection.vue'
+import ProjectsSection from '@/components/layout/home/ProjectsSection.vue'
 import BrandsSection from '@/components/layout/home/BrandsSection.vue'
 import ProcessSection from '@/components/layout/home/ProcessSection.vue'
 import ContactSection from '@/components/layout/home/ContactSection.vue'
@@ -18,7 +18,7 @@ import CTASection from '@/components/layout/CTASection.vue'
     <ServiceSection />
     <AdvantageSection />
     <ProcessSection/>
-    <ProjectSection />
+    <ProjectsSection />
     <BrandsSection/>
     <CTASection/>
     <ContactSection/>

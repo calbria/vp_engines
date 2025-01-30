@@ -2,8 +2,8 @@
 import { ref, computed, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import ProjectCard from '@/components/cards/ProjectCard.vue'
-import SectionHeader from '@/components/layout/SectionHeader.vue'
-import SectionText from '@/components/layout/SectionText.vue'
+import SectionHeader from '@/components/sections/SectionHeader.vue'
+import SectionText from '@/components/sections/SectionText.vue'
 import BaseBtn from '@/components/base/BaseBtn.vue'
 import BaseIcon from '@/components/base/BaseIcon.vue';
 

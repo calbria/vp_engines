@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n';
-import SectionHeader from '@/components/layout/SectionHeader.vue'
+import SectionHeader from '@/components/sections/SectionHeader.vue'
 import ServiceCard from '@/components/cards/ServiceCard.vue'
 
 const { t } = useI18n()

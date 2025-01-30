@@ -3,6 +3,7 @@ import { useI18n } from 'vue-i18n'
 import SectionHeader from '@/components/sections/SectionHeader.vue'
 import SectionText from '@/components/sections/SectionText.vue'
 import AdvantageCard from '@/components/cards/AdvantageCard.vue'
+import BaseBtn from '@/components/base/BaseBtn.vue'
 
 const { t } = useI18n()
 const advantages = ['complex', 'equipment', 'guarantees', 'innovations']
@@ -10,14 +11,17 @@ const advantages = ['complex', 'equipment', 'guarantees', 'innovations']
 <template>
   <section class="advantages">
     <div class="advantages__wrapper container">
-      <div class="advantages__content">
         <SectionHeader
-          class="advantages__title"
-          :title="t('home.advantages.title')"
-          :subtitle="t('home.advantages.subtitle')"
+          class="advantages__header"
+          :title="t('repair.advantages.title')"
+          :subtitle="t('repair.advantages.subtitle')"
         />
-        <SectionText class="advantages__text" :text="[t('home.advantages.text1')]" />
+      <div class="advantages__content">
+        <SectionText class="advantages__text" :text="[t('repair.advantages.text1')]" />
+        <BaseBtn class="advantages__btn" mode="primary" size="large" text="working-process" destination="working-process" />
       </div>
+
+
       <div class="advantages__card-holder">
         <AdvantageCard
           class="advantages__card"
@@ -34,6 +38,9 @@ const advantages = ['complex', 'equipment', 'guarantees', 'innovations']
 .advantages {
   &__wrapper {
     padding: var(--spacing-m) 0;
+  }
+  &__header {
+    padding-bottom: var(--spacing-xs);
   }
   &__content {
     width: 100%;
@@ -52,6 +59,14 @@ const advantages = ['complex', 'equipment', 'guarantees', 'innovations']
     height: 100%;
   }
 }
+@media (max-width: 48rem) {
+  .advantages {
+    &__btn {
+      display: flex;
+      width: 100%;
+    }
+  }
+}
 @media (min-width: 48rem) {
   .advantages {
     &__card-holder {
@@ -65,8 +80,14 @@ const advantages = ['complex', 'equipment', 'guarantees', 'innovations']
 @media (min-width: 64rem) {
   .advantages {
     &__content {
-      width: calc(var(--grid-column-width) * 8 + var(--grid-gutter-width) * 7);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
     }
+    &__text {
+    width: calc(var(--grid-column-width) * 8 + var( --grid-gutter-width) * 7);
+  }
   }
 }
 

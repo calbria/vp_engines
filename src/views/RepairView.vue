@@ -1,6 +1,9 @@
 <script setup lang='ts'>
 import Breadcrumbs from '@/components/layout/BreadCrumbs.vue';
 import StagesSection from '@/components/layout/repair/StagesSection.vue';
+import AdvantagesSection from '@/components/layout/repair/AdvantagesSection.vue';
+import ProjectsSection from '@/components/layout/repair/ProjectsSection.vue';
+import CTASection from '@/components/layout/CTASection.vue';
 import FaqSection from '@/components/layout/repair/FaqSection.vue';
 
 </script>
@@ -9,6 +12,9 @@ import FaqSection from '@/components/layout/repair/FaqSection.vue';
   <div >
 <Breadcrumbs/>
 <StagesSection/>
+<AdvantagesSection/>
+<ProjectsSection/>
+<CTASection/>
 <FaqSection/>
 
   </div>

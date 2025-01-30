@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import BaseBtn from '@/components/base/BaseBtn.vue'
-import SectionHeader from '@/components/layout/SectionHeader.vue'
+import SectionHeader from '@/components/sections/SectionHeader.vue'
 import BaseLink from '@/components/base/BaseLink.vue'
 
 const { t } = useI18n()

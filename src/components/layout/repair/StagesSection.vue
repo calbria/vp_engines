@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import StagesSlider from '@/components/layout/repair/StagesSlider.vue'
-import SectionHeader from '@/components/layout/SectionHeader.vue'
+import SectionHeader from '@/components/sections/SectionHeader.vue'
 
 const { t } = useI18n()
 </script>

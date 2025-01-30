@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import BaseBtn from '@/components/base/BaseBtn.vue'
-import SectionHeader from '../SectionHeader.vue'
-import SectionText from '../SectionText.vue'
+import SectionHeader from '@/components/sections/SectionHeader.vue'
+import SectionText from '@/components/sections/SectionText.vue'
 
 const { t } = useI18n()
 </script>

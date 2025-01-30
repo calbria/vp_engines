@@ -1,19 +1,20 @@
 <script setup lang='ts'>
-import { useI18n } from 'vue-i18n';
+
 import BaseIcon from '@/components/base/BaseIcon.vue';
 const props = defineProps<{
-    type: string
+    title: string
+    text: string
 }>()
-const { t } = useI18n()
+
 </script>
 <template>
 <div class="advantage-card">
 <div class="advantage-card__wrapper">
     <div class="advantage-card__header">
         <BaseIcon class="advantage-card__icon" name="logo" path="icons"/>
-        <h3 class="advantage-card__title">{{ t(`cards.advantage-${type}.title`) }}</h3>
+        <h3 class="advantage-card__title">{{ title }}</h3>
     </div>
-    <p class="advantage-card__text">{{ t(`cards.advantage-${type}.text`) }}</p>
+    <p class="advantage-card__text">{{ text }}</p>
 </div>
 </div>
 </template>
