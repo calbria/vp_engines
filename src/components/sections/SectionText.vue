@@ -18,4 +18,9 @@ const props = defineProps<{
         @include normal-dark();
     }
 }
+@media (min-width: 80rem) {
+    .text {
+        row-gap: 1rem;
+    }
+}
 </style>

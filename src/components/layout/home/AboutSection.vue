@@ -38,6 +38,7 @@ const { t } = useI18n()
   }
   &__img {
     width: 100%;
+    height: 100%;
     object-fit: cover;
   }
   &__content {
@@ -69,6 +70,7 @@ const { t } = useI18n()
     }
     &__media {
       order: initial;
+      aspect-ratio: 1 / 1;
       grid-column: 7 / -1;
       display: flex;
       height: 100%;

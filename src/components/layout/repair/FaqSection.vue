@@ -102,6 +102,7 @@ const questions = [
     flex-direction: column;
     row-gap: var(--spacing-xxs);
     align-items: center;
+
   }
 }
 

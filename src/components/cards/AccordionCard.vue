@@ -119,7 +119,7 @@ function toggleOpen() {
 }
 .fade-enter-active,
 .fade-leave-active {
-  transition: all 0.5s ease-in-out;
+  transition: all 0.6s ease-in-out;
 }
 .fade-enter-from {
   transform: translateY(-10px); /* Start hidden above */
