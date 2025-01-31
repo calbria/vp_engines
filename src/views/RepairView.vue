@@ -4,6 +4,7 @@ import IntroSection from '@/components/layout/repair/IntroSection.vue';
 import StagesSection from '@/components/layout/repair/StagesSection.vue';
 import AdvantagesSection from '@/components/layout/repair/AdvantagesSection.vue';
 import ProjectsSection from '@/components/layout/repair/ProjectsSection.vue';
+import WarrantiesSection from '@/components/layout/repair/WarrantiesSection.vue';
 import CTASection from '@/components/layout/CTASection.vue';
 import FaqSection from '@/components/layout/repair/FaqSection.vue';
 
@@ -16,6 +17,7 @@ import FaqSection from '@/components/layout/repair/FaqSection.vue';
 <StagesSection/>
 <AdvantagesSection/>
 <ProjectsSection/>
+<WarrantiesSection/>
 <CTASection/>
 <FaqSection/>
 

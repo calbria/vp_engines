@@ -24,8 +24,9 @@ const isDetailsFocused = ref(false)
 
 const isSubmitDisabled = computed(() => !isNameValid.value || !isPhoneValid.value)
 
+const forbiddenInput = ['<script>', 'SELECT', 'DROP TABLE', 'INSERT']
 function nameValidator() {
-  name.value = name.value.replace(/[^a-zA-Z0-9 ]/g, '');
+  name.value = name.value.replace(/[^a-zA-Z0-9 ]/g, '')
   isNameValid.value = true
   isNameIcon.value = false
   if (!name.value) {
@@ -46,7 +47,7 @@ function nameBlur() {
 }
 
 function phoneValidator() {
-  phone.value = phone.value.replace(/[^0-9+]/g, '');
+  phone.value = phone.value.replace(/[^0-9+]/g, '')
   isPhoneValid.value = true
   isPhoneIcon.value = false
   if (!phone.value) {
@@ -77,17 +78,37 @@ function preventNonNumeric(event: KeyboardEvent) {
     event.preventDefault()
   }
 }
+function sanitizeInput(data: string) {
+  return data
+    .replace(/<[^>]*>?/gm, '')
+    .replace(/javascript:/gi, '')
+    .replace(/['"();]/g, '')
+}
+function containsForbidden(input:string) {
+  return forbiddenInput.some((word) => input.toLowerCase().includes(word.toLowerCase()))
+}
+function handlePaste(event: ClipboardEvent) {
+event.preventDefault()
+const pastedData = event.clipboardData?.getData('text')
+
+if(pastedData) details.value = sanitizeInput(pastedData)
+detailsVlidator()
+
+}
+function detailsVlidator() {
+  details.value = sanitizeInput(details.value)
+  if(containsForbidden(details.value)) details.value = 'Your message contains disallowed words.'
+}
 
 const emit = defineEmits<{
-  (event: 'formSubmit', payload: { name: string, phone: string, details: string | null }):void
+  (event: 'formSubmit', payload: { name: string; phone: string; details: string | null }): void
   (event: 'close'): void
 }>()
-
 
 function submitHandler() {
   nameValidator()
   phoneValidator()
-  details.value = details.value.replace(/[^a-zA-Z0-9 ]/g, '');
+  details.value = details.value.replace(/[^a-zA-Z0-9 ]/g, '')
   if (!isNameValid.value || !isPhoneValid.value) return
 
   emit('formSubmit', { name: name.value, phone: phone.value, details: details.value })
@@ -116,7 +137,9 @@ function closeHandler() {
             @input="nameValidator"
           />
 
-          <p v-show="!isNameValid" class="form__error-msg"><span class="form__overline">{{ nameErrorMsg }}</span></p>
+          <p v-show="!isNameValid" class="form__error-msg">
+            <span class="form__overline">{{ nameErrorMsg }}</span>
+          </p>
           <BaseIcon
             v-show="isNameIcon && isNameValid"
             class="form__input-icon"
@@ -129,7 +152,9 @@ function closeHandler() {
             name="error"
             path="icons"
           />
-          <label class="form__label" :class="{ focused: isNameFocused }" for="name">{{t('cta.label-name')}}*</label>
+          <label class="form__label" :class="{ focused: isNameFocused }" for="name"
+            >{{ t('cta.label-name') }}*</label
+          >
         </div>
         <div class="form__field">
           <input
@@ -140,14 +165,15 @@ function closeHandler() {
             autocomplete="phone"
             minlength="13"
             maxlength="13"
-            
             v-model="phone"
             @focus="isPhoneFocused = true"
             @blur="phoneBlur"
             @input="phoneValidator"
             @keypress="preventNonNumeric"
           />
-          <p v-show="!isPhoneValid" class="form__error-msg"><span class="form__overline">{{ phoneErrorMsg }}</span></p>
+          <p v-show="!isPhoneValid" class="form__error-msg">
+            <span class="form__overline">{{ phoneErrorMsg }}</span>
+          </p>
           <BaseIcon
             v-show="isPhoneIcon && isPhoneValid"
             class="form__input-icon"
@@ -174,10 +200,15 @@ function closeHandler() {
             autocomplete="off"
             maxlength="500"
             v-model.trim="details"
+            @input="detailsVlidator"
+            @paste="handlePaste"
             @focus="isDetailsFocused = true"
             @blur="detailsBlur"
           ></textarea>
-          <label class="form__label form__label--textarea" :class="{ focused: isDetailsFocused }" for="details"
+          <label
+            class="form__label form__label--textarea"
+            :class="{ focused: isDetailsFocused }"
+            for="details"
             >{{ t('cta.label-info') }}*</label
           >
         </div>
@@ -187,8 +218,9 @@ function closeHandler() {
           <p class="form__text">{{ t('cta.info-text') }}</p>
           <p class="form__text">
             <span>{{ t('cta.privacy-text') }}</span>
-            <RouterLink class="form__text-link" :to="{name: 'privacy'}">{{ t('cta.privacy-link') }}</RouterLink>
-
+            <RouterLink class="form__text-link" :to="{ name: 'privacy' }">{{
+              t('cta.privacy-link')
+            }}</RouterLink>
           </p>
         </div>
       </div>
@@ -296,22 +328,20 @@ function closeHandler() {
     flex-direction: column;
     justify-content: flex-end;
     height: 100%;
-
   }
   &__text {
     color: $tertiary;
   }
 
-&__text-link {
-  font-style: italic;
-  &:hover {
-    color: $primary;
-    
+  &__text-link {
+    font-style: italic;
+    &:hover {
+      color: $primary;
+    }
+    &:active {
+      color: $accent;
+    }
   }
-  &:active {
-    color: $accent;
-  }
-}
 
   &__close {
     position: absolute;
@@ -366,7 +396,6 @@ function closeHandler() {
       row-gap: var(--spacing-m);
       padding: 0 calc(var(--grid-column-width) + var(--grid-gutter-width));
     }
-
   }
 }
 </style>

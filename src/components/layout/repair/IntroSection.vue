@@ -38,7 +38,7 @@ const { t } = useI18n()
     padding: var(--spacing-m) 0;
     display: flex;
     flex-direction: column;
-    row-gap: var(--spacing-m);
+    row-gap: var(--spacing-xxl);
   }
   &__block {
     display: flex;
@@ -71,12 +71,13 @@ const { t } = useI18n()
     }
     &__block-media {
       aspect-ratio: 3 / 4;
+      order: initial;
     }
     &__block-content--left {
-      grid-column: 1 / 7;
+      grid-column: 1 / 6;
     }
     &__block-media--right {
-      grid-column: 8 / 13;
+      grid-column: 7 / 13;
     }
     &__block-content--right {
       grid-column: 8 / 13;

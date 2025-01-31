@@ -65,6 +65,9 @@ const processSteps = [
     flex-direction: column;
     row-gap: var(--spacing-xs);
   }
+  &__list-number {
+    @include h3-dark()
+  }
 }
 
 @media (min-width: 48rem) {

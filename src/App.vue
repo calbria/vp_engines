@@ -51,6 +51,7 @@ onUnmounted(() => {
   right: 10px;
   width: 40px;
   height: 40px;
+  z-index: 1000;
 
   &__wrapper {
     width: 100%;

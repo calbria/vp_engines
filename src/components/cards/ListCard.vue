@@ -45,9 +45,12 @@ const props = defineProps<{
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
+        //background-color: $bg-globe;
     }
     &__icon-inner {
-        @include h3-dark()
+        display: flex;
+        align-items: center;
+        justify-content: center
 
     }
     &__text {
