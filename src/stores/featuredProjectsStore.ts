@@ -22,6 +22,7 @@
 
 import { defineStore } from 'pinia';
 import { ref, computed, watch } from 'vue';
+
 import type { Project } from '@/types/Project'; // Define your type
 
 export const useFeaturedProjectsStore = defineStore('projects', () => {

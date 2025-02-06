@@ -1,18 +1,23 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
 import { computed } from 'vue'
 import { useLanguageStore } from '@/stores/languageStore'
 
-const { locale } = useI18n()
-const lang: string[] = ['ua', 'ru']
-function changeLang(lang: string) {
-	locale.value = lang
-	localStorage.setItem('language', lang)
-}
+
+const languageStore = useLanguageStore()
+const lang = ['ua', 'ru'] as const
+const currentLang = computed({
+	get: () => languageStore.currentLanguage,
+	set: (newLang) => {
+		languageStore.setLanguage(newLang) 
+		
+	}
+})
+
+
 </script>
 <template>
 	<div class="lang" v-for="(item, index) in lang" :key="item">
-		<button class="lang__btn" :class="{ 'current-lang': item === locale }" @click="changeLang(item)" type="button"
+		<button class="lang__btn" :class="{ 'current-lang': item === currentLang }" @click="currentLang = item" type="button"
 			:aria-label="`Switch language to ${item}`" aria-live="polite">
 			<span class="lang__btn-text">
 				{{ item.toLocaleUpperCase() }}
