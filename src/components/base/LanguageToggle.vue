@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
+import { computed } from 'vue'
+import { useLanguageStore } from '@/stores/languageStore'
 
 const { locale } = useI18n()
 const lang: string[] = ['ua', 'ru']

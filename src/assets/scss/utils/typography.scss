@@ -187,6 +187,17 @@
 		line-height: 1.5rem;
 	}
 }
+@mixin breadcrumbs-light {
+  font-family: 'Roboto Condensed', serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  @media (min-width: 80rem) {
+		font-size: 1rem;
+		line-height: 1.5rem;
+	}
+}
 @mixin overline-dark {
   font-family: 'Roboto', serif;
   font-weight: 300;

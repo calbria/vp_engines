@@ -12,7 +12,7 @@ import FaqSection from '@/components/layout/repair/FaqSection.vue';
 <template>
 <main class="main-content">
   <div >
-<Breadcrumbs/>
+<Breadcrumbs mode="dark"/>
 <IntroSection/>
 <StagesSection/>
 <AdvantagesSection/>

@@ -24,7 +24,7 @@ const messages = {
   ua: {
     common: uaCommon,
     home: uaHome,
-    repair: uaRepair,
+    repair: uaRepair, 
     btn: uaBtn,
     cards: uaCards,
     cta: uaCTA

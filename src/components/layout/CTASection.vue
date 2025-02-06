@@ -76,6 +76,7 @@ function handleClose() {
 <style scoped lang="scss">
 .cta {
   padding: var(--spacing-m) 0;
+  background-color: $bg-globe;
   &__wrapper {
     border: 1px solid $divider;
     background: linear-gradient(to right, $bg-black 0, $bg-island 50%, $bg-black 100%);
