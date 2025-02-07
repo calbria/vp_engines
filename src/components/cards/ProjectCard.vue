@@ -1,22 +1,48 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { useI18n } from 'vue-i18n'
 import BaseBtn from '@/components/base/BaseBtn.vue'
 
-const { t } = useI18n()
+const { locale } = useI18n()
 const isActive = ref(false)
 const props = defineProps<{
     id: string
   title: string
   car: string
   engine: string
-  text: string
+  summary: string
   btnText: string
 
   image: string
   destination: string
 }>()
 
+const cardTitle = computed(() => {
+  if(locale.value === 'ru') {
+    switch(props.title) {
+      case 'repair': 
+      return 'капитальный ремонт двс';
+      case 'tuning': 
+      return 'тюнинг двс';
+      case 'expertise':
+      return 'экспертиза';
+      default: return 'unknown'
+    }
+
+    
+  } else {
+    switch(props.title) {
+      case 'repair': 
+      return 'капітальный ремонт двз';
+      case 'tuning': 
+      return 'тюнінг двз';
+      case 'expertise':
+      return 'експертиза';
+      default: return 'unknown'
+    }
+    
+  }
+})
 function tapHandler() {
     isActive.value = !isActive.value
 }
@@ -26,18 +52,19 @@ function tapHandler() {
     <div class="card__container">
       <div class="card__image-holder">
 
-        <img class="card__img" :src="image" :alt="`${t(title)} card photo`" />
+        <img class="card__img" :src="image" :alt="`${ title } card photo`" />
       </div>
       <div class="card__content">
         <div class="card__text">
           <div class="card__header">
-            <p class="card__title">{{ t(title) }}</p>
+            <p class="card__title">{{ cardTitle }}</p>
+            
             <h3 class="card__subtitle">{{ car }}</h3>
             <h3 class="card__subtitle">{{ engine }}</h3>
           </div>
           <p class="card__paragraph">
             <span class="card__paragraph-text">
-              {{ t(text) }}
+              {{ summary }}
             </span>
           </p>
         </div>
