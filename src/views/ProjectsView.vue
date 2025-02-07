@@ -1,10 +1,12 @@
 <script setup lang='ts'>
 import Breadcrumbs from '@/components/layout/BreadCrumbs.vue';
+import ProjectsSection from '@/components/layout/projects/ProjectsSection.vue';
 import CTASection from '@/components/layout/CTASection.vue';
 </script>
 <template>
 <main class="main-content">
   <Breadcrumbs mode="light"/>
+<ProjectsSection/>
   <CTASection/>
 </main>
 </template>

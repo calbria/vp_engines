@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { useProjectsStore } from '@/stores/projectsStore'
 import ProjectCard from '@/components/cards/ProjectCard.vue'
 import SectionHeader from '@/components/sections/SectionHeader.vue'
 import SectionText from '@/components/sections/SectionText.vue'
@@ -11,40 +12,12 @@ const currentPage = ref(1)
 const itemsPerPage = ref(3)
 const gridIsVisible = ref(true)
 
+const projectsStore = useProjectsStore()
+console.log(projectsStore.similarProjects('1'));
 
+const cases = computed(() => projectsStore.bestProjects('repair'))
 const { t } = useI18n()
-const cases = [
-  {
-    id: '1',
-    title: 'cards.case_repair.title',
-    car: 'BMW 730',
-    engine: 'N54 B30-A',
-    text: 'cards.case_repair.text',
-    btnText: 'details',
-    image: '/images/img_539x958.png',
-    destination: 'project',
-  },
-  {
-    id: '2',
-    title: 'cards.case_tuning.title',
-    car: 'BMW 730',
-    engine: 'N54 B30-A',
-    text: 'cards.case_tuning.text',
-    btnText: 'details',
-    image: '/images/img_539x958.png',
-    destination: 'project',
-  },
-  {
-    id: '3',
-    title: 'cards.case_expertise.title',
-    car: 'BMW 730',
-    engine: 'N54 B30-A',
-    text: 'cards.case_expertise.text',
-    btnText: 'details',
-    image: '/images/img_539x958.png',
-    destination: 'project',
-  },
-]
+
 
 function updateItemsPerPage() {
   const width = window.innerWidth
@@ -64,10 +37,10 @@ onMounted(() => {
 const paginatedProjects = computed(() => {
   const start = (currentPage.value - 1) * itemsPerPage.value
   const end = start + itemsPerPage.value
-  return cases.slice(start, end)
+  return cases.value.slice(start, end)
 })
 
-const totalPages = computed(() => Math.ceil(cases.length / itemsPerPage.value))
+const totalPages = computed(() => Math.ceil(cases.value.length / itemsPerPage.value))
 
 function goToPage(page:number) {
   if( page < 1 || page > totalPages.value) return
@@ -107,17 +80,20 @@ function goToPage(page:number) {
         <Transition name="fade-grid" mode="out-in">
 
           <div class="projects__cards-container" v-if="gridIsVisible" :key="currentPage">
-            <div class="projects__card" v-for="item in paginatedProjects" :key="item.id">
-              <ProjectCard
-                :id="item.id"
-                :title="item.title"
-                :car="item.car"
+            <div class="projects__card" v-for="(item, index) in paginatedProjects" :key="index">
+              <ProjectCard v-if="item"
+              :id="item.id"
+                :title="item.category"
+                :car="item.car.brand + ' ' + item.car.model"
                 :engine="item.engine"
-                :text="item.text"
-                :btn-text="item.btnText"
-                :image="item.image"
+                :summary="item.summary"
+                btn-text="details"
+                :image="item.cardImg"
                 :destination="item.destination"
               />
+              <p v-else class="projects__temp">
+                <span class="projects__temp-text">{{ t('home.projects.in_progress') }}</span>
+              </p>
             </div>
           </div>
         </Transition>
@@ -186,19 +162,32 @@ column-gap: 2px;
     justify-content: center;
     margin-bottom: var(--spacing-s);
   }
-  .fade-grid-enter-active, .fade-grid-leave-active {
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  &__temp {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $bg-black;
+  border: 1px solid $divider;
+  border-radius: $radius;
+  color: $tertiary;
+  }
+  &__temp-text {
+    @include h3-dark();
+  }
+}
+.fade-grid-enter-active, .fade-grid-leave-active {
+transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .fade-grid-enter-from {
-  opacity: 0;
-  transform: scale(0.95);
+opacity: 0;
+transform: scale(0.95);
 }
 
 .fade-grid-leave-to {
-  opacity: 0;
-  transform: scale(0.95);
-}
+opacity: 0;
+transform: scale(0.95);
 }
 @media (max-width: 48rem) {
   .projects {

@@ -15,10 +15,6 @@ const gridIsVisible = ref(true)
 const { t } = useI18n()
 const projectsStore = useProjectsStore()
 
-console.log(projectsStore.projectsByCategory('repair'));
-
-
-
 function updateItemsPerPage() {
   const width = window.innerWidth
   if (width >= 1024) {
@@ -98,7 +94,8 @@ function goToPage(page: number) {
         <Transition name="fade-grid" mode="out-in">
           <div class="projects__cards-container" v-if="gridIsVisible" :key="currentPage">
             <div class="projects__card" v-for="(item, index) in paginatedProjects" :key="index">
-              <ProjectCard v-if="item"
+              <ProjectCard
+                v-if="item"
                 :id="item.id"
                 :title="item.category"
                 :car="item.car.brand + ' ' + item.car.model"
@@ -109,10 +106,9 @@ function goToPage(page: number) {
                 :destination="item.destination"
               />
               <p v-else class="projects__temp">
-                <span class="projects__temp-text">In progress</span>
+                <span class="projects__temp-text">{{ t('home.projects.in_progress') }}</span>
               </p>
             </div>
-
           </div>
         </Transition>
       </div>
@@ -183,30 +179,30 @@ function goToPage(page: number) {
     align-items: center;
     justify-content: center;
     background-color: $bg-black;
-  border: 1px solid $divider;
-  border-radius: $radius;
-  color: $tertiary;
+    border: 1px solid $divider;
+    border-radius: $radius;
+    color: $tertiary;
   }
   &__temp-text {
     @include h3-dark();
   }
 }
-  .fade-grid-enter-active,
-  .fade-grid-leave-active {
-    transition:
-      opacity 0.5s ease,
-      transform 0.5s ease;
-  }
+.fade-grid-enter-active,
+.fade-grid-leave-active {
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
 
-  .fade-grid-enter-from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
+.fade-grid-enter-from {
+  opacity: 0;
+  transform: scale(0.95);
+}
 
-  .fade-grid-leave-to {
-    opacity: 0;
-    transform: scale(0.95);
-  }
+.fade-grid-leave-to {
+  opacity: 0;
+  transform: scale(0.95);
+}
 @media (max-width: 48rem) {
   .projects {
     &__btn {

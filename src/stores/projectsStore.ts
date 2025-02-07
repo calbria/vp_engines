@@ -38,8 +38,13 @@ export const useProjectsStore = defineStore('projects', {
         state.projects.find((prj) => prj.category === category && prj.showOnMain),
       )
     },
-    bestProjects: (state) => {},
+    bestProjects: (state) => (category: Category) => {
+      return state.projects.filter(prj => prj.category === category && prj.featured)
+    },
 
-    similarProjects: (state) => {},
+    similarProjects: (state) => (id: string) => {
+      const currentProject = state.projects.find(prj => prj.id === id)
+      return currentProject?.similarProjects?.map(id => state.projects.find(p => p.id === id))
+    },
   },
 })
