@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import BaseIcon from '@/components/base/BaseIcon.vue'
 import BaseHamburger from '@/components/base/BaseHamburger.vue'
 import LanguageToggle from '@/components/base/LanguageToggle.vue'
-import MenuItem from '@/components/menues/MenuItem.vue'
+import MenuItem from '@/components/navigation/MenuItem.vue'
 import { RouterLink, useRoute } from 'vue-router'
 
 const route = useRoute()

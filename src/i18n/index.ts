@@ -10,6 +10,8 @@ import uaRepair from '@/i18n/ua/repair.json'
 import uaBtn from '@/i18n/ua/btn.json'
 import uaCards from '@/i18n/ua/cards.json'
 import uaCTA from '@/i18n/ua/cta.json'
+import ruProjects from '@/i18n/ru/projects.json'
+import uaProjects from '@/i18n/ua/projects.json'
 import { createI18n } from 'vue-i18n'
 
 const messages = {
@@ -19,7 +21,8 @@ const messages = {
     repair: ruRepair,
     btn: ruBtn,
     cards: ruCards,
-    cta: ruCTA
+    cta: ruCTA,
+    projects: ruProjects
   },
   ua: {
     common: uaCommon,
@@ -27,7 +30,8 @@ const messages = {
     repair: uaRepair, 
     btn: uaBtn,
     cards: uaCards,
-    cta: uaCTA
+    cta: uaCTA,
+    projects: uaProjects
   },
 }
 const savedLanguage = localStorage.getItem('language') || 'ru'

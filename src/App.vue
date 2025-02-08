@@ -60,17 +60,19 @@ onUnmounted(() => {
     align-items: center;
     justify-content: center;
     color: $primary;
-    border: 1px solid $bg-island-inner;
+    //border: 1px solid $bg-island-inner;
     border-radius: 50%;
 
-    background-color: transparent;
+    background-color: $btn-primary-default;
 
     transition: all 0.5s ease-in-out;
     &:hover {
-      background-color: $bg-island-inner;
+      background-color: $btn-primary-hover;
+      
     }
     &:active {
-      background-color: $bg-island;
+      background-color: $btn-primary-active;
+      
     }
   }
   &__icon {
