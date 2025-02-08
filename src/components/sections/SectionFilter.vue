@@ -31,6 +31,8 @@ emit('chooseTab', tab.split('.')[2])
 
 
     justify-content: space-between;
+    border-bottom: 1px solid $divider-light;
+    
     //text-transform: uppercase;
   }
   &__text {

@@ -21,15 +21,21 @@ const props = defineProps<{
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: 2px solid transparent;
-    transition: all 0.5s ease-in-out;
+    background-image: linear-gradient(to top, $accent 2px, transparent 1px);
+    background-repeat: no-repeat;
+    background-position-x: left;
+    background-size: 0 100%, 100% 100%;
+
+    transition: all 0.5s cubic-bezier(.165,.84,.44,1);
     &:hover {
         color: $tertiary-inv;
-        border-color: $accent;
+        background-image: linear-gradient(to top, $accent 2px, transparent 1px);
+        background-size: 100% 100%, 100% 100%;
     }
     &:active {
         color: $accent;
-        border-color: $accent;
+        background-size: 100% 100%, 100% 100%;
+
     }
     &--default {
       color: $tertiary-inv;
@@ -37,7 +43,13 @@ const props = defineProps<{
     }
     &--active {
       color: $secondary-inv;
-      border-color: $secondary-inv;
+      background-image: linear-gradient(to top, $secondary-inv 2px, transparent 1px);
+      background-size: 100% 100%, 100% 100%;
+      &:hover {
+        background-image: linear-gradient(to top, $secondary-inv 2px, transparent 1px);
+        background-size: 100% 100%, 100% 100%;
+      }
+
     }
   }
 }
