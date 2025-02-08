@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import SectionFilter from '@/components/sections/SectionFilter.vue'
-import BasePagination from '@/components/base/BasePagination.vue'
-import BaseIcon from '@/components/base/BaseIcon.vue'
 import PagePagination from '@/components/navigation/PagePagination.vue'
 import ProjectCard from '@/components/cards/ProjectCard.vue'
 import { useProjectsStore } from '@/stores/projectsStore'
@@ -13,6 +11,7 @@ const projectsStore = useProjectsStore()
 const currentPage = ref(1)
 const filter = ref<Filter>('all')
 
+const filterTabs: string[] = ['common.prj-filter.all', 'common.prj-filter.repair', 'common.prj-filter.tuning', 'common.prj-filter.expertise']
 const cardsPerPage: number = 6
 const startPrj = computed(() => (currentPage.value - 1) * cardsPerPage)
 const endPrj = computed(() => currentPage.value * cardsPerPage)
@@ -29,7 +28,7 @@ const allPages = computed(() => Math.ceil(filteredProjects.value.length / cardsP
 <template>
   <div class="projects">
     <div class="projects__container container">
-      <SectionFilter />
+      <SectionFilter :filter-tabs="filterTabs" :current-tab="filter" @choose-tab="(tab) => filter = tab"/>
       <div class="projects__card-holder">
         <div v-if="filteredProjects.length === 0" class="projects__nocards">
           <span class="projects__nocards-text">No projects yet</span>
@@ -54,48 +53,7 @@ const allPages = computed(() => Math.ceil(filteredProjects.value.length / cardsP
         @next="() => (currentPage = currentPage + 1)"
         @prev="() => (currentPage = currentPage - 1)"
       />
-      <!-- <div v-show="allPages > 0 && allPages <= 7" class="projects__pagination">
-        <BasePagination v-show="allPages > 1" state="default">
-        <BaseIcon class="projects__pagination-icon" name="chevron_left" path="icons"/>
-        </BasePagination>
-        <BasePagination v-for="p in allPages" :key="p" :state="p === currentPage ? 'active' : 'default'">
-            <span class="projects__pagination-text">{{ p }}</span>
-        </BasePagination>
-        <BasePagination v-show="allPages > 1" state="default">
-        <BaseIcon class="projects__pagination-icon" name="chevron_right" path="icons"/>
-    </BasePagination>
-      </div>
-
-      <div v-show="allPages > 0 && allPages > 7" class="projects__pagination">
-
-        <BasePagination v-show="allPages > 1" state="default">
-        <BaseIcon class="projects__pagination-icon" name="chevron_left" path="icons"/>
-        </BasePagination>
-
-          <BasePagination  :state=" currentPage === 1 ? 'active' : 'default'">
-            <span class="projects__pagination-text">1</span>
-        </BasePagination>
-
-        <div class="pagination__dots" v-show="currentPage > 4">
-            <span class="projects__pagination-text">...</span>
-        </div>
-
-          <BasePagination v-for="p in shownPages" :key="p" :state="p === currentPage ? 'active' : 'default'">
-            <span class="projects__pagination-text">{{ p }}</span>
-        </BasePagination>
-
-        <div v-show="currentPage < (allPages - 3)" class="pagination__dots">
-            <span class="projects__pagination-text">...</span>
-        </div>
-
-        <BasePagination  :state=" currentPage === allPages ? 'active' : 'default'">
-            <span class="projects__pagination-text">{{ allPages }}</span>
-        </BasePagination>
-
-        <BasePagination v-show="allPages > 1" state="default">
-        <BaseIcon class="projects__pagination-icon" name="chevron_right" path="icons"/>
-    </BasePagination>
-      </div> -->
+      
     </div>
   </div>
 </template>
