@@ -1,35 +1,33 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue';
-import { useI18n } from 'vue-i18n';
+import { ref, computed, onMounted } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useProjectsStore } from '@/stores/projectsStore'
 import ProjectCard from '@/components/cards/ProjectCard.vue'
 import SectionHeader from '@/components/sections/SectionHeader.vue'
 import SectionText from '@/components/sections/SectionText.vue'
 import BaseBtn from '@/components/base/BaseBtn.vue'
-import BaseIcon from '@/components/base/BaseIcon.vue';
+import BaseIcon from '@/components/base/BaseIcon.vue'
 
 const currentPage = ref(1)
 const itemsPerPage = ref(3)
 const gridIsVisible = ref(true)
 
 const projectsStore = useProjectsStore()
-console.log(projectsStore.similarProjects('1'));
 
 const cases = computed(() => projectsStore.bestProjects('repair'))
 const { t } = useI18n()
 
-
 function updateItemsPerPage() {
   const width = window.innerWidth
-  if(width >= 1024) {
+  if (width >= 1024) {
     itemsPerPage.value = 3
-  } else if(width >= 768) {
+  } else if (width >= 768) {
     itemsPerPage.value = 2
   } else itemsPerPage.value = 1
-
 }
 
 onMounted(() => {
+  projectsStore.fetchProjects()
   updateItemsPerPage()
   window.addEventListener('resize', updateItemsPerPage)
 })
@@ -42,47 +40,66 @@ const paginatedProjects = computed(() => {
 
 const totalPages = computed(() => Math.ceil(cases.value.length / itemsPerPage.value))
 
-function goToPage(page:number) {
-  if( page < 1 || page > totalPages.value) return
+function goToPage(page: number) {
+  if (page < 1 || page > totalPages.value) return
   gridIsVisible.value = false
   setTimeout(() => {
     currentPage.value = page
     gridIsVisible.value = true
   }, 500)
 }
-
 </script>
 <template>
   <section class="projects">
     <div class="projects__container container">
-      <SectionHeader class="projects__header" :title="t('repair.projects.title')" :subtitle="t('repair.projects.subtitle')" />
+      <SectionHeader
+        class="projects__header"
+        :title="t('repair.projects.title')"
+        :subtitle="t('repair.projects.subtitle')"
+      />
       <div class="projects__content">
         <SectionText class="projects__text" :text="[t('repair.projects.text1')]" />
-        <BaseBtn class="projects__btn" mode="primary" size="large" text="projects" destination="projects" />
+        <BaseBtn
+          class="projects__btn"
+          mode="primary"
+          size="large"
+          text="projects"
+          destination="projects"
+        />
       </div>
       <div class="projects__cards">
         <div class="projects__pagination" v-if="totalPages > 1">
           <div class="pagination">
-            <button class="pagination__btn" type="button" :disabled="currentPage === 1" @click="goToPage(currentPage - 1)">
-              <BaseIcon class="pagination__icon" name="chevron_left" path="icons"/>
+            <button
+              class="pagination__btn"
+              type="button"
+              :disabled="currentPage === 1"
+              @click="goToPage(currentPage - 1)"
+            >
+              <BaseIcon class="pagination__icon" name="chevron_left" path="icons" />
             </button>
             <div class="pagination__info">
-              <span class="pagination__text">{{ currentPage}}</span>
+              <span class="pagination__text">{{ currentPage }}</span>
               <span class="pagination__text">/</span>
               <span class="pagination__text">{{ totalPages }}</span>
             </div>
 
-            <button class="pagination__btn" type="button" :disabled="currentPage === totalPages" @click="goToPage(currentPage + 1)">
-              <BaseIcon class="pagination__icon" name="chevron_right" path="icons"/>
+            <button
+              class="pagination__btn"
+              type="button"
+              :disabled="currentPage === totalPages"
+              @click="goToPage(currentPage + 1)"
+            >
+              <BaseIcon class="pagination__icon" name="chevron_right" path="icons" />
             </button>
           </div>
         </div>
         <Transition name="fade-grid" mode="out-in">
-
           <div class="projects__cards-container" v-if="gridIsVisible" :key="currentPage">
             <div class="projects__card" v-for="(item, index) in paginatedProjects" :key="index">
-              <ProjectCard v-if="item"
-              :id="item.id"
+              <ProjectCard
+                v-if="item"
+                :id="item.id"
                 :title="item.category"
                 :car="item.car.brand + ' ' + item.car.model"
                 :engine="item.engine"
@@ -110,11 +127,11 @@ function goToPage(page:number) {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-   padding: 8px;
-   color: $primary;
+    padding: 8px;
+    color: $primary;
     &[disabled] {
       color: $tertiary;
-    } 
+    }
   }
   &__icon {
     width: 24px;
@@ -124,14 +141,13 @@ function goToPage(page:number) {
     justify-content: center;
   }
   &__info {
-color: $primary;
-display: flex;
-align-items: center;
-column-gap: 2px;
+    color: $primary;
+    display: flex;
+    align-items: center;
+    column-gap: 2px;
   }
   &__text {
     @include small-dark();
-
   }
 }
 .projects {
@@ -145,11 +161,9 @@ column-gap: 2px;
     column-gap: var(--grid-gutter-width);
   }
   &__content {
-
-      display: flex;
-      flex-direction: column;
-      row-gap: var(--spacing-s);
-      
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--spacing-s);
 
     padding-bottom: var(--spacing-m);
   }
@@ -168,26 +182,29 @@ column-gap: 2px;
     align-items: center;
     justify-content: center;
     background-color: $bg-black;
-  border: 1px solid $divider;
-  border-radius: $radius;
-  color: $tertiary;
+    border: 1px solid $divider;
+    border-radius: $radius;
+    color: $tertiary;
   }
   &__temp-text {
     @include h3-dark();
   }
 }
-.fade-grid-enter-active, .fade-grid-leave-active {
-transition: opacity 0.5s ease, transform 0.5s ease;
+.fade-grid-enter-active,
+.fade-grid-leave-active {
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
 }
 
 .fade-grid-enter-from {
-opacity: 0;
-transform: scale(0.95);
+  opacity: 0;
+  transform: scale(0.95);
 }
 
 .fade-grid-leave-to {
-opacity: 0;
-transform: scale(0.95);
+  opacity: 0;
+  transform: scale(0.95);
 }
 @media (max-width: 48rem) {
   .projects {
@@ -197,12 +214,11 @@ transform: scale(0.95);
     }
   }
 }
-@media (min-width: 48rem)  {
+@media (min-width: 48rem) {
   .projects {
     &__cards-container {
       grid-template-columns: repeat(2, 1fr);
     }
-
   }
 }
 @media (min-width: 64rem) {
@@ -217,8 +233,8 @@ transform: scale(0.95);
       justify-content: space-between;
     }
     &__text {
-    width: calc(var(--grid-column-width) * 8 + var( --grid-gutter-width) * 7);
-  }
+      width: calc(var(--grid-column-width) * 8 + var(--grid-gutter-width) * 7);
+    }
   }
 }
 </style>

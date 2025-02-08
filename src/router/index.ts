@@ -110,7 +110,7 @@ const routes = [
     component: () => import('../views/ProjectView.vue'),
     props: true,
     meta: {
-      breadcrumb: '',
+      breadcrumb: 'projects',
     },
   },
   {

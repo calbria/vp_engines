@@ -25,6 +25,7 @@ function updateItemsPerPage() {
 }
 
 onMounted(() => {
+  projectsStore.fetchProjects()
   updateItemsPerPage()
   window.addEventListener('resize', updateItemsPerPage)
 })

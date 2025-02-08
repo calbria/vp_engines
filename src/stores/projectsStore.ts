@@ -4,12 +4,18 @@ import type { Category, Project } from '@/types/project'
 
 export const useProjectsStore = defineStore('projects', {
   state: () => ({
-    projects: mockProjects as Project[],
+    projects: [] as Project[],
     loading: false as boolean,
     error: null as string | null,
   }),
   actions: {
-    async fetchProjects() {
+    //async functiion
+     fetchProjects() {
+
+      if(this.projects.length) return
+      console.log('Fetch');
+      this.projects = mockProjects
+      
       //         this.loading = true;
       //         this.error = null;
       //         try {
@@ -36,7 +42,7 @@ export const useProjectsStore = defineStore('projects', {
       const categories = ['repair', 'tuning', 'expertise']
       return categories.map((category) =>
         state.projects.find((prj) => prj.category === category && prj.showOnMain),
-      )
+      ).filter(Boolean) as Project[]
     },
     bestProjects: (state) => (category: Category) => {
       return state.projects.filter(prj => prj.category === category && prj.featured)
@@ -44,7 +50,10 @@ export const useProjectsStore = defineStore('projects', {
 
     similarProjects: (state) => (id: string) => {
       const currentProject = state.projects.find(prj => prj.id === id)
-      return currentProject?.similarProjects?.map(id => state.projects.find(p => p.id === id))
+      return currentProject?.similarProjects?.map(id => state.projects.find(p => p.id === id)).filter(Boolean) as Project[]
     },
+    projectById: (state) => (id:string) => {
+      return state.projects.find(prj => prj.id === id)
+    }
   },
 })

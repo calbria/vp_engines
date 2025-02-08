@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import SectionFilter from '@/components/sections/SectionFilter.vue'
 import PagePagination from '@/components/navigation/PagePagination.vue'
 import ProjectCard from '@/components/cards/ProjectCard.vue'
@@ -11,10 +11,19 @@ const projectsStore = useProjectsStore()
 const currentPage = ref(1)
 const filter = ref<Filter>('all')
 
-const filterTabs: string[] = ['common.prj-filter.all', 'common.prj-filter.repair', 'common.prj-filter.tuning', 'common.prj-filter.expertise']
+const filterTabs: string[] = [
+  'common.prj-filter.all',
+  'common.prj-filter.repair',
+  'common.prj-filter.tuning',
+  'common.prj-filter.expertise',
+]
 const cardsPerPage: number = 6
 const startPrj = computed(() => (currentPage.value - 1) * cardsPerPage)
 const endPrj = computed(() => currentPage.value * cardsPerPage)
+
+onMounted(() => {
+  projectsStore.fetchProjects()
+})
 
 const filteredProjects = computed(() => {
   if (filter.value === 'all') return projectsStore.allProjects
@@ -22,13 +31,15 @@ const filteredProjects = computed(() => {
 })
 const projects = computed(() => filteredProjects.value.slice(startPrj.value, endPrj.value))
 const allPages = computed(() => Math.ceil(filteredProjects.value.length / cardsPerPage))
-
-
 </script>
 <template>
   <div class="projects">
     <div class="projects__container container">
-      <SectionFilter :filter-tabs="filterTabs" :current-tab="filter" @choose-tab="(tab) => filter = tab"/>
+      <SectionFilter
+        :filter-tabs="filterTabs"
+        :current-tab="filter"
+        @choose-tab="(tab) => (filter = tab)"
+      />
       <div class="projects__card-holder">
         <div v-if="filteredProjects.length === 0" class="projects__nocards">
           <span class="projects__nocards-text">No projects yet</span>
@@ -53,7 +64,6 @@ const allPages = computed(() => Math.ceil(filteredProjects.value.length / cardsP
         @next="() => (currentPage = currentPage + 1)"
         @prev="() => (currentPage = currentPage - 1)"
       />
-      
     </div>
   </div>
 </template>
@@ -74,7 +84,6 @@ const allPages = computed(() => Math.ceil(filteredProjects.value.length / cardsP
   &__nocards-text {
     @include h3-dark();
   }
-
 }
 
 @media (min-width: 48rem) {
