@@ -13,7 +13,7 @@ console.log(typeof route.params.id)
 
 const project = projectsStore.projectById(route.params.id as string)
 </script>
-<template>
+<template> 
   <main class="main-content">
     <BreadCrumbs mode="light"/>
     {{ route.params.id }}

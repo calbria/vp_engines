@@ -11,11 +11,11 @@ const projectsStore = useProjectsStore()
 const currentPage = ref(1)
 const filter = ref<Filter>('all')
 
-const filterTabs: string[] = [
-  'common.prj-filter.all',
-  'common.prj-filter.repair',
-  'common.prj-filter.tuning',
-  'common.prj-filter.expertise',
+const filterTabs: Filter[] = [
+  'all',
+  'repair',
+  'tuning',
+  'expertise',
 ]
 const cardsPerPage: number = 6
 const startPrj = computed(() => (currentPage.value - 1) * cardsPerPage)
@@ -38,6 +38,7 @@ const allPages = computed(() => Math.ceil(filteredProjects.value.length / cardsP
       <SectionFilter
         :filter-tabs="filterTabs"
         :current-tab="filter"
+        type="projects"
         @choose-tab="(tab) => (filter = tab)"
       />
       <div class="projects__card-holder">

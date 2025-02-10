@@ -4,6 +4,7 @@ import { useI18n } from 'vue-i18n'
 const props = defineProps<{
     currentTab: string
   filterTabs: string[]
+  type: string
 }>()
 const emit = defineEmits(['chooseTab'])
 const { t } = useI18n()
@@ -17,8 +18,8 @@ emit('chooseTab', tab.split('.')[2])
 <template>
   <div class="filter">
     <div class="filter__wrapper">
-      <BaseTab v-for="tab in filterTabs" :key="tab" :is-active="tab.split('.')[2] === currentTab " @click="tabHandler(tab)">
-        <span class="filter__text">{{ t(tab) }}</span>
+      <BaseTab v-for="tab in filterTabs" :key="tab" :is-active="tab === currentTab " @click="tabHandler(tab)">
+        <span class="filter__text">{{ t(`${type}.filter.${tab}`) }}</span>
       </BaseTab>
     </div>
   </div>
