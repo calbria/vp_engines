@@ -4,7 +4,7 @@ import Breadcrumbs from '@/components/layout/BreadCrumbs.vue';
 <template>
 <main>
   <h1>This is an about page</h1>
-  <Breadcrumbs/>
+  <Breadcrumbs mode="dark"/>
 </main>
 </template>
 <style scoped lang='scss'>

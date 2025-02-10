@@ -1,60 +1,82 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import BaseIcon from '../base/BaseIcon.vue'
 
 const { t } = useI18n()
 const route = useRoute()
+const router = useRouter()
 const props = defineProps<{
   mode: 'light' | 'dark'
+  customBreadcrumb?: string
+  parentRouteName?: 'projects' | 'blog'
 }>()
-const matched = computed(() => route.matched)
+
+
+const homeRoute = router.getRoutes().find(r => r.name === 'home')
+const parentRoute = props.parentRouteName ? router.getRoutes().find(r => r.name === props.parentRouteName) : null
+
+
+const matched = computed(() => {
+  const routesMatched = [...route.matched]
+  console.log(routesMatched);
+  
+ if(parentRoute) routesMatched.splice(0, 0, parentRoute)
+ console.log(routesMatched);
+ 
+ return homeRoute ? [homeRoute, ...routesMatched] : routesMatched
+ 
+})
 console.log(matched.value)
+
+
 </script>
 <template>
   <nav class="breadcrumbs">
     <div class="breadcrumbs__container container">
       <ul class="breadcrumbs__list">
-        <li
-          class="breadcrumbs__home"
+
+        <li class="breadcrumbs__item"  v-for="(item, index) in matched" :key="index">
+          <div class="breadcrumbs__home"
           :class="{
             'breadcrumbs__home--dark': mode === 'dark',
             'breadcrumbs__home--light': mode === 'light',
           }"
-        >
-          <RouterLink class="breadcrumbs__home-link" :to="{ name: 'home' }">
+          v-if="item.name === 'home'">
+            <RouterLink class="breadcrumbs__home-link" :to="{ name: 'home' }">
             <BaseIcon class="breadcrumbs__home-icon" name="home" path="icons" />
           </RouterLink>
-        </li>
-        <li class="breadcrumbs__list-item" v-for="(item, index) in matched" :key="index">
-          <BaseIcon
-            class="breadcrumbs__chevron"
-            :class="{
-              'breadcrumbs__chevron--dark': mode === 'dark',
-              'breadcrumbs__chevron--light': mode === 'light',
-            }"
-            name="chevron_right"
-            path="icons"
-          />
-          <RouterLink
-            class="breadcrumbs__link"
-            :class="{
-              'breadcrumbs__link--dark': mode === 'dark',
-              'breadcrumbs__link--light': mode === 'light',
-            }"
-            :to="{ name: item.name }"
-          >
-            <span
-              class="breadcrumbs__link-text"
+          </div>
+          <div class="breadcrumbs__item-inner" v-else>
+            <BaseIcon
+              class="breadcrumbs__chevron"
               :class="{
-                'breadcrumbs__link-text--dark': mode === 'dark',
-                'breadcrumbs__link-text--light': mode === 'light',
+                'breadcrumbs__chevron--dark': mode === 'dark',
+                'breadcrumbs__chevron--light': mode === 'light',
               }"
+              name="chevron_right"
+              path="icons"
+            />
+            <RouterLink
+              class="breadcrumbs__link"
+              :class="{
+                'breadcrumbs__link--dark': mode === 'dark',
+                'breadcrumbs__link--light': mode === 'light',
+              }"
+              :to="{ name: item.name }"
             >
-              {{ t(`common.${item.meta.breadcrumb}`) }}
-            </span>
-          </RouterLink>
+              <span
+                class="breadcrumbs__link-text"
+                :class="{
+                  'breadcrumbs__link-text--dark': mode === 'dark',
+                  'breadcrumbs__link-text--light': mode === 'light',
+                }"
+              >
+                {{index === matched.length - 1 && props.customBreadcrumb ? props.customBreadcrumb : t(`common.${item.meta.breadcrumb}`) }}
+              </span>
+            </RouterLink>
+          </div>
         </li>
       </ul>
     </div>
@@ -99,9 +121,12 @@ console.log(matched.value)
   }
   &__list {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+
+flex-direction: column;
+
   }
-  &__list-item {
+  &__item-inner {
     display: flex;
     align-items: center;
   }
@@ -150,8 +175,7 @@ console.log(matched.value)
     }
   }
 }
-.router-link-active {
-}
+
 .router-link-exact-active.breadcrumbs__link--dark {
   border-bottom: 1px solid $tertiary;
   &:hover {
@@ -170,4 +194,14 @@ console.log(matched.value)
     border-bottom: 1px solid $accent;
   }
 }
+
+@media (min-width: 48rem) {
+  .breadcrumbs {
+    &__list {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+}
+
 </style>
