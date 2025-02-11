@@ -6,6 +6,13 @@ import { useProjectsStore } from '@/stores/projectsStore'
 import BreadCrumbs from '@/components/layout/BreadCrumbs.vue'
 import type { Project } from '@/types/project'
 
+import MarkdownIt from 'markdown-it'
+import MarkdownItAnchor from 'markdown-it-anchor'
+
+const md = MarkdownIt().use(MarkdownItAnchor, {
+  slugify: (s) => s.toLowerCase().replace(/\s+/g, '-'),
+})
+
 const route = useRoute()
 const projectsStore = useProjectsStore()
 const { t } = useI18n()
@@ -15,32 +22,33 @@ const project = ref<Project | null>(null)
 onMounted(() => {
   projectsStore.fetchProjects()
 })
-console.log( route.matched)
+console.log(route.matched)
 watch(
   () => projectsStore.projects,
   () => {
     const projectData = projectsStore.projectById(route.params.id as string)
-    if(projectData) {
+    if (projectData) {
       project.value = projectData
-
     }
   },
-  { immediate: true }
+  { immediate: true },
 )
 
 const projectBreadcrumb = computed(() => {
-  if(!project.value) return ''
+  if (!project.value) return ''
   return `${t(`projects.filter.${project.value.category}`)}: ${project.value.car.brand} ${project.value.car.model} ${project.value.engine} (${project.value.date})`
 })
-
 </script>
-<template> 
+<template>
   <main class="main-content">
-    <BreadCrumbs mode="light" :customBreadcrumb="projectBreadcrumb" parent-route-name="projects"/>
+    <BreadCrumbs mode="light" :customBreadcrumb="projectBreadcrumb" parent-route-name="projects" />
 
     {{ project?.car.brand }}
     {{ project?.engine }}
-    {{route.meta.breadcrumb}}
+    {{ route.meta.breadcrumb }}
+
+    <div  v-html="md.render(project?.content)"></div>
+    
   </main>
 </template>
 <style scoped lang="scss">

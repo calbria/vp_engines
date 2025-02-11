@@ -13,40 +13,38 @@ const props = defineProps<{
   parentRouteName?: 'projects' | 'blog'
 }>()
 
-
-const homeRoute = router.getRoutes().find(r => r.name === 'home')
-const parentRoute = props.parentRouteName ? router.getRoutes().find(r => r.name === props.parentRouteName) : null
-
+const homeRoute = router.getRoutes().find((r) => r.name === 'home')
+const parentRoute = props.parentRouteName
+  ? router.getRoutes().find((r) => r.name === props.parentRouteName)
+  : null
 
 const matched = computed(() => {
   const routesMatched = [...route.matched]
-  console.log(routesMatched);
-  
- if(parentRoute) routesMatched.splice(0, 0, parentRoute)
- console.log(routesMatched);
- 
- return homeRoute ? [homeRoute, ...routesMatched] : routesMatched
- 
+
+
+  if (parentRoute) routesMatched.splice(0, 0, parentRoute)
+
+
+  return homeRoute ? [homeRoute, ...routesMatched] : routesMatched
 })
-console.log(matched.value)
-
-
+//console.log(matched.value)
 </script>
 <template>
   <nav class="breadcrumbs">
     <div class="breadcrumbs__container container">
       <ul class="breadcrumbs__list">
-
-        <li class="breadcrumbs__item"  v-for="(item, index) in matched" :key="index">
-          <div class="breadcrumbs__home"
-          :class="{
-            'breadcrumbs__home--dark': mode === 'dark',
-            'breadcrumbs__home--light': mode === 'light',
-          }"
-          v-if="item.name === 'home'">
+        <li class="breadcrumbs__item" v-for="(item, index) in matched" :key="index">
+          <div
+            class="breadcrumbs__home"
+            :class="{
+              'breadcrumbs__home--dark': mode === 'dark',
+              'breadcrumbs__home--light': mode === 'light',
+            }"
+            v-if="item.name === 'home'"
+          >
             <RouterLink class="breadcrumbs__home-link" :to="{ name: 'home' }">
-            <BaseIcon class="breadcrumbs__home-icon" name="home" path="icons" />
-          </RouterLink>
+              <BaseIcon class="breadcrumbs__home-icon" name="home" path="icons" />
+            </RouterLink>
           </div>
           <div class="breadcrumbs__item-inner" v-else>
             <BaseIcon
@@ -73,7 +71,11 @@ console.log(matched.value)
                   'breadcrumbs__link-text--light': mode === 'light',
                 }"
               >
-                {{index === matched.length - 1 && props.customBreadcrumb ? props.customBreadcrumb : t(`common.${item.meta.breadcrumb}`) }}
+                {{
+                  index === matched.length - 1 && props.customBreadcrumb
+                    ? props.customBreadcrumb
+                    : t(`common.${item.meta.breadcrumb}`)
+                }}
               </span>
             </RouterLink>
           </div>
@@ -89,6 +91,7 @@ console.log(matched.value)
   }
   &__home {
     cursor: pointer;
+   display: flex;
 
     transition: all 0.5s ease-in-out;
     &--light {
@@ -114,6 +117,7 @@ console.log(matched.value)
     display: flex;
     justify-content: center;
     align-items: center;
+    
   }
   &__home-icon {
     width: 24px;
@@ -121,10 +125,9 @@ console.log(matched.value)
   }
   &__list {
     display: flex;
-    align-items: flex-start;
-
-flex-direction: column;
-
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
   }
   &__item-inner {
     display: flex;
@@ -133,7 +136,8 @@ flex-direction: column;
   &__link {
     display: flex;
     align-items: center;
-    height: 24px;
+
+   // height: 24px;
     cursor: pointer;
     transition: all 0.5s ease-in-out;
     &--dark {
@@ -164,9 +168,9 @@ flex-direction: column;
     }
   }
   &__chevron {
-    
     width: 24px;
     height: 24px;
+    flex-shrink: 0;
     &--light {
       color: $tertiary-inv;
     }
@@ -198,10 +202,7 @@ flex-direction: column;
 @media (min-width: 48rem) {
   .breadcrumbs {
     &__list {
-      flex-direction: row;
-      align-items: center;
     }
   }
 }
-
 </style>
