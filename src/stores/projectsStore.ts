@@ -4,7 +4,7 @@ import type { Category, Project } from '@/types/project'
 
 export const useProjectsStore = defineStore('projects', {
   state: () => ({
-    projects: [] as Project[],
+    projects: mockProjects as Project[],
     loading: false as boolean,
     error: null as string | null,
   }),

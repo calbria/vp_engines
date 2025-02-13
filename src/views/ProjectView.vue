@@ -4,6 +4,7 @@ import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
 import { useProjectsStore } from '@/stores/projectsStore'
 import BreadCrumbs from '@/components/layout/BreadCrumbs.vue'
+import HeroSection from '@/components/layout/project/HeroSection.vue'
 import type { Project } from '@/types/project'
 
 import MarkdownIt from 'markdown-it'
@@ -39,16 +40,31 @@ const projectBreadcrumb = computed(() => {
   return `${t(`projects.filter.${project.value.category}`)}: ${project.value.car.brand} ${project.value.car.model} ${project.value.engine} (${project.value.date})`
 })
 </script>
+
 <template>
   <main class="main-content">
     <BreadCrumbs mode="light" :customBreadcrumb="projectBreadcrumb" parent-route-name="projects" />
 
-    {{ project?.car.brand }}
-    {{ project?.engine }}
-    {{ route.meta.breadcrumb }}
+    <HeroSection
+      :category="project ? project.category : ''"
+      :model="
+        project
+          ? project?.car.brand + ' ' + project?.car.model + ' ' + '(' + project?.car.year + ')'
+          : ''
+      "
+      :engine="project ? project.engine : ''"
+      :image="project ? project.heroImg : ''"
+    />
 
-    <div  v-html="md.render(project?.content)"></div>
-    
+    <!-- Intro -->
+    <div v-if="project" v-html="md.render(project.content)"></div>
+    <!-- Video -->
+    <!-- Main content -->
+    <!-- Results -->
+    <!-- Gallery slider -->
+    <!-- CTA -->
+    <!-- Similar projects -->
+    <!-- Useful posts -->
   </main>
 </template>
 <style scoped lang="scss">

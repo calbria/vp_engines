@@ -16,7 +16,7 @@ export interface Project {
     cardImg: string
     destination: string //to navigate to the project page `/projects/${project.id}`
     content: string
-    // heroImg: string
+     heroImg: string
     // description: string
     // features: string
     // disassembly: string

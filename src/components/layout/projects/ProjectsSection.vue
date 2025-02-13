@@ -33,8 +33,8 @@ const projects = computed(() => filteredProjects.value.slice(startPrj.value, end
 const allPages = computed(() => Math.ceil(filteredProjects.value.length / cardsPerPage))
 </script>
 <template>
-  <div class="projects">
-    <div class="projects__container container">
+  <div  class="projects">
+    <div v-if="filteredProjects" class="projects__container container">
       <SectionFilter
         :filter-tabs="filterTabs"
         :current-tab="filter"
@@ -66,6 +66,12 @@ const allPages = computed(() => Math.ceil(filteredProjects.value.length / cardsP
         @prev="() => (currentPage = currentPage - 1)"
       />
     </div>
+    <div v-else class="projects__fallback container">
+      <span class="projects__fallback-text">
+
+        Something went wrong. Try again later.
+      </span>
+    </div>
   </div>
 </template>
 <style scoped lang="scss">
@@ -84,6 +90,12 @@ const allPages = computed(() => Math.ceil(filteredProjects.value.length / cardsP
   }
   &__nocards-text {
     @include h3-dark();
+  }
+  &__fallback {
+padding: var(--spacing-m);
+  }
+  &__fallback-text {
+    @include subheader-2-light();
   }
 }
 

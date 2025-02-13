@@ -15,7 +15,8 @@ export const mockProjects: Project[] = [
         category:  'repair',
         summary: 'Владелец автомобиля обратился с жалобой на стук.  В масляном фильтре была обнаружена металлическая стружка. В результате капитального ремонта двигатель работает как новый.',
         cardImg: '/images/img_977x726.png',
-        destination: 'project', //to navigate to the project page `/projects/${project.id}`
+        destination: 'project', //to navigate to the project page `/projects/${project.id}`,
+        heroImg: '/images/img_539x958.png',
         content:`
 
 #### Описание проблемы
@@ -53,7 +54,8 @@ export const mockProjects: Project[] = [
         category:  'tuning',
         summary: 'Владелец автомобиля обратился с жалобой на стук.  В масляном фильтре была обнаружена металлическая стружка. В результате капитального ремонта двигатель работает как новый.',
         cardImg: '/images/img_977x726.png',
-        destination: 'project', //to navigate to the project page `/projects/${project.id}`
+        destination: 'project', //to navigate to the project page `/projects/${project.id}`,
+        heroImg: '/images/img_539x958.png',
        content: 'Project 2 content'
     },
     {
@@ -70,7 +72,8 @@ export const mockProjects: Project[] = [
         category:  'expertise',
         summary: 'Владелец автомобиля обратился с жалобой на стук.  В масляном фильтре была обнаружена металлическая стружка. В результате капитального ремонта двигатель работает как новый.',
         cardImg: '/images/img_977x726.png',
-        destination: 'project', //to navigate to the project page `/projects/${project.id}`
+        destination: 'project', //to navigate to the project page `/projects/${project.id}`,
+        heroImg: '/images/img_539x958.png',
        content: 'Project 3 content'
     },
     {
@@ -87,7 +90,8 @@ export const mockProjects: Project[] = [
         category:  'repair',
         summary: 'Владелец автомобиля обратился с жалобой на стук.  В масляном фильтре была обнаружена металлическая стружка. В результате капитального ремонта двигатель работает как новый.',
         cardImg: '/images/img_977x726.png',
-        destination: 'project', //to navigate to the project page `/projects/${project.id}`
+        destination: 'project', //to navigate to the project page `/projects/${project.id}`,
+        heroImg: '/images/img_539x958.png',
        content: 'Project 4 content'
     },
     {
@@ -104,7 +108,8 @@ export const mockProjects: Project[] = [
         category:  'repair',
         summary: 'Владелец автомобиля обратился с жалобой на стук.  В масляном фильтре была обнаружена металлическая стружка. В результате капитального ремонта двигатель работает как новый.',
         cardImg: '/images/img_977x726.png',
-        destination: 'project', //to navigate to the project page `/projects/${project.id}`
+        destination: 'project', //to navigate to the project page `/projects/${project.id}`,
+        heroImg: '/images/img_539x958.png',
        content: 'Project 5 content'
     },
     {
@@ -121,7 +126,8 @@ export const mockProjects: Project[] = [
         category:  'repair',
         summary: 'Владелец автомобиля обратился с жалобой на стук.  В масляном фильтре была обнаружена металлическая стружка. В результате капитального ремонта двигатель работает как новый.',
         cardImg: '/images/img_977x726.png',
-        destination: 'project', //to navigate to the project page `/projects/${project.id}`
+        destination: 'project', //to navigate to the project page `/projects/${project.id}`,
+        heroImg: '/images/img_539x958.png',
        content: 'Project 6 content'
     },
     {
@@ -138,7 +144,8 @@ export const mockProjects: Project[] = [
         category:  'repair',
         summary: 'Владелец автомобиля обратился с жалобой на стук.  В масляном фильтре была обнаружена металлическая стружка. В результате капитального ремонта двигатель работает как новый.',
         cardImg: '/images/img_977x726.png',
-        destination: 'project', //to navigate to the project page `/projects/${project.id}`
+        destination: 'project', //to navigate to the project page `/projects/${project.id}`,
+        heroImg: '/images/img_539x958.png',
        content: 'Project 7 content'
     },
     {
@@ -155,7 +162,8 @@ export const mockProjects: Project[] = [
         category:  'repair',
         summary: 'Владелец автомобиля обратился с жалобой на стук.  В масляном фильтре была обнаружена металлическая стружка. В результате капитального ремонта двигатель работает как новый.',
         cardImg: '/images/img_977x726.png',
-        destination: 'project', //to navigate to the project page `/projects/${project.id}`
+        destination: 'project', //to navigate to the project page `/projects/${project.id}`,
+        heroImg: '/images/img_539x958.png',
        content: 'Project 8 content'
     },
 ]
