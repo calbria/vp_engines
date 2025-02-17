@@ -12,7 +12,7 @@ const { t } = useI18n()
 function tabHandler(tab:string) {
     console.log(tab);
     
-emit('chooseTab', tab.split('.')[2])
+emit('chooseTab', tab)
 }
 </script>
 <template>

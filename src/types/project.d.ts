@@ -39,7 +39,8 @@ export interface Project {
     // machineCost: number
     // sparePartsCost: number
     // gallery: string[]
-    // video?: string
+     videoID?: string,
+     videoText?: string
     // startDate?: string; // Date when the project started
     // completionDate?: string; // Date when the project was completed
     // relatedArticles?: string[]

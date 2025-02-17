@@ -60,7 +60,7 @@ const projectBreadcrumb = computed(() => {
     />
     <ProjectSection  :title="project ? project?.category : ''" :car="project
           ? project?.car.brand + ' ' + project?.car.model + ' ' + '(' + project?.car.year + ')' + ' ' + project.engine
-          : ''" :intro="project ? project.contentIntro : ''"/>
+          : ''" :intro="project ? project.contentIntro : ''" :video="project?.videoID" :video-text="project?.videoText"/>
 
     <!-- Gallery slider -->
     <!-- CTA -->
