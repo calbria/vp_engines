@@ -5,6 +5,7 @@ import { useRoute } from 'vue-router'
 import { useProjectsStore } from '@/stores/projectsStore'
 import BreadCrumbs from '@/components/layout/BreadCrumbs.vue'
 import HeroSection from '@/components/layout/project/HeroSection.vue'
+import ProjectSection from '@/components/layout/project/ProjectSection.vue'
 import type { Project } from '@/types/project'
 
 import MarkdownIt from 'markdown-it'
@@ -23,7 +24,7 @@ const project = ref<Project | null>(null)
 onMounted(() => {
   projectsStore.fetchProjects()
 })
-console.log(route.matched)
+
 watch(
   () => projectsStore.projects,
   () => {
@@ -31,6 +32,8 @@ watch(
     if (projectData) {
       project.value = projectData
     }
+    console.log('Project watcher');
+    
   },
   { immediate: true },
 )
@@ -42,7 +45,7 @@ const projectBreadcrumb = computed(() => {
 </script>
 
 <template>
-  <main class="main-content">
+  <main class="project main-content">
     <BreadCrumbs mode="light" :customBreadcrumb="projectBreadcrumb" parent-route-name="projects" />
 
     <HeroSection
@@ -55,12 +58,10 @@ const projectBreadcrumb = computed(() => {
       :engine="project ? project.engine : ''"
       :image="project ? project.heroImg : ''"
     />
+    <ProjectSection  :title="project ? project?.category : ''" :car="project
+          ? project?.car.brand + ' ' + project?.car.model + ' ' + '(' + project?.car.year + ')' + ' ' + project.engine
+          : ''" :intro="project ? project.contentIntro : ''"/>
 
-    <!-- Intro -->
-    <div v-if="project" v-html="md.render(project.content)"></div>
-    <!-- Video -->
-    <!-- Main content -->
-    <!-- Results -->
     <!-- Gallery slider -->
     <!-- CTA -->
     <!-- Similar projects -->
@@ -72,4 +73,5 @@ main {
   background-color: $bg-white;
   min-height: 100vh;
 }
+
 </style>

@@ -46,7 +46,7 @@ const { t } = useI18n()
   &__wrapper {
     display: block;
     position: relative;
-    margin: var(--spacing-s) 0;
+    margin: var(--spacing-m) 0;
   }
   &__media {
     display: block;
