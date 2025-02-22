@@ -20,8 +20,8 @@ const { t } = useI18n()
       <div class="hero__container container">
 
         <div class="hero__content ">
-          <h1 class="hero__title">{{category ? t(`projects.category.${category}`) : 'Something went wrong'}}</h1>
-          <div v-if="model && engine" class="hero__content-inner">
+          <h1 class="hero__title">{{t(`projects.category.${category}`)}}</h1>
+          <div class="hero__content-inner">
             <p class="hero__content-item">
               <span class="hero__text">{{t('projects.label.car')}}</span>
               <span class="hero__content-text">{{ model }}</span> 

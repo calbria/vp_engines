@@ -39,7 +39,38 @@ export const mockProjects: Project[] = [
 `,
         videoID: '78IZ0B5HM_Y',
         videoText: 'В этом видео вы увидите процесс работы над проектом в деталях с подробными комментариями.',
-        contentMain: '',
+        contentMain: `
+
+- ### 1. Разборка
+
+    При разборке были обнаружены
+    повреждения шестой шатунной шейки коленвала,
+    шатунные вкладыши были разрушены, 
+    повреждена нижняя головка шатуна шестого цилиндра.
+        
+    Все внутренние поверхности деталей были покрыты толстым слоем нагара, что свидетельствует о надлежащем техобслуживании двигателя.
+- ![Разборка](/images/img_3x4.png)
+
+-  ![Дефектовка](/images/img_3x4.png)
+
+- ### 2. Дефектовка
+    - Детальная дефектовка  показала: 
+      деформации коленвала не позволяют его восстановить, так как в процессе эксплуатации возможно образование микротрещин и разрушение детали.
+      геометрия постели коленвала имеет критическую деформацию в местах установки вкладышей
+      остальные детали  не имеют существенных отклонений от номинальных значений.
+        
+      Решение:заменить коленвал на новый оригинальный и восстановить геометрию постели коленвала по сформированному нами техзаданию на координатно-расточном станке.
+
+
+- ### 3. Подбор запчастей   
+    При разборке были обнаружены : 
+    повреждения шестой шатунной шейки коленвала.
+    шатунные вкладыши были разрушены
+    повреждена нижняя головка шатуна шестого цилиндра.
+    
+    Все внутренние поверхности деталей были покрыты толстым слоем нагара, что свидетельствует о надлежащем техобслуживании двигателя.
+- ![Подбор запчастей](/images/img_3x4.png)
+`,
         contentResults: '',
         similarProjects: ['4', '5']
        
@@ -60,7 +91,7 @@ export const mockProjects: Project[] = [
         cardImg: '/images/img_977x726.png',
         destination: 'project', //to navigate to the project page `/projects/${project.id}`,
         heroImg: '/images/img_539x958.png',
-       content: 'Project 2 content'
+       contentMain: 'Project 2 content'
     },
     {
         id: '3',
@@ -78,7 +109,7 @@ export const mockProjects: Project[] = [
         cardImg: '/images/img_977x726.png',
         destination: 'project', //to navigate to the project page `/projects/${project.id}`,
         heroImg: '/images/img_539x958.png',
-       content: 'Project 3 content'
+       contentMain: 'Project 3 content'
     },
     {
         id: '4',
@@ -96,7 +127,7 @@ export const mockProjects: Project[] = [
         cardImg: '/images/img_977x726.png',
         destination: 'project', //to navigate to the project page `/projects/${project.id}`,
         heroImg: '/images/img_539x958.png',
-       content: 'Project 4 content'
+       contentMain: 'Project 4 content'
     },
     {
         id: '5',
@@ -114,7 +145,7 @@ export const mockProjects: Project[] = [
         cardImg: '/images/img_977x726.png',
         destination: 'project', //to navigate to the project page `/projects/${project.id}`,
         heroImg: '/images/img_539x958.png',
-       content: 'Project 5 content'
+       contentMain: 'Project 5 content'
     },
     {
         id: '6',
@@ -132,7 +163,7 @@ export const mockProjects: Project[] = [
         cardImg: '/images/img_977x726.png',
         destination: 'project', //to navigate to the project page `/projects/${project.id}`,
         heroImg: '/images/img_539x958.png',
-       content: 'Project 6 content'
+       contentMain: 'Project 6 content'
     },
     {
         id: '7',
@@ -150,7 +181,7 @@ export const mockProjects: Project[] = [
         cardImg: '/images/img_977x726.png',
         destination: 'project', //to navigate to the project page `/projects/${project.id}`,
         heroImg: '/images/img_539x958.png',
-       content: 'Project 7 content'
+       contentMain: 'Project 7 content'
     },
     {
         id: '8',
@@ -168,6 +199,6 @@ export const mockProjects: Project[] = [
         cardImg: '/images/img_977x726.png',
         destination: 'project', //to navigate to the project page `/projects/${project.id}`,
         heroImg: '/images/img_539x958.png',
-       content: 'Project 8 content'
+       contentMain: 'Project 8 content'
     },
 ]

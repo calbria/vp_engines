@@ -32,8 +32,7 @@ watch(
     if (projectData) {
       project.value = projectData
     }
-    console.log('Project watcher');
-    
+    console.log('Project watcher')
   },
   { immediate: true },
 )
@@ -46,26 +45,42 @@ const projectBreadcrumb = computed(() => {
 
 <template>
   <main class="project main-content">
-    <BreadCrumbs mode="light" :customBreadcrumb="projectBreadcrumb" parent-route-name="projects" />
+    <div v-if="project">
 
-    <HeroSection
-      :category="project ? project.category : ''"
-      :model="
-        project
-          ? project?.car.brand + ' ' + project?.car.model + ' ' + '(' + project?.car.year + ')'
-          : ''
-      "
-      :engine="project ? project.engine : ''"
-      :image="project ? project.heroImg : ''"
-    />
-    <ProjectSection  :title="project ? project?.category : ''" :car="project
-          ? project?.car.brand + ' ' + project?.car.model + ' ' + '(' + project?.car.year + ')' + ' ' + project.engine
-          : ''" :intro="project ? project.contentIntro : ''" :video="project?.videoID" :video-text="project?.videoText"/>
-
-    <!-- Gallery slider -->
-    <!-- CTA -->
-    <!-- Similar projects -->
-    <!-- Useful posts -->
+      <BreadCrumbs mode="light" :customBreadcrumb="projectBreadcrumb" parent-route-name="projects" />
+  
+      <HeroSection
+        :category="project.category"
+        :model="project?.car.brand + ' ' + project?.car.model + ' ' + '(' + project?.car.year + ')'"
+        :engine="project.engine"
+        :image="project.heroImg"
+      />
+      
+      <ProjectSection
+        :title="project.category"
+        :car="
+          project?.car.brand +
+          ' ' +
+          project?.car.model +
+          ' ' +
+          '(' +
+          project?.car.year +
+          ')' +
+          ' ' +
+          project.engine
+        "
+        :intro="project.contentIntro"
+        :main="project.contentMain"
+        :video="project?.videoID"
+        :video-text="project?.videoText"
+      />
+  
+      <!-- Gallery slider -->
+      <!-- CTA -->
+      <!-- Similar projects -->
+      <!-- Useful posts -->
+    </div>
+    <div v-else>Something went wrong</div>
   </main>
 </template>
 <style scoped lang="scss">
@@ -73,5 +88,4 @@ main {
   background-color: $bg-white;
   min-height: 100vh;
 }
-
 </style>
