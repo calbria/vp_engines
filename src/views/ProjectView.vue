@@ -6,14 +6,8 @@ import { useProjectsStore } from '@/stores/projectsStore'
 import BreadCrumbs from '@/components/layout/BreadCrumbs.vue'
 import HeroSection from '@/components/layout/project/HeroSection.vue'
 import ProjectSection from '@/components/layout/project/ProjectSection.vue'
+import GallerySection from '@/components/layout/project/GallerySection.vue'
 import type { Project } from '@/types/project'
-
-import MarkdownIt from 'markdown-it'
-import MarkdownItAnchor from 'markdown-it-anchor'
-
-const md = MarkdownIt().use(MarkdownItAnchor, {
-  slugify: (s) => s.toLowerCase().replace(/\s+/g, '-'),
-})
 
 const route = useRoute()
 const projectsStore = useProjectsStore()
@@ -46,16 +40,19 @@ const projectBreadcrumb = computed(() => {
 <template>
   <main class="project main-content">
     <div v-if="project">
+      <BreadCrumbs
+        mode="light"
+        :customBreadcrumb="projectBreadcrumb"
+        parent-route-name="projects"
+      />
 
-      <BreadCrumbs mode="light" :customBreadcrumb="projectBreadcrumb" parent-route-name="projects" />
-  
       <HeroSection
         :category="project.category"
         :model="project?.car.brand + ' ' + project?.car.model + ' ' + '(' + project?.car.year + ')'"
         :engine="project.engine"
         :image="project.heroImg"
       />
-      
+
       <ProjectSection
         :title="project.category"
         :car="
@@ -71,14 +68,17 @@ const projectBreadcrumb = computed(() => {
         "
         :intro="project.contentIntro"
         :main="project.contentMain"
+        :results="project.contentResults"
         :video="project?.videoID"
         :video-text="project?.videoText"
       />
-  
       <!-- Gallery slider -->
+      <GallerySection v-if="project.gallery" :images="project.gallery"/>
+
       <!-- CTA -->
       <!-- Similar projects -->
       <!-- Useful posts -->
+       
     </div>
     <div v-else>Something went wrong</div>
   </main>

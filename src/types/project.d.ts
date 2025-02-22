@@ -15,9 +15,9 @@ export interface Project {
     summary: string
     cardImg: string
     destination: string //to navigate to the project page `/projects/${project.id}`
-    contentIntro?: string
-    contentMain?: string
-    contentResults?: string
+    contentIntro: string
+    contentMain: string
+    contentResults: string
      heroImg: string
     // description: string
     // features: string
@@ -38,7 +38,7 @@ export interface Project {
     // engineerCost: number
     // machineCost: number
     // sparePartsCost: number
-    // gallery: string[]
+    gallery?: string[]
      videoID?: string,
      videoText?: string
     // startDate?: string; // Date when the project started

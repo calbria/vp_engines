@@ -13,6 +13,7 @@ const props = defineProps<{
   car: string
   intro: string
   main: string
+  results: string
   video?: string
   videoText?: string
 }>()
@@ -45,7 +46,7 @@ const props = defineProps<{
       <!-- Main content -->
       <div class="project__main" v-if="main" v-html="md.render(main)"></div>
       <!-- Results -->
-      <div class="project__results">Results</div>
+      <div class="project__results" v-if="results" v-html="md.render(results)"></div>
     </div>
   </section>
 </template>
@@ -55,6 +56,7 @@ const props = defineProps<{
     display: flex;
     flex-direction: column;
     row-gap: var(--spacing-m);
+    padding-bottom: var(--spacing-m);
   }
   &__title {
     display: none;
@@ -138,22 +140,59 @@ const props = defineProps<{
   display: grid;
   row-gap: var(--spacing-s);
 }
-.project__main  li {
+.project__main li {
   display: flex;
   flex-direction: column;
-  row-gap: var(--spacing-xxs);
+  row-gap: 0.5rem;
 }
-.project__main  h3 {
+.project__main h4 {
+  color: $primary-inv;
+  @include h4-dark();
+}
+.project__main p {
+  color: $secondary-inv;
+
+  @include normal-light();
+}
+
+.project__main img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.project__results > ul {
+  display: grid;
+  row-gap: var(--spacing-s);
+}
+.project__results > ul > li {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+
+}
+.project__results > ul > li > ul {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+
+}
+.project__results h3 {
   color: $primary-inv;
   @include h3-dark();
 }
-.project__main  p {
+.project__results > ul > li > ul > li {
+  list-style: disc inside;
   color: $secondary-inv;
+  display: flex;
+  justify-content: space-between;
   @include normal-light();
 }
-.project__main  img {
-width: 100%;
-object-fit: cover;
+.project__results > ul > li > h4 {
+  text-align: right;
+  color: $primary-inv;
+  padding-top: 0.5rem;
+border-top: 1px solid $divider;
+  @include h4-dark();
 }
 
 @media (min-width: 64rem) {
@@ -183,5 +222,9 @@ object-fit: cover;
     align-items: center;
   }
 
+  .project__results > ul {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: var(--grid-gutter-width);
+  }
 }
 </style>

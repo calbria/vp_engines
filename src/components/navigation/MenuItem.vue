@@ -63,7 +63,7 @@ function chooseSubItem(name:string) {
     </ul>
   </li>
   <li v-else class="menu-item">
-    <RouterLink :to="{ name: name }" class="menu-item__link" @click="chooseItem">
+    <RouterLink :to="{ name: name }" class="menu-item__link" :class="{'router-link-active': name === 'projects'}" @click="chooseItem">
       <span class="menu-item__link-text">
         {{ t(`common.${name}`) }}
       </span>
