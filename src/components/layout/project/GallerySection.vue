@@ -1,6 +1,6 @@
 <script setup lang='ts'>
 import { useI18n } from 'vue-i18n';
-import 'vue3-carousel/carousel.css'
+//import 'vue3-carousel/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 import BaseIcon from '@/components/base/BaseIcon.vue'
 
@@ -32,7 +32,7 @@ const carouselConfig = {
 <section class="gallery">
     <div class="gallery__wrapper container">
         <h2 class="gallery__title">{{ t('projects.gallery') }}</h2>
-        <Carousel v-bind="carouselConfig">
+        <Carousel v-bind="carouselConfig" class="carousel__light">
 
             <Slide class="gallery__slide" v-for="(img, index) in images" :key="index">
                 <img class="gallery__img" :src="img" alt="img">
@@ -55,12 +55,13 @@ const carouselConfig = {
 </template>
 <style lang='scss'>
 .gallery {
-    background-color: $bg-globe;
+    
     &__wrapper {
         padding: var(--spacing-m) 0;
     } 
     &__title {
-        color: $primary;
+			padding-bottom: var(--spacing-s);
+        color: $primary-inv;
         @include h2-dark();
     }
     &__slide {
@@ -72,9 +73,7 @@ const carouselConfig = {
         object-fit: cover;
         overflow: hidden;
     }
-    &__controls-icon {
-        color: $primary;
-    }
+
 }
 
 </style>

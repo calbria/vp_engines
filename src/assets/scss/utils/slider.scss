@@ -1,0 +1,171 @@
+.carousel {
+	padding-bottom: 2.5rem;
+
+	&__item {
+		height: 100%;
+	}
+}
+
+.carousel__next,
+.carousel__prev {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 2rem;
+	height: 2rem;
+	margin: 0;
+	top: auto;
+	bottom: -20px;
+	background-color: transparent;
+	transition: all 0.5s ease-in-out;
+}
+
+// $bg-globe: #1b232c;
+// $bg-island: #2c3744;
+// $bg-island-inner: #5C7188;
+// $bg-white: #e3f0ff;
+// $bg-black: #151b22;
+
+// $accent: #006ce0;
+
+// //text colors
+// $primary: rgba(227, 240, 255, 1);
+// $secondary: rgba(227, 240, 255, 0.75);
+// $tertiary: rgba(227, 240, 255, 0.4);
+// $placeholder: rgba(227, 240, 255, 0.25);
+
+// $primary-inv: rgba(27, 35, 44, 1);
+// $secondary-inv: rgba(27, 35, 44, 0.75);
+// $tertiary-inv: rgba(27, 35, 44, 0.5);
+// $placeholder-inv: rgba(27, 35, 44, 0.25);
+
+// //icons
+// $icon-default: #b1bdca;
+// $icon-hover: #e3f0ff;
+// $icon-click: #006ce0;
+
+// //extra
+// $divider: #5C7188;
+// $divider-light: #B3C3D4;
+// $input-default: #616B76;
+
+.carousel__dark .carousel__next,
+.carousel__dark .carousel__prev {
+	color: rgba(227, 240, 255, 1);
+}
+.carousel__light .carousel__next,
+.carousel__light .carousel__prev {
+	color: #5C7188;
+}
+
+.carousel__next:hover,
+.carousel__prev:hover {
+
+	color: rgba(227, 240, 255, 1);
+}
+
+.carousel__next:active,
+.carousel__prev:active {
+
+	color: #006ce0;
+}
+
+.carousel__next {
+	right: 16px;
+}
+
+.carousel__prev {
+	left: 16px;
+}
+
+.carousel__pagination {
+	bottom: 0;
+}
+
+.carousel__pagination-button {
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+
+}
+.carousel__dark .carousel__pagination-button {
+	background-color: #2c3744;
+}
+.carousel__light .carousel__pagination-button {
+	background-color: #B3C3D4;
+}
+
+.carousel__pagination-button:hover {
+	background-color: #5C7188;
+}
+
+.carousel__pagination-button:active {
+	background-color: #006ce0;
+}
+
+.carousel__dark .carousel__pagination-button--active {
+	background-color: rgba(227, 240, 255, 1);
+}
+.carousel__light .carousel__pagination-button--active {
+	background-color: #5C7188;
+}
+
+@media (min-width: 64rem) {
+	.carousel {
+		padding-bottom: 3rem;
+	}
+
+	.carousel__next,
+	.carousel__prev {
+		width: 2.5rem;
+		height: 2.5rem;
+		top: 50%;
+		transform: translateY(-100%);
+		
+		border-radius: 50%;
+	}
+	.carousel__dark .carousel__next,
+.carousel__dark .carousel__prev {
+	border: 1px solid #5C7188;
+}
+.carousel__light .carousel__next,
+.carousel__light .carousel__prev {
+	border: 1px solid #B3C3D4;
+}
+
+	.carousel__next:hover,
+	.carousel__prev:hover {
+		background-color: #5C7188;
+		color: rgba(227, 240, 255, 1);
+	}
+
+	.carousel__next:active,
+	.carousel__prev:active {
+		background-color: #2c3744;
+		color: rgba(227, 240, 255, 1);
+	}
+
+	.carousel__next {
+		right: -56px;
+	}
+
+	.carousel__prev {
+		left: -56px;
+	}
+
+	.carousel__pagination {}
+}
+
+@media (min-width: 80rem) {
+
+	.carousel__next,
+	.carousel__prev {}
+
+	.carousel__next {
+		right: -64px;
+	}
+
+	.carousel__prev {
+		left: -64px;
+	}
+}

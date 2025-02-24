@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import 'vue3-carousel/carousel.css'
+//import 'vue3-carousel/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 import SliderCard from '@/components/cards/SliderCard.vue'
 import BaseIcon from '@/components/base/BaseIcon.vue'
@@ -50,7 +50,7 @@ const stages = [
 ]
 </script>
 <template>
-  <Carousel v-bind="carouselConfig">
+  <Carousel v-bind="carouselConfig" class="carousel__dark">
     <Slide v-for="slide in stages" :key="slide.id">
       <div class="carousel__item">
         <SliderCard
@@ -75,113 +75,6 @@ const stages = [
     </template>
   </Carousel>
 </template>
-<style lang="scss">
-.carousel {
-  padding-bottom: 2.5rem;
-  &__item {
-    height: 100%;
-  }
+<style scoped lang="scss">
 
-}
-.carousel__next,
-  .carousel__prev {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 2rem;
-    height: 2rem;
-    margin: 0;
-    color: $primary;
-    top: auto;
-bottom: -20px;
-    background-color: transparent;
-    transition: all 0.5s ease-in-out;
-  }
-  .carousel__next:hover,
-  .carousel__prev:hover {
-
-    color: $primary;
-  }
-  .carousel__next:active,
-  .carousel__prev:active {
-
-    color: $accent;
-  }
-  .carousel__next {
-    right: 16px;
-  }
-  .carousel__prev {
-    left: 16px;
-  }
-
-.carousel__pagination {
-  bottom: 0;
-}
-.carousel__pagination-button {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: $bg-island;
-}
-.carousel__pagination-button:hover {
-  background-color: $bg-island-inner;
-}
-.carousel__pagination-button:active {
-  background-color: $accent;
-}
-.carousel__pagination-button--active {
-  background-color: $primary;
-}
-@media (min-width: 64rem) {
-  .carousel {
-    padding-bottom: 3rem;
-  }
-  .carousel__next,
-  .carousel__prev {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.5rem;
-    height: 2.5rem;
-    top: 50%;
-    transform: translateY(-50%);
-
-    margin: 0;
-    color: $primary;
-    border: 1px solid $bg-island-inner;
-    border-radius: 50%;
-    background-color: transparent;
-    transition: all 0.5s ease-in-out;
-  }
-  .carousel__next:hover,
-  .carousel__prev:hover {
-    background-color: $bg-island-inner;
-    color: $primary;
-  }
-  .carousel__next:active,
-  .carousel__prev:active {
-    background-color: $bg-island;
-    color: $primary;
-  }
-  .carousel__next {
-    right: -56px;
-  }
-  .carousel__prev {
-    left: -56px;
-  }
-  .carousel__pagination {
-  }
-}
-
-@media (min-width: 80rem) {
-  .carousel__next,
-  .carousel__prev {
-  }
-  .carousel__next {
-    right: -64px;
-  }
-  .carousel__prev {
-    left: -64px;
-  }
-}
 </style>

@@ -7,6 +7,7 @@ import BreadCrumbs from '@/components/layout/BreadCrumbs.vue'
 import HeroSection from '@/components/layout/project/HeroSection.vue'
 import ProjectSection from '@/components/layout/project/ProjectSection.vue'
 import GallerySection from '@/components/layout/project/GallerySection.vue'
+import CTASection from '@/components/layout/CTASection.vue';
 import type { Project } from '@/types/project'
 
 const route = useRoute()
@@ -74,8 +75,8 @@ const projectBreadcrumb = computed(() => {
       />
       <!-- Gallery slider -->
       <GallerySection v-if="project.gallery" :images="project.gallery"/>
-
       <!-- CTA -->
+			 <CTASection />
       <!-- Similar projects -->
       <!-- Useful posts -->
        
