@@ -47,7 +47,7 @@ const allPages = computed(() => Math.ceil(filteredProjects.value.length / cardsP
         </div>
         <div v-else class="project__card" v-for="prj in projects" :key="prj.id">
           <ProjectCard
-            :id="prj.id"
+            :slug="prj.slug"
             :title="prj.category"
             :car="prj.car.brand + ' ' + prj.car.model"
             :engine="prj.engine"

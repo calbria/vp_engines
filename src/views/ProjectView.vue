@@ -24,7 +24,7 @@ onMounted(() => {
 watch(
   () => projectsStore.projects,
   () => {
-    const projectData = projectsStore.projectById(route.params.id as string)
+    const projectData = projectsStore.projectById(route.params.slug as string)
     if (projectData) {
       project.value = projectData
     }

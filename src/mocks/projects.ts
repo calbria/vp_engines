@@ -3,6 +3,7 @@ import type { Project } from '@/types/project'
 export const mockProjects: Project[] = [
   {
     id: '1',
+    slug: 'slug-1',
     featured: true,
     showOnMain: true,
     date: '2024-02-01', //to sort by date YYYY-MM-DD
@@ -110,6 +111,7 @@ export const mockProjects: Project[] = [
   },
   {
     id: '2',
+    slug: 'slug-2',
     featured: true,
     showOnMain: true,
     date: '2024-04-25', //to sort by date YYYY-MM-DD
@@ -131,6 +133,7 @@ export const mockProjects: Project[] = [
   },
   {
     id: '3',
+    slug: 'slug-3',
     featured: true,
     showOnMain: true,
     date: '2025-02-01', //to sort by date YYYY-MM-DD
@@ -152,6 +155,7 @@ export const mockProjects: Project[] = [
   },
   {
     id: '4',
+    slug: 'slug-4',
     featured: true,
     showOnMain: false,
     date: '2025-02-01', //to sort by date YYYY-MM-DD
@@ -174,6 +178,7 @@ export const mockProjects: Project[] = [
   },
   {
     id: '5',
+    slug: 'slug-5',
     featured: true,
     showOnMain: false,
     date: '2024-10-15', //to sort by date YYYY-MM-DD
@@ -195,6 +200,7 @@ export const mockProjects: Project[] = [
   },
   {
     id: '6',
+    slug: 'slug-6',
     featured: false,
     showOnMain: false,
     date: '2024-10-15', //to sort by date YYYY-MM-DD
@@ -216,6 +222,7 @@ export const mockProjects: Project[] = [
   },
   {
     id: '7',
+    slug: 'slug-7',
     featured: false,
     showOnMain: false,
     date: '2024-10-15', //to sort by date YYYY-MM-DD
@@ -237,6 +244,7 @@ export const mockProjects: Project[] = [
   },
   {
     id: '8',
+    slug: 'slug-8',
     featured: false,
     showOnMain: false,
     date: '2024-10-15', //to sort by date YYYY-MM-DD

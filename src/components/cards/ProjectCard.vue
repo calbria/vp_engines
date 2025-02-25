@@ -6,7 +6,7 @@ import BaseBtn from '@/components/base/BaseBtn.vue'
 const { locale } = useI18n()
 const isActive = ref(false)
 const props = defineProps<{
-    id: string
+    slug: string
   title: string
   car: string
   engine: string
@@ -68,7 +68,7 @@ function tapHandler() {
             </span>
           </p>
         </div>
-        <BaseBtn mode="secondary" size="small" :text="btnText" :destination="destination" :params="id" />
+        <BaseBtn mode="secondary" size="small" :text="btnText" :destination="destination" :params="slug" />
       </div>
     </div>
   </div>

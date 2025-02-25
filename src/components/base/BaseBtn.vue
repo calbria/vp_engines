@@ -17,7 +17,7 @@ const arrow = computed(() => (props.canExpand && props.expanded ? 'arrow_up' : '
 const toObject = computed(() => {
   if(props.params) {
 
-    return { name: props.destination, params: {id: props.params}}
+    return { name: props.destination, params: {slug: props.params}}
   } else return { name: props.destination }
 })
 

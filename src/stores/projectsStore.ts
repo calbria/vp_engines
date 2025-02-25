@@ -52,8 +52,8 @@ export const useProjectsStore = defineStore('projects', {
       const currentProject = state.projects.find(prj => prj.id === id)
       return currentProject?.similarProjects?.map(id => state.projects.find(p => p.id === id)).filter(Boolean) as Project[]
     },
-    projectById: (state) => (id:string) => {
-      return state.projects.find(prj => prj.id === id)
+    projectById: (state) => (slug:string) => {
+      return state.projects.find(prj => prj.slug === slug)
     }
   },
 })

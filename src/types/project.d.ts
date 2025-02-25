@@ -1,7 +1,8 @@
 export type Category = 'repair' | 'tuning' | 'expertise'
 
 export interface Project {
-    id: string
+    id: string,
+    slug: string,
     featured: boolean
     showOnMain: boolean
     date: string //to sort by date

@@ -79,7 +79,7 @@ onMounted(() => {
             <div class="similar__card" v-for="(item, index) in paginatedProjects" :key="index">
               <ProjectCard
                 v-if="item"
-                :id="item.id"
+                :slug="item.slug"
                 :title="item.category"
                 :car="item.car.brand + ' ' + item.car.model"
                 :engine="item.engine"
