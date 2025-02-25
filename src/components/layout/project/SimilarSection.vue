@@ -1,19 +1,17 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
-import { useI18n } from 'vue-i18n'
-import { useProjectsStore } from '@/stores/projectsStore'
+import { ref, computed, onMounted } from 'vue';
+import { useI18n } from 'vue-i18n';
 import ProjectCard from '@/components/cards/ProjectCard.vue'
-import SectionHeader from '@/components/sections/SectionHeader.vue'
-import SectionText from '@/components/sections/SectionText.vue'
-import BaseBtn from '@/components/base/BaseBtn.vue'
-import BaseIcon from '@/components/base/BaseIcon.vue'
+import BaseIcon from '@/components/base/BaseIcon.vue';
+import type { Project } from '@/types/project';
 
+const { t } = useI18n()
+const props = defineProps<{
+	projects: Project[]
+}>()
 const currentPage = ref(1)
 const itemsPerPage = ref(3)
 const gridIsVisible = ref(true)
-
-const { t } = useI18n()
-const projectsStore = useProjectsStore()
 
 function updateItemsPerPage() {
   const width = window.innerWidth
@@ -23,21 +21,13 @@ function updateItemsPerPage() {
     itemsPerPage.value = 2
   } else itemsPerPage.value = 1
 }
-
-onMounted(() => {
-  projectsStore.fetchProjects()
-  updateItemsPerPage()
-  window.addEventListener('resize', updateItemsPerPage)
-})
-
-
 const paginatedProjects = computed(() => {
   const start = (currentPage.value - 1) * itemsPerPage.value
   const end = start + itemsPerPage.value
-  return projectsStore.mainProjects.slice(start, end)
+  return props.projects.slice(start, end)
 })
-
-const totalPages = computed(() => Math.ceil(projectsStore.mainProjects.length / itemsPerPage.value))
+const totalPages = computed(() => Math.ceil(props.projects.length / itemsPerPage.value))
+console.log(totalPages.value);
 
 function goToPage(page: number) {
   if (page < 1 || page > totalPages.value) return
@@ -47,27 +37,18 @@ function goToPage(page: number) {
     gridIsVisible.value = true
   }, 500)
 }
+onMounted(() => {
+  updateItemsPerPage()
+  window.addEventListener('resize', updateItemsPerPage)
+})
+
 </script>
 <template>
-  <section class="projects">
-    <div class="projects__container container">
-      <SectionHeader
-        class="projects__header"
-        :title="t('home.projects.title')"
-        :subtitle="t('home.projects.subtitle')"
-      />
-      <div class="projects__content">
-        <SectionText class="projects__text" :text="[t('home.projects.text1')]" />
-        <BaseBtn
-          class="projects__btn"
-          mode="primary"
-          size="large"
-          text="projects"
-          destination="projects"
-        />
-      </div>
-      <div class="projects__cards">
-        <div class="projects__pagination" v-if="totalPages > 1">
+	<section class="similar">
+		<div class="similar__wrapper container">
+			<h2 class="similar__title">{{ t('projects.similar') }}</h2>
+			<div class="similar__cards">
+        <div class="similar__pagination" v-if="totalPages > 1">
           <div class="pagination">
             <button
               class="pagination__btn"
@@ -94,8 +75,8 @@ function goToPage(page: number) {
           </div>
         </div>
         <Transition name="fade-grid" mode="out-in">
-          <div class="projects__cards-container" v-if="gridIsVisible" :key="currentPage">
-            <div class="projects__card" v-for="(item, index) in paginatedProjects" :key="index">
+          <div class="similar__cards-container" v-if="gridIsVisible" :key="currentPage">
+            <div class="similar__card" v-for="(item, index) in paginatedProjects" :key="index">
               <ProjectCard
                 v-if="item"
                 :id="item.id"
@@ -107,68 +88,35 @@ function goToPage(page: number) {
                 :image="item.cardImg"
                 :destination="item.destination"
               />
-              <p v-else class="projects__temp">
-                <span class="projects__temp-text">{{ t('home.projects.in_progress') }}</span>
+              <p v-else class="similar__temp">
+                <span class="similar__temp-text">{{ t('home.projects.in_progress') }}</span>
               </p>
             </div>
           </div>
         </Transition>
       </div>
-    </div>
-  </section>
+		</div>
+	</section>
 </template>
+
 <style scoped lang="scss">
-.pagination {
-  display: flex;
-  align-items: center;
-  &__btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    padding: 8px;
-    color: $primary;
-    &[disabled] {
-      color: $tertiary;
+.similar {
+	&__wrapper {
+        padding: var(--spacing-m) 0;
+    } 
+	&__title {
+			padding-bottom: var(--spacing-s);
+        color: $primary-inv;
+        @include h2-dark();
     }
-  }
-  &__icon {
-    width: 24px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  &__info {
-    color: $primary;
-    display: flex;
-    align-items: center;
-    column-gap: 2px;
-  }
-  &__text {
-    @include small-dark();
-  }
-}
-.projects {
-  &__container {
-    padding: var(--spacing-m) 0;
-  }
+
 
   &__cards-container {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     column-gap: var(--grid-gutter-width);
   }
-  &__content {
-    display: flex;
-    flex-direction: column;
-    row-gap: var(--spacing-s);
-
-    padding-bottom: var(--spacing-m);
-  }
-  &__header {
-    padding-bottom: var(--spacing-xs);
-  }
+  
   &__pagination {
     display: flex;
     align-items: center;
@@ -205,35 +153,50 @@ function goToPage(page: number) {
   opacity: 0;
   transform: scale(0.95);
 }
-@media (max-width: 48rem) {
-  .projects {
-    &__btn {
-      display: flex;
-      width: 100%;
+.pagination {
+  display: flex;
+  align-items: center;
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 8px;
+    color: $primary-inv;
+    &[disabled] {
+      color: $tertiary-inv;
     }
+  }
+  &__icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__info {
+    color: $primary-inv;
+    display: flex;
+    align-items: center;
+    column-gap: 2px;
+  }
+  &__text {
+    @include small-dark();
   }
 }
 @media (min-width: 48rem) {
-  .projects {
+  .similar {
     &__cards-container {
       grid-template-columns: repeat(2, 1fr);
     }
   }
 }
 @media (min-width: 64rem) {
-  .projects {
+  .similar {
     &__cards-container {
       grid-template-columns: repeat(3, 1fr);
     }
-    &__content {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-    }
-    &__text {
-      width: calc(var(--grid-column-width) * 8 + var(--grid-gutter-width) * 7);
-    }
+
   }
 }
 </style>

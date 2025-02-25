@@ -8,6 +8,7 @@ import HeroSection from '@/components/layout/project/HeroSection.vue'
 import ProjectSection from '@/components/layout/project/ProjectSection.vue'
 import GallerySection from '@/components/layout/project/GallerySection.vue'
 import CTASection from '@/components/layout/CTASection.vue';
+import SimilarSection from '@/components/layout/project/SimilarSection.vue'
 import type { Project } from '@/types/project'
 
 const route = useRoute()
@@ -27,7 +28,6 @@ watch(
     if (projectData) {
       project.value = projectData
     }
-    console.log('Project watcher')
   },
   { immediate: true },
 )
@@ -36,6 +36,14 @@ const projectBreadcrumb = computed(() => {
   if (!project.value) return ''
   return `${t(`projects.filter.${project.value.category}`)}: ${project.value.car.brand} ${project.value.car.model} ${project.value.engine} (${project.value.date})`
 })
+const similarProjects = computed(() => {
+	if(project.value && project.value.similarProjects) 
+	return projectsStore.similarProjects(project.value.id)
+else return []
+})
+
+
+
 </script>
 
 <template>
@@ -78,6 +86,7 @@ const projectBreadcrumb = computed(() => {
       <!-- CTA -->
 			 <CTASection />
       <!-- Similar projects -->
+			 <SimilarSection v-if="similarProjects.length > 0" :projects="similarProjects"/>
       <!-- Useful posts -->
        
     </div>

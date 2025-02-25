@@ -25,10 +25,10 @@ const props = defineProps<{
       <!-- Intro -->
       <div class="project__intro" v-if="intro" v-html="md.render(intro)"></div>
       <!-- Video -->
-      <div class="project__video">
+      <div v-if="video" class="project__video">
         <div class="project__video-content">
           <h3 class="project__video-title">{{ t('projects.video.title') }}</h3>
-          <div class="project__video-text">
+          <div  class="project__video-text">
             <p v-if="videoText" class="project__video-text-inner" v-html="md.render(videoText)"></p>
             <span class="project__video-text-inner">{{ t('projects.video.text') }}</span>
             <a class="project__video-link" href="https://www.youtube.com/@VAGhub">

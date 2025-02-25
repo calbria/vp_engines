@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
+import { useRoute } from 'vue-router'
 import PageHeader from './components/layout/PageHeader.vue'
 import PageFooter from './components/layout/PageFooter.vue'
 import BaseIcon from './components/base/BaseIcon.vue'
 
 const isVisible = ref(false)
-
+const route = useRoute()
 function scrollToTop() {
   window.scrollTo({
     top: 0,
@@ -26,7 +27,7 @@ onUnmounted(() => {
 <template>
   <div id="app">
     <PageHeader />
-    <RouterView />
+    <RouterView :key="route.fullPath"/>
     <PageFooter />
     <Transition name="slide">
       <button

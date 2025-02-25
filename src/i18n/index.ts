@@ -4,14 +4,16 @@ import ruRepair from '@/i18n/ru/repair.json'
 import ruBtn from '@/i18n/ru/btn.json'
 import ruCards from '@/i18n/ru/cards.json'
 import ruCTA from '@/i18n/ru/cta.json'
+import ruProjects from '@/i18n/ru/projects.json'
+import ruBlog from '@/i18n/ru/blog.json'
 import uaCommon from '@/i18n/ua/common.json'
 import uaHome from '@/i18n/ua/home.json'
 import uaRepair from '@/i18n/ua/repair.json'
 import uaBtn from '@/i18n/ua/btn.json'
 import uaCards from '@/i18n/ua/cards.json'
 import uaCTA from '@/i18n/ua/cta.json'
-import ruProjects from '@/i18n/ru/projects.json'
 import uaProjects from '@/i18n/ua/projects.json'
+import uaBlog from '@/i18n/ua/blog.json'
 import { createI18n } from 'vue-i18n'
 
 const messages = {
@@ -22,7 +24,8 @@ const messages = {
     btn: ruBtn,
     cards: ruCards,
     cta: ruCTA,
-    projects: ruProjects
+    projects: ruProjects,
+		blog: ruBlog
   },
   ua: {
     common: uaCommon,
@@ -31,7 +34,8 @@ const messages = {
     btn: uaBtn,
     cards: uaCards,
     cta: uaCTA,
-    projects: uaProjects
+    projects: uaProjects,
+		blog: uaBlog
   },
 }
 const savedLanguage = localStorage.getItem('language') || 'ru'

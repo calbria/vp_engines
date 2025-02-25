@@ -1,16 +1,23 @@
 <script setup lang='ts'>
 import Breadcrumbs from '@/components/layout/BreadCrumbs.vue';
+import HeroSection from '@/components/layout/blog/HeroSection.vue';
+import BlogSection from '@/components/layout/blog/BlogSection.vue';
+import CTASection from '@/components/layout/CTASection.vue';
 </script>
 <template>
-<main>
-  <h1>This is a blog page</h1>
-  <Breadcrumbs/>
-</main>
+	<main class="main-content">
+		<Breadcrumbs mode="light" />
+		<!-- Hero section -->
+		<HeroSection />
+		<!-- Blog section -->
+		<BlogSection />
+		<!-- CTA section -->
+		<CTASection />
+	</main>
 </template>
 <style scoped lang='scss'>
 main {
-  padding-top: 100px;
-  background-color: $bg-globe;
-  min-height: 100vh;
+	background-color: $bg-white;
+	min-height: 100vh;
 }
 </style>
