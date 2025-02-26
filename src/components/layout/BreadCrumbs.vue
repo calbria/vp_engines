@@ -13,6 +13,8 @@ const props = defineProps<{
   parentRouteName?: 'projects' | 'blog'
 }>()
 
+
+
 const homeRoute = router.getRoutes().find((r) => r.name === 'home')
 const parentRoute = props.parentRouteName
   ? router.getRoutes().find((r) => r.name === props.parentRouteName)
@@ -20,14 +22,12 @@ const parentRoute = props.parentRouteName
 
 const matched = computed(() => {
   const routesMatched = [...route.matched]
-
-
-  if (parentRoute) routesMatched.splice(0, 0, parentRoute)
-
-
+  
+  if (parentRoute && props.parentRouteName === 'projects') routesMatched.splice(0, 0, parentRoute)
+  if (parentRoute && props.parentRouteName === 'blog') routesMatched.splice(1, 0, parentRoute)
   return homeRoute ? [homeRoute, ...routesMatched] : routesMatched
 })
-//console.log(matched.value)
+
 </script>
 <template>
   <nav class="breadcrumbs">

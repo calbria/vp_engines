@@ -69,6 +69,16 @@ const routes = [
         meta: {
           breadcrumb: 'blog',
         },
+
+      },
+      {
+        path: 'blog/:id',
+        name: 'article',
+        component: () => import('../views/BlogArticleView.vue'),
+        props: true,
+        meta: {
+          breadcrumb: '',
+        },
       },
 
       {
@@ -82,15 +92,6 @@ const routes = [
     ],
   },
 
-  {
-    path: '/blog/:id',
-    name: 'article',
-    component: () => import('../views/BlogArticleView.vue'),
-    props: true,
-    meta: {
-      breadcrumb: '',
-    },
-  },
 
   {
     path: '/projects',

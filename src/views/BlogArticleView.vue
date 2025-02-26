@@ -5,13 +5,14 @@ const route = useRoute()
 </script>
 <template>
 <main>
+  <Breadcrumbs mode="light" parent-route-name="blog" custom-breadcrumb="article"/>
     Article#{{ route.params.id }}
 
     </main></template>
 <style scoped lang='scss'>
 main {
     padding-top: 100px;
-  background-color: $bg-globe;
+  background-color: $bg-white;
   min-height: 100vh;
 }
 </style>
