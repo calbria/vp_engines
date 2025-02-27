@@ -28,6 +28,7 @@ emit('chooseTab', tab)
 .filter {
   &__wrapper {
     display: flex;
+    flex-direction: column;
     align-items: center;
 
 
@@ -46,6 +47,7 @@ emit('chooseTab', tab)
 @media (min-width: 48rem) {
   .filter {
     &__wrapper {
+      flex-direction: row;
       justify-content: flex-start;
       column-gap: var(--spacing-s);
     }
