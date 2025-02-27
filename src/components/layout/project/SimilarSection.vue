@@ -27,7 +27,7 @@ const paginatedProjects = computed(() => {
   return props.projects.slice(start, end)
 })
 const totalPages = computed(() => Math.ceil(props.projects.length / itemsPerPage.value))
-console.log(totalPages.value);
+
 
 function goToPage(page: number) {
   if (page < 1 || page > totalPages.value) return

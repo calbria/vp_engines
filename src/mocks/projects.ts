@@ -3,7 +3,7 @@ import type { Project } from '@/types/project'
 export const mockProjects: Project[] = [
   {
     id: '1',
-    slug: 'slug-1',
+    slug: 'bmw730-n54-repair',
     featured: true,
     showOnMain: true,
     date: '2024-02-01', //to sort by date YYYY-MM-DD

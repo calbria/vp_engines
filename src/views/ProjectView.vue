@@ -55,6 +55,8 @@ else return []
         parent-route-name="projects"
       />
 
+     
+
       <HeroSection
         :category="project.category"
         :model="project?.car.brand + ' ' + project?.car.model + ' ' + '(' + project?.car.year + ')'"
