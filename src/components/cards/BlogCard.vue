@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { RouterLink } from 'vue-router'
 import BaseIcon from '../base/BaseIcon.vue'
@@ -11,13 +12,15 @@ const props = defineProps<{
   tag: string
   title: string
   text: string
+	slug: string
 }>()
+const toObject = computed(() => ({name: 'article', params: {slug: props.slug}}))
 </script>
 
 <template>
   <div class="card">
     <div class="card__wrapper">
-      <RouterLink to="#" class="card__media">
+      <RouterLink :to="toObject" class="card__media">
         <img :src="image" alt="preview" class="card__img" />
       </RouterLink>
       <div class="card__content">
@@ -30,7 +33,7 @@ const props = defineProps<{
         </div>
         <div class="card__content-main">
           <h3 class="card__title">
-            <RouterLink to="#" class="card__title">
+            <RouterLink :to="toObject" class="card__title">
               {{ title }}
             </RouterLink>
           </h3>
@@ -39,7 +42,7 @@ const props = defineProps<{
           </p>
         </div>
         <div class="card__content-footer">
-        <RouterLink to="#" class="card__link">
+        <RouterLink :to="toObject" class="card__link">
           <span class="card__link-text">{{ t('blog.read') }}</span>
           <BaseIcon class="card__link-icon" name="chevron_right" path="icons" />
         </RouterLink>

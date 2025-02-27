@@ -6,7 +6,7 @@ const route = useRoute()
 <template>
 <main>
   <Breadcrumbs mode="light" parent-route-name="blog" custom-breadcrumb="article"/>
-    Article#{{ route.params.id }}
+    Article#{{ route.params.slug }}
 
     </main></template>
 <style scoped lang='scss'>

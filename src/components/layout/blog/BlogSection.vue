@@ -28,6 +28,7 @@ const filterTabs: Filter[] = ['all', 'owners', 'profi', 'myths']
           text="Точного ответа на этот вопрос не существует. Сумма формируется из стоимости работ по
             восстановлению, стоимости станочных работ (если необходимо) и стоимости запчастей. Все
             составляющие зависят от конкретной модели двигателя и характера неисправностей."
+						slug="skolko-stoit-kapremont"
         />
         <BlogCard
           image="/images/blog/preview.png"
@@ -36,7 +37,8 @@ const filterTabs: Filter[] = ['all', 'owners', 'profi', 'myths']
           tag="profi"
           title="Селективная сборка: подводные камни"
           text="Современные двигатели обладают высокой мощностью при малой массе. Для обеспечения надежности на производстве применяются элементы селективной сборки"
-        />
+          slug="selectivnaya-sborka"
+					/>
         <BlogCard
           image="/images/blog/preview.png"
           date="17/01/2025"
@@ -44,6 +46,7 @@ const filterTabs: Filter[] = ['all', 'owners', 'profi', 'myths']
           time="8"
           title="Контрактный двигатель или капремонт"
           text="Ответ зависит в первую очередь от понимания “лучше”: дешевле, быстрее или качественнее."
+					slug="kontraktniy-dvigatel-ili-kapremont"
         />
       </div>
 

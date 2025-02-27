@@ -72,7 +72,7 @@ const routes = [
 
       },
       {
-        path: 'blog/:id',
+        path: 'blog/:slug',
         name: 'article',
         component: () => import('../views/BlogArticleView.vue'),
         props: true,
