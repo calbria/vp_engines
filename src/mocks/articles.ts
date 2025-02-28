@@ -10,14 +10,18 @@ export const mockArticles: Article[] = [
 		tag: 'owners',
 		title: 'Сколько стоит капремонт: за что вы платите',
 		summary: 'Точного ответа на этот вопрос не существует. Сумма формируется из стоимости работ по восстановлению, стоимости станочных работ (если необходимо) и стоимости запчастей. Все составляющие зависят от конкретной модели двигателя и характера неисправностей.',
-		content: '### Header 1',
-		heroImg: '/images/img_539x958.png',
+		content: `
+### Header 1
+
+![image](/images/blog/preview.png)
+`,
+		heroImg: '/images/blog/main_hero.png',
 		// video?: string
 		related: ['2', '3']
 	},
 	{
 		id: '2',
-		slug: 'electivnaya-sborka',
+		slug: 'selectivnaya-sborka',
 		preview: '/images/blog/preview.png',
 		date: '10/07/2024',
 		time: '15',

@@ -13,11 +13,6 @@ const props = defineProps<{
   parentRouteName?: 'projects' | 'blog'
 }>()
 
-
-
-const bc = computed(() => route.fullPath.split('/'))
-console.log(bc.value);
-
 const homeRoute = router.getRoutes().find((r) => r.name === 'home')
 const parentRoute = props.parentRouteName
   ? router.getRoutes().find((r) => r.name === props.parentRouteName)

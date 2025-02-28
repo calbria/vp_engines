@@ -5,7 +5,7 @@ import BlogSection from '@/components/layout/blog/BlogSection.vue';
 import CTASection from '@/components/layout/CTASection.vue';
 </script>
 <template>
-	<main class="main-content">
+	<main class="blog main-content">
 		<Breadcrumbs mode="light" />
 		<!-- Hero section -->
 		<HeroSection />
@@ -16,7 +16,7 @@ import CTASection from '@/components/layout/CTASection.vue';
 	</main>
 </template>
 <style scoped lang='scss'>
-main {
+.blog {
 	background-color: $bg-white;
 	min-height: 100vh;
 }

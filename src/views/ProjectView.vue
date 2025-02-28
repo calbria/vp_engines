@@ -96,7 +96,7 @@ else return []
   </main>
 </template>
 <style scoped lang="scss">
-main {
+.project {
   background-color: $bg-white;
   min-height: 100vh;
 }
