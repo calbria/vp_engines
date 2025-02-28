@@ -1,12 +1,29 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed, onMounted } from 'vue'
+import { useArticlesStore } from '@/stores/articlesStore'
 import SectionFilter from '@/components/sections/SectionFilter.vue'
 import BlogCard from '@/components/cards/BlogCard.vue'
 import PagePagination from '@/components/navigation/PagePagination.vue'
 
 type Filter = 'all' | 'owners' | 'profi' | 'myths'
+
 const filter = ref<Filter>('all')
 const filterTabs: Filter[] = ['all', 'owners', 'profi', 'myths']
+const currentPage = ref(1)
+
+const articlesStore = useArticlesStore()
+const filteredArticles = computed(() => {
+	if(filter.value === 'all') return articlesStore.allArticles
+	else return articlesStore.articlesByTag(filter.value)
+})
+const cardsPerPage: number = 6
+const startArt = computed(() => (currentPage.value - 1) * cardsPerPage)
+const endArt = computed(() => currentPage.value * cardsPerPage)
+
+const articles = computed(() => filteredArticles.value.slice(startArt.value, endArt.value))
+const allPages = computed(() => Math.ceil(filteredArticles.value.length / cardsPerPage))
+
+onMounted(() => articlesStore.fetchArticles())
 </script>
 <template>
   <section class="blog">
@@ -19,49 +36,35 @@ const filterTabs: Filter[] = ['all', 'owners', 'profi', 'myths']
       />
 
       <div class="blog__card-holder">
-        <BlogCard
-          image="/images/blog/preview.png"
-          date="25/01/2024"
-          tag="owners"
-          time="10"
-          title="Сколько стоит капремонт: за что вы платите"
-          text="Точного ответа на этот вопрос не существует. Сумма формируется из стоимости работ по
-            восстановлению, стоимости станочных работ (если необходимо) и стоимости запчастей. Все
-            составляющие зависят от конкретной модели двигателя и характера неисправностей."
-						slug="skolko-stoit-kapremont"
-        />
-        <BlogCard
-          image="/images/blog/preview.png"
-          date="10/07/2024"
-          time="15"
-          tag="profi"
-          title="Селективная сборка: подводные камни"
-          text="Современные двигатели обладают высокой мощностью при малой массе. Для обеспечения надежности на производстве применяются элементы селективной сборки"
-          slug="selectivnaya-sborka"
+				<div class="blog__card" v-for="art in articles" :key="art.id">
+					<BlogCard
+						:image="art.preview"
+						:date="art.date"
+						:tag="art.tag"
+						:time="art.time"
+						:title="art.title"
+						:text="art.summary"
+						:slug="art.slug"
 					/>
-        <BlogCard
-          image="/images/blog/preview.png"
-          date="17/01/2025"
-          tag="myths"
-          time="8"
-          title="Контрактный двигатель или капремонт"
-          text="Ответ зависит в первую очередь от понимания “лучше”: дешевле, быстрее или качественнее."
-					slug="kontraktniy-dvigatel-ili-kapremont"
-        />
+				</div>
+        
       </div>
 
-      <!-- <PagePagination
+      <PagePagination
 		:all-pages="allPages"
         :current-page="currentPage"
         @change="(n) => (currentPage = n)"
         @next="() => (currentPage = currentPage + 1)"
-        @prev="() => (currentPage = currentPage - 1)"/> -->
+        @prev="() => (currentPage = currentPage - 1)"/>
     </div>
   </section>
 </template>
 
 <style scoped lang="scss">
 .blog {
+&__container {
+	padding: var(--spacing-m) 0;
+}
   &__card-holder {
     padding: var(--spacing-s) 0;
     display: flex;

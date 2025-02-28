@@ -54,6 +54,7 @@ const toObject = computed(() => ({name: 'article', params: {slug: props.slug}}))
 
 <style scoped lang="scss">
 .card {
+	height: 100%;
   &__wrapper {
     height: 100%;
     border: 1px solid $divider-light;
