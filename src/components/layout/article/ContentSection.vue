@@ -1,6 +1,10 @@
 	<script setup lang="ts">
 	import MarkdownIt from 'markdown-it'
-	const md = MarkdownIt()
+	import MarkdownItAnchor from 'markdown-it-anchor'
+
+const md = MarkdownIt().use(MarkdownItAnchor, {
+  slugify: (s) => s.toLowerCase().replace(/\s+/g, '-'),
+})
 	const props = defineProps<{
 		mainContent: string
 	}>()

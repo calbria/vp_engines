@@ -8,6 +8,7 @@ import ContentSection from '@/components/layout/article/ContentSection.vue';
 import RelatedSection from '@/components/layout/article/RelatedSection.vue';
 import type { Article } from '@/types/article';
 
+
 const route = useRoute()
 const articlesStore = useArticlesStore()
 
