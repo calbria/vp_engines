@@ -12,7 +12,7 @@ const props = defineProps<{
 }>()
 const toObject = computed(() => {
   if(props.params) {
-    return { name: props.destination, params: {id: props.params}}
+    return { name: props.destination, params: {slug: props.params}}
   } else return { name: props.destination }
 })
 function toggleOpen() {
