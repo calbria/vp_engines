@@ -100,7 +100,7 @@ function goToPage(page: number) {
                 v-if="item"
                 :slug="item.slug"
                 :title="item.category"
-                :car="item.car.brand + ' ' + item.car.model"
+                :car="item.carBrand + ' ' + item.carModel"
                 :engine="item.engine"
                 :summary="item.summary"
                 btn-text="details"

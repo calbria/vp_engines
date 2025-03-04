@@ -12,7 +12,7 @@ const questions = [
     answer: 'repair.faq_1.answer',
     link: 'repair.faq_1.link',
     destination: 'article',
-    params: '1',
+    params: 'skolko-stoit-kapremont',
   },
   {
     id: '2',
@@ -44,7 +44,7 @@ const questions = [
     answer: 'repair.faq_5.answer',
     link: 'repair.faq_5.link',
     destination: 'article',
-    params: '2',
+    params: 'priznaki-neispravnosti-dvigatelia',
   },
 ]
 </script>

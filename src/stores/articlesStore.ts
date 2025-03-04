@@ -32,6 +32,7 @@ export const useArticlesStore = defineStore('articles', {
     allArticles: (state) => state.articles,
     articlesByTag: (state) => (tag: Tag) => state.articles.filter((art) => art.tag === tag),
     articlesBySlug: (state) => (slug: string) => state.articles.find((art) => art.slug === slug),
+    articlesById: (state) => (id: string) => state.articles.find((art) => art.id === id),
     relatedArticles: (state) => (id: string) => {
       const currentArticle = state.articles.find((art) => art.id === id)
       if (currentArticle && currentArticle.related)

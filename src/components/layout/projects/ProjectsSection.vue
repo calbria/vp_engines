@@ -49,7 +49,7 @@ const allPages = computed(() => Math.ceil(filteredProjects.value.length / cardsP
           <ProjectCard
             :slug="prj.slug"
             :title="prj.category"
-            :car="prj.car.brand + ' ' + prj.car.model"
+            :car="prj.carBrand + ' ' + prj.carModel"
             :engine="prj.engine"
             :summary="prj.summary"
             btn-text="details"

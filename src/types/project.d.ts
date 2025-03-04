@@ -6,11 +6,9 @@ export interface Project {
     featured: boolean
     showOnMain: boolean
     date: string //to sort by date
-    car: {
-        brand: string
-        model: string
-        year: number
-    }
+		carBrand: string
+		carModel: string
+		carYear: string
     engine: string
     category:  Category
     summary: string
@@ -20,30 +18,11 @@ export interface Project {
     contentMain: string
     contentResults: string
      heroImg: string
-    // description: string
-    // features: string
-    // disassembly: string
-    // disassemblyImg: string
-    // defectDetection: string
-    // defectDetectionImg: string
-    // spareParts: string
-    // sparePartsImg: string
-    // machineWork: string
-    // machineWorkImg: string
-    // qualityControl: string
-    // qualityControlImg: string
-    // assembly: string
-    // assemblyImg: string
-    // results: string
-    // mechanicCost: number
-    // engineerCost: number
-    // machineCost: number
-    // sparePartsCost: number
     gallery?: string[]
      videoID?: string,
      videoText?: string
     // startDate?: string; // Date when the project started
     // completionDate?: string; // Date when the project was completed
-    // relatedArticles?: string[]
+    relatedArticles?: string[]
     similarProjects?: string[]
 }

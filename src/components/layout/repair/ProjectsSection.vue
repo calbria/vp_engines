@@ -99,9 +99,9 @@ function goToPage(page: number) {
             <div class="projects__card" v-for="(item, index) in paginatedProjects" :key="index">
               <ProjectCard
                 v-if="item"
-                :slug="item.id"
+                :slug="item.slug"
                 :title="item.category"
-                :car="item.car.brand + ' ' + item.car.model"
+                :car="item.carBrand + ' ' + item.carModel"
                 :engine="item.engine"
                 :summary="item.summary"
                 btn-text="details"

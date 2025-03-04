@@ -12,16 +12,16 @@ const { t } = useI18n()
 const carouselConfig = {
     itemsToShow: 1,
     snapAlign: 'center',
-    breakpoints: {
-        768: {
-            itemsToShow: 2,
-            snapAlign: 'start',
-        },
-        1024: {
-            itemsToShow: 3,
-            snapAlign: 'start',
-        },
-    },
+    // breakpoints: {
+    //     768: {
+    //         itemsToShow: 2,
+    //         snapAlign: 'start',
+    //     },
+    //     1024: {
+    //         itemsToShow: 3,
+    //         snapAlign: 'start',
+    //     },
+    // },
   wrapAround: true,
   gap: 40,
 }
@@ -30,8 +30,8 @@ const carouselConfig = {
 <template>
 
 <section class="gallery">
-    <div class="gallery__wrapper container">
-        <h2 class="gallery__title">{{ t('projects.gallery') }}</h2>
+    <div class="gallery__wrapper">
+
         <Carousel v-bind="carouselConfig" class="carousel__light">
 
             <Slide class="gallery__slide" v-for="(img, index) in images" :key="index">
@@ -59,13 +59,9 @@ const carouselConfig = {
     &__wrapper {
         padding: var(--spacing-m) 0;
     } 
-    &__title {
-			padding-bottom: var(--spacing-s);
-        color: $primary-inv;
-        @include h2-dark();
-    }
+
     &__slide {
-        aspect-ratio: 1 / 1;
+        aspect-ratio: 16 / 9;
     }
     &__img {
         width: 100%;
