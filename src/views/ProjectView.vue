@@ -22,6 +22,7 @@ const relatedArticles = ref<Article[] | null>(null)
 
 onMounted(() => {
 	projectsStore.fetchProjects()
+	articlesStore.fetchArticles()
 })
 
 watch(
@@ -31,9 +32,12 @@ watch(
 		if (projectData) {
 			project.value = projectData
 		}
+		if(project.value && project.value.similarProjects) {
+			similarProjects.value = projectsStore.similarProjects(project.value.id)
+		}
 		if(project.value && project.value.relatedArticles) {
 			const related = project.value?.relatedArticles 
-			relatedArticles.value = related.map(item => articlesStore.articlesById(item))
+			relatedArticles.value = related.map(item => articlesStore.articlesById(item)) as Article[]
 		}
 	},
 	{ immediate: true },

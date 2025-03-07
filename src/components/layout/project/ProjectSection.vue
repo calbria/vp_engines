@@ -1,10 +1,15 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
+import { useI18n } from 'vue-i18n'
 import MarkdownIt from 'markdown-it'
 import GallerySection from '@/components/layout/project/GallerySection.vue'
+import BaseIcon from '@/components/base/BaseIcon.vue'
 import type { Project } from '@/types/project'
 import type { Article } from '@/types/article'
 
+const { t } = useI18n()
 const md = MarkdownIt()
+const tableOfContent = ref<string[]>([])
 const props = defineProps<{
 	intro: string
 	main: string
@@ -12,73 +17,211 @@ const props = defineProps<{
 	images?: string[]
 	video?: string
 	videoText?: string
-	similar?: Project[]
-	related?: Article[]
+	similar?: Project[] | null
+	related?: Article[] | null
 }>()
-
+onMounted(() => {
+	const content = document.querySelectorAll('h3')
+	content.forEach(item => {
+		item.id = item.innerText
+		console.log(item);
+		tableOfContent.value.push(item.id)
+	})
+})
 </script>
 <template>
 	<section class="content">
 		<div class="content__container container">
 			<div class="content__main">
-				<div class="content__table">
-					<h2 class="content__title">Table of Content</h2>
+				<div class="content__block content__block--table" v-if="tableOfContent.length > 0">
+					<h2 class="content__title">{{ t('projects.tableOfContent') }}</h2>
+					<ul class="content__list">
+						<li v-for="(item, index) in tableOfContent" :key="index" class="content__list-item">
+							<a :href="`#${item}`" class="content__list-link">
+								<BaseIcon name="chevron_right" path="icons" class="content__list-icon"/>
+								{{ item }}
+							</a>
+						</li>
+					</ul>
 				</div>
-				<div class="content__intro" v-html="md.render(props.intro)"></div>
-				<div class="content__video" v-if="props.video">
-					<h2 class="content__title">Video</h2>
-					<p class="content__text" v-if="props.videoText" v-html="md.render(props.videoText)"></p>
-					<iframe v-if="props.video" :src="`https://www.youtube.com/embed/${props.video}`" title="YouTube video player"
-						frameborder="0"
+				<div class="content__block content__block--intro markdown" v-html="md.render(props.intro)"></div>
+				<div class="content__block content__block--video" v-if="props.video">
+					<div class="content__text markdown" v-if="props.videoText" v-html="md.render(props.videoText)"></div>
+					<p class="content__text"> {{ t('projects.link') }}
+						<a href="https://www.youtube.com/@VAGhub" target="_blank" class="content__link"> Youtube {{ t('projects.channel') }}</a>
+					</p>
+					<iframe v-if="props.video" :src="`https://www.youtube.com/embed/${props.video}`" class="content__video"
+						title="YouTube video player" frameborder="0"
 						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 						allowfullscreen>
 					</iframe>
 				</div>
-				<div class="content__stages">
-					<h2 class="content__title">Stages</h2>
-					<div class="content__stages-inner" v-html="md.render(props.main)"></div>
-				</div>
-				<div class="content__results">
-					<h2 class="content__title">Results</h2>
-					<div class="content__results-inner" v-html="md.render(props.results)"></div>
-				</div>
-				<div v-if="props.images" class="content__gallery">
-					<h2 class="content__title">Project Gallery</h2>
+				<div class="content__block content__block--stages markdown" v-html="md.render(props.main)"></div>
+				<div class="content__block content__block--results markdown" v-html="md.render(props.results)"></div>
+				<div v-if="props.images" class="content__block content__block--gallery">
+					<h3 class="content__title">{{ t('projects.gallery') }}</h3>
 					<GallerySection :images="props.images" />
 				</div>
+
 			</div>
 
 			<div class="content__side">
-				<h3>Similar Projects</h3>
-				<p v-for="item in props.similar" :key="item.id">
-					{{ item.carBrand }}
-				</p>
-				<h3>Related Articles </h3>
-				<p v-for="item in props.related" :key="item.id">
-					{{ item.title }}
-				</p>
+				<div class="content__side-block">
+					<h4 class="content__side-title">{{ t('projects.related') }}</h4>
+					<p v-for="item in props.similar" :key="item.id">
+						<RouterLink :to="{ name: item.destination, params: { slug: item.slug } }" class="content__side-link">
+							<span class="content__side-tag">{{ t(`projects.category.${item.category}`) }}</span>
+							<span class="content__side-text">
+								{{ `${item.carBrand} ${item.carModel} (${item.carYear})` }}
+							</span>
+						</RouterLink>
+					</p>
+				</div>
+				<div class="content__side-block">
+					<h4 class="content__side-title">{{ t('blog.related') }}</h4>
+					<div v-for="item in props.related" :key="item.id">
+						<RouterLink :to="{ name: 'article', params: { slug: item.slug } }" class="content__side-link">
+							<p class="content__side-date">
+								<span> {{ item.date }}</span>&nbsp;&bull;&nbsp;<span>{{ item.time }} {{ t('blog.min') }}</span>
+							</p>
+							<span class="content__side-tag">{{ t(`blog.filter.${item.tag}`) }}</span>
+							<span class="content__side-text">{{ item.title }}</span>
+						</RouterLink>
+					</div>
+				</div>
 			</div>
 		</div>
 
 	</section>
 </template>
-<style lang="scss">
+<style scoped lang="scss">
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: 100px;
+}
+
 .content {
 	&__container {
 		padding: var(--spacing-m) 0;
 	}
+
+	&__block--gallery .content__title {
+		margin-bottom: 0;
+	}
+
+	&__title {
+		background-color: $bg-island;
+		padding: 1rem 1.5rem;
+		border-radius: $radius;
+		color: $primary;
+		margin-bottom: var(--spacing-xs);
+		@include h3-dark();
+	}
+
+	&__video {
+		margin-top: 1rem;
+		width: 100%;
+		aspect-ratio: 16 / 9;
+
+	}
+	&__text {
+		color: $secondary-inv;
+		@include normal-light();
+	}
+
+	&__link {
+		color: $secondary-inv;
+		background-image: linear-gradient(to top, $accent 2px, transparent 1px);
+		background-repeat: no-repeat;
+		background-position-x: left;
+		background-size: 0 100%, 100% 100%;
+		transition: background-size 0.5s cubic-bezier(.165, .84, .44, 1);
+		@include normal-light();
+		&:hover {
+			color: $primary-inv;
+			background-size: 100% 100%, 100% 100%;
+		}
+		&:active {
+			color: $accent;
+			background-image: linear-gradient(to top, $accent 2px, transparent 1px);
+		}
+	}
+
+	&__list {
+		display: flex;
+		flex-direction: column;
+		row-gap: var(--spacing-xxs);
+	}
+
+	&__list-link {
+		display: flex;
+		align-items: center;
+		color: $secondary-inv;
+		transition: all 0.5s ease-in-out;
+		@include normal-light();
+		&:hover {
+			transform: translateX(0.5rem);
+			color: $primary-inv;
+		}
+		&:active {
+			color: $accent;
+		}
+	}
+	&__list-icon {
+		width: 24px;
+		height: 24px;
+	}
+
+	&__side {
+		display: flex;
+		flex-direction: column;
+		row-gap: var(--spacing-m);
+	}
+
+	&__side-link {
+		display: flex;
+		flex-direction: column;
+		row-gap: 0.5rem;
+		padding: var(--spacing-xs) 0;
+		border-bottom: 1px solid $divider-light;
+
+		&:hover .content__side-text {
+			color: $accent;
+		}
+	}
+
+	&__side-title {
+		color: $primary-inv;
+		@include h4-dark();
+	}
+
+	&__side-tag {
+		color: $tertiary-inv;
+		@include subheader-2-dark();
+	}
+
+	&__side-text {
+		color: $primary-inv;
+		@include normal-light();
+	}
+
+	&__side-date {
+		color: $tertiary-inv;
+		@include breadcrumbs-light();
+	}
 }
+
 
 @media (min-width: 64rem) {
 	.content {
 		&__container {
 			display: flex;
-justify-content: space-between;
+			justify-content: space-between;
 
 		}
 
 		&__main {
-width: calc(var(--grid-column-width)*7 + var(--grid-gutter-width)*6);
+			width: calc(var(--grid-column-width)*7 + var(--grid-gutter-width)*6);
 		}
 
 		&__side {
@@ -90,15 +233,3 @@ width: calc(var(--grid-column-width)*7 + var(--grid-gutter-width)*6);
 	}
 }
 </style>
-<!-- <a class="project__video-link" href="https://www.youtube.com/@VAGhub"></a> -->
-<!-- <iframe width="560" height="315" 
-src="https://www.youtube.com/embed/VIDEO_ID" 
-title="YouTube video player" frameborder="0" 
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-allowfullscreen>
-</iframe> -->
-<!-- https://youtu.be/78IZ0B5HM_Y?si=BgfFSlmblAysHdqa -->
-<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/78IZ0B5HM_Y?si=4MmZJoxlvY7cXxj5"
-	title="YouTube video player" frameborder="0"
-	allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-	referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->

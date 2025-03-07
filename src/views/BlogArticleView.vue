@@ -5,7 +5,6 @@ import { useArticlesStore } from '@/stores/articlesStore';
 import Breadcrumbs from '@/components/layout/BreadCrumbs.vue';
 import HeroSection from '@/components/layout/article/HeroSection.vue'
 import ContentSection from '@/components/layout/article/ContentSection.vue';
-import RelatedSection from '@/components/layout/article/RelatedSection.vue';
 import type { Article } from '@/types/article';
 
 
@@ -28,7 +27,7 @@ const articleBreadcrumb = computed(() => {
 	return article.value.title
 })
 const relatedArticles = computed(() => {
-	if(!article.value) return [] as Article[]
+	if (!article.value) return [] as Article[]
 	return articlesStore.relatedArticles(article.value.id) as Article[]
 })
 </script>
@@ -38,17 +37,21 @@ const relatedArticles = computed(() => {
 			<!-- Breadcrumbs -->
 			<Breadcrumbs mode="light" parent-route-name="blog" :custom-breadcrumb="articleBreadcrumb" />
 			<!-- Hero -->
-			<HeroSection 
-			:image="article?.heroImg" 
-			:title="article?.title" 
-			:text="article?.summary" 
-			:date="article?.date"
-			:time="article?.time" />
+			<HeroSection :image="article?.heroImg" :title="article?.title" :text="article?.summary" :date="article?.date"
+				:time="article?.time" />
 			<div class="article__container container">
 				<!-- Article content -->
-				<ContentSection class="article__content"  :main-content="article.content"/>
-				<!-- Related articles -->
-				<RelatedSection v-if="relatedArticles" class="article__related" :cards="relatedArticles"/>
+				<ContentSection class="article__content" 
+				:intro="article.intro" 
+				:main-content="article.content"
+				:video="article.videoID"
+				:video-text="article.videoText"
+					:related="relatedArticles" />
+				<!-- intro: string
+		mainContent: string
+		video?: string
+		videoText?: string
+		related?: Article[] -->
 			</div>
 		</div>
 		<div v-else>Something went wrong</div>
@@ -58,12 +61,14 @@ const relatedArticles = computed(() => {
 .article {
 	background-color: $bg-white;
 	min-height: 100vh;
+
 	&__container {
 		display: flex;
 		flex-direction: column;
 		row-gap: var(--spacing-m);
 		padding: var(--spacing-m) 0;
 	}
+
 	@media (min-width: 64rem) {
 		.article {
 			&__container {
@@ -71,9 +76,11 @@ const relatedArticles = computed(() => {
 				grid-template-columns: repeat(12, 1fr);
 				column-gap: var(--grid-gutter-width);
 			}
+
 			&__content {
 				grid-column: 1 / 8;
 			}
+
 			&__related {
 				grid-column: 9 / 13;
 			}

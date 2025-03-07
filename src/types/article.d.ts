@@ -10,8 +10,10 @@ export interface Article {
   tag: Tag 
   title: string
   summary: string
+	intro: string
 	content: string
 	heroImg: string
-	video?: string
+	videoID?: string
+	videoText?: string
 	related?: string[]
 }
