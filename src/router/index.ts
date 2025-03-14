@@ -9,6 +9,7 @@ const routes = [
     meta: {
       breadcrumb: 'home',
       icon: 'home',
+      layout: 'default'
     },
   },
   {
@@ -17,6 +18,7 @@ const routes = [
     redirect: 'repair',
     meta: {
       breadcrumb: 'services',
+      layout: 'default'
     },
     children: [
       {
@@ -25,6 +27,7 @@ const routes = [
         component: () => import('../views/RepairView.vue'),
         meta: {
           breadcrumb: 'repair',
+          layout: 'default'
         },
       },
       {
@@ -33,6 +36,7 @@ const routes = [
         component: () => import('../views/TuningView.vue'),
         meta: {
           breadcrumb: 'tuning',
+          layout: 'default'
         },
       },
       {
@@ -41,6 +45,7 @@ const routes = [
         component: () => import('../views/ExpertiseView.vue'),
         meta: {
           breadcrumb: 'expertise',
+          layout: 'default'
         },
       },
     ],
@@ -52,6 +57,7 @@ const routes = [
     redirect: 'about',
     meta: {
       breadcrumb: 'company',
+      layout: 'default'
     },
     children: [
       {
@@ -60,6 +66,7 @@ const routes = [
         component: () => import('../views/AboutView.vue'),
         meta: {
           breadcrumb: 'about',
+          layout: 'default'
         },
       },
       {
@@ -68,6 +75,7 @@ const routes = [
         component: () => import('../views/BlogView.vue'),
         meta: {
           breadcrumb: 'blog',
+          layout: 'default'
         },
 
       },
@@ -78,6 +86,7 @@ const routes = [
         props: true,
         meta: {
           breadcrumb: '',
+          layout: 'default'
         },
       },
 
@@ -87,6 +96,7 @@ const routes = [
         component: () => import('../views/ProcessView.vue'),
         meta: {
           breadcrumb: 'working-process',
+          layout: 'default'
         },
       },
     ],
@@ -99,6 +109,7 @@ const routes = [
     component: () => import('../views/ProjectsView.vue'),
     meta: {
       breadcrumb: 'projects',
+      layout: 'default'
     },
   },
   {
@@ -108,6 +119,7 @@ const routes = [
     props: true,
     meta: {
       breadcrumb: '',
+      layout: 'default'
     },
   },
   {
@@ -116,18 +128,26 @@ const routes = [
     component: () => import('../views/ContactView.vue'),
     meta: {
       breadcrumb: 'contacts',
+      layout: 'default'
     },
   },
   {
     path: '/privacy',
     name: 'privacy',
     component: () => import('../views/PrivacyView.vue'),
+    meta: {
+      breadcrumb: 'privacy',
+      layout: 'default'
+    },
   },
 
   {
     path: '/login',
     name: 'login',
     component: () => import('../views/LoginView.vue'),
+    meta: {
+      layout: 'default'
+    },
   },
   {
     path: '/admin',
@@ -136,12 +156,16 @@ const routes = [
     meta: {
       requiresAuth: true,
       role: 'admin',
+      layout: 'admin'
     },
   },
   {
     path: '/:pathMatch(.*)*',
     name: 'error404',
     component: () => import('../views/Error404View.vue'),
+    meta: {
+      layout: 'default'
+    },
   },
 ]
 

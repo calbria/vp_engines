@@ -26,9 +26,9 @@ onUnmounted(() => {
 
 <template>
   <div id="app">
-    <PageHeader />
+    <PageHeader v-if="route.meta.layout !== 'admin'"/>
     <RouterView :key="route.fullPath"/>
-    <PageFooter />
+    <PageFooter v-if="route.meta.layout !== 'admin'"/>
     <Transition name="slide">
       <button
         class="top-scroll"
