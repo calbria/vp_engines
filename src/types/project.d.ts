@@ -2,6 +2,7 @@ export type Category = 'repair' | 'tuning' | 'expertise'
 
 export interface Project {
     id: string,
+    //language: 'ru' | 'ua'
     slug: string,
     featured: boolean
     showOnMain: boolean

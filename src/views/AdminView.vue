@@ -1,6 +1,6 @@
 <script setup lang='ts'></script>
 <template>
-<main class="admin main-content">
+<main class="admin">
 	<div class="admin__container container">
 		<h1>This is an admin page</h1>
 	</div>
